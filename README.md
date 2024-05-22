@@ -1,1 +1,1 @@
-# dpanel-docs
+# dpanel
