@@ -2,5 +2,6 @@
   * [Docker安装](zh-cn/install/docker.md)
 * **功能手册**
   * **创建容器**
-    * [单容器](zh-cn/manual/container-create.md)
+    * [独立容器](zh-cn/manual/container-create.md)
     * [关联容器](zh-cn/manual/container-create-link.md)
+    * [基础镜像](zh-cn/manual/container-create-image.md)
