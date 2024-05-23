@@ -5,3 +5,7 @@
     * [独立容器](zh-cn/manual/container-create.md)
     * [关联容器](zh-cn/manual/container-create-link.md)
     * [基础镜像](zh-cn/manual/container-create-image.md)
+  * **创建镜像**
+    * [Dockerfile](zh-cn/manual/image-create-dockerfile.md)
+    * [Zip包](zh-cn/manual/image-create-zip.md)
+    * [Git仓库](zh-cn/manual/image-create-git.md)
