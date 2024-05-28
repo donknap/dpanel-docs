@@ -20,3 +20,5 @@ DPanel 提供了 php、node、java、go、html 的基础的镜像。你可以在
 ### 演示
 
 基于php基础镜像，安装 pdo_pgsql 和 intl 扩展。
+
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112516717612800&bvid=BV1duTLeSEn3&cid=500001562593429&p=1" scrolling="no" border="0" height="600" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>

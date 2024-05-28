@@ -8,6 +8,6 @@
   * **创建镜像**
     * [介绍](zh-cn/manual/image-create.md)
     * [Dockerfile](zh-cn/manual/image-create-dockerfile.md)
-    * [源码Zip包](zh-cn/manual/image-create-zip.md)
-    * [Git仓库](zh-cn/manual/image-create-git.md)
+    * [Zip&Git](zh-cn/manual/image-create-zip.md)
+    * [容器Tar包](zh-cn/manual/image-create-container.md)
     * [镜像Tar包](zh-cn/manual/image-create-container.md)
