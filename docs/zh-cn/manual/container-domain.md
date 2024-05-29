@@ -50,11 +50,3 @@ location / {
 ```
 
 通过容器内部 host 转发的时候，无论容器停止、启动多少次，其 host 都会保持不变。
-
-### 使用 DPanel 转发
-
-
-
-### 使用三方系统 Nginx Proxy Manager 转发
-
-> 项目地址：https://github.com/NginxProxyManager/nginx-proxy-manager

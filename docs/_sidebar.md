@@ -13,5 +13,7 @@
     * [镜像Tar包](zh-cn/manual/image-create-image.md)
   * **对外访问**
     * [介绍](zh-cn/manual/container-domain.md)
+    * [绑定域名](zh-cn/manual/container-domain-dpanel.md)
+    * [NginxProxyManger](zh-cn/manual/container-domain-npm.md)
   * **系统设置**
     * [服务器Ip](zh-cn/manual/setting-server.md)
