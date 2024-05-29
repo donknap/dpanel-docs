@@ -10,4 +10,4 @@
     * [Dockerfile](zh-cn/manual/image-create-dockerfile.md)
     * [Zip&Git](zh-cn/manual/image-create-zip.md)
     * [容器Tar包](zh-cn/manual/image-create-container.md)
-    * [镜像Tar包](zh-cn/manual/image-create-container.md)
+    * [镜像Tar包](zh-cn/manual/image-create-image.md)
