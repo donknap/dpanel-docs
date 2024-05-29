@@ -11,3 +11,7 @@
     * [Zip&Git](zh-cn/manual/image-create-zip.md)
     * [容器Tar包](zh-cn/manual/image-create-container.md)
     * [镜像Tar包](zh-cn/manual/image-create-image.md)
+  * **对外访问**
+    * [介绍](zh-cn/manual/container-domain.md)
+  * **系统设置**
+    * [服务器Ip](zh-cn/manual/setting-server.md)

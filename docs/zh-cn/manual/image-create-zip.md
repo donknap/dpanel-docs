@@ -42,7 +42,7 @@ ENTRYPOINT [ "sh", "/docker/entrypoint.sh" ]
 > 需要注意的是，即使 Dockerfile 位于子目录中，在使用 COPY ADD 命令时还是从根目录开始 \
 > 构建目录仅可以指定 Dockerfile 的位置
 
-### 持续构建
+### 持续构建 （Git Webhook 待支持）
 
 使用 Git 方式进行构建镜像的时候，可以通过 webhook 进行自动触发构建（暂未支持）。
 
