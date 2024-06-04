@@ -2,6 +2,10 @@
 
 DPanel 是一款 Docker 可视化管理面板，提供了完善的容器、镜像、存储、网络等功能。
 
+# 视频教程
+
+https://space.bilibili.com/346309066
+
 # 功能介绍
 
 - 全中文的界面，相比于 portainer 更友好
