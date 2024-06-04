@@ -45,7 +45,7 @@ location / {
 
 ```
 location / {
-    proxy_pass http://容器内网ip或是host:容器内的端口;
+    proxy_pass http://容器的内网host:容器内的端口;
 }
 ```
 
