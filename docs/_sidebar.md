@@ -18,3 +18,6 @@
     * [宝塔](zh-cn/manual/container-domain-bt.md)
   * **系统设置**
     * [服务器Ip](zh-cn/manual/setting-server.md)
+    * [更新DPanel面板](zh-cn/manual/setting-upgrade.md)
+  * **其它**
+    * [更新容器](zh-cn/manual/container-update.md)
