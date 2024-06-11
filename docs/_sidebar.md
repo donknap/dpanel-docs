@@ -21,3 +21,4 @@
     * [更新DPanel面板](zh-cn/manual/setting-upgrade.md)
   * **其它**
     * [更新容器](zh-cn/manual/container-update.md)
+    * [常见问题](zh-cn/manual/qa.md)
