@@ -5,6 +5,7 @@
     * [独立容器](zh-cn/manual/container-create.md)
     * [关联容器](zh-cn/manual/container-create-link.md)
     * [基础镜像](zh-cn/manual/container-create-image.md)
+    * [Compose](zh-cn/manual/container-create-compose.md)
   * **创建镜像**
     * [介绍](zh-cn/manual/image-create.md)
     * [Dockerfile](zh-cn/manual/image-create-dockerfile.md)
@@ -22,3 +23,4 @@
   * **其它**
     * [更新容器](zh-cn/manual/container-update.md)
     * [常见问题](zh-cn/manual/qa.md)
+    * [更新记录](zh-cn/manual/upgrade.md)
