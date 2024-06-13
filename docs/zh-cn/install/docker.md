@@ -27,6 +27,20 @@ docker run -it -d --name dpanel1 --restart=always \
 - 不需要 DPanel 进行转发时或是使用已有的 web 服务（宝塔等）进行转发可去掉此 80 及 443 端口配置
 - 国内镜像地址 ccr.ccs.tencentyun.com/donknap/dpanel:latest
 
+##### 手动挂载目录
+
+DPanel 的存储目录位于 /dpanel 目录中，通常情况下 docker 会自动新建存储卷绑定到此目录中。
+
+如果你采用 -v 宿主机目录:/dpanel 的形式将目录挂载到宿主机上，需要手动新建一些目录，系统才可以正常运行。
+
+> 下方命令中将 /dpanel 替换为你的宿主机目录
+
+```
+mkdir -p /dpanel/nginx/default_host /dpanel/nginx/proxy_host \
+  /dpanel/nginx/redirection_host /dpanel/nginx/dead_host /dpanel/nginx/temp \
+  /dpanel/nginx/cert /dpanel/storage
+```
+
 #### 访问地址
 
 ```
