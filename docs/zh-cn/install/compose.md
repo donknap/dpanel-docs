@@ -6,6 +6,8 @@
 services:
   web:
     image: donknap/dpanel:latest
+    container_name: dpanel
+    restart: always
     ports:
       - 80:80
       - 443:443
