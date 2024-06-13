@@ -1,9 +1,11 @@
 # 通过 compose 方式创建
 
+> 国内镜像地址： ccr.ccs.tencentyun.com/donknap/dpanel:latest
+
 ```
 services:
   web:
-    build: donknap/dpanel:latest
+    image: donknap/dpanel:latest
     ports:
       - 80:80
       - 443:443
