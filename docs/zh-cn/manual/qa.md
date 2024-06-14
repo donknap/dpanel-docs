@@ -24,3 +24,13 @@ proxy: listen tcp4 0.0.0.0:80: bind: address already in us
 
 - 服务器安装过类似于宝塔之类的管理软件，占用了 80 端口。部署时更换端口，例如：-p 880:80 -p 8443:443。
 - 去掉绑定 80 及 443 的配置。
+
+### 提示 dpanel-local 网络已存在
+
+##### 错误信息
+
+```
+network dpanel-local was found but has incorrect label com.docker.compose.network set to ""
+```
+
+- 删掉dpanel-local网络  docker network rm dpanel-loca
