@@ -17,34 +17,36 @@ DPanel 提供了一些常用的基础镜像帮助快速的创建未提供镜像�
 
 ### 基础镜像
 
-仓库地址：https://hub.docker.com/r/donknap/dpanel
+> 国内镜像：ccr.ccs.tencentyun.com/dpanel/base-image
+
+仓库地址：https://hub.docker.com/r/dpanel/base-image
 
 #### php
 
-- donknap/dpanel:php-72
-- donknap/dpanel:php-74
-- donknap/dpanel:php-81
+- dpanel/base-image:php-72
+- dpanel/base-image:php-74
+- dpanel/base-image:php-81
 
 #### node
 
-- donknap/dpanel:node-12
-- donknap/dpanel:node-14
-- donknap/dpanel:node-16
-- donknap/dpanel:node-18
+- dpanel/base-image:node-12
+- dpanel/base-image:node-14
+- dpanel/base-image:node-16
+- dpanel/base-image:node-18
 
 #### java
 
-- donknap/dpanel:java-8
-- donknap/dpanel:java-11
-- donknap/dpanel:java-12
+- dpanel/base-image:java-8
+- dpanel/base-image:java-11
+- dpanel/base-image:java-12
 
 #### html
 
-- donknap/dpanel:html-common
+- dpanel/base-image:html-common
 
 #### go
 
-- donknap/dpanel:go-1.21
+- dpanel/base-image:go-1.21
 
 
 # 演示

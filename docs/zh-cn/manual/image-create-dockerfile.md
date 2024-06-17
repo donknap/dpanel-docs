@@ -6,7 +6,7 @@
 
 ### 模板
 
-> 基础镜像仓库：https://hub.docker.com/r/donknap/dpanel
+> 基础镜像仓库：https://hub.docker.com/r/dpanel/base-image
 
 DPanel 提供了 php、node、java、go、html 的基础的镜像。你可以在这些镜像的基础之上，构建出符合自己要求的镜像。
 

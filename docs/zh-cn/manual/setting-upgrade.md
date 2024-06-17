@@ -27,7 +27,7 @@ docker inspect --format '{{range .Mounts}}{{if eq .Type "volume"}}{{.Name}}{{end
 > 镜像名称使用实际构建容器采用的镜像名称
 
 ```
-docker stop dpanel && docker rm dpanel && docker rmi donknap/dpanel:latest
+docker stop dpanel && docker rm dpanel && docker rmi dpanel/dpanel:latest
 ```
 
 #### 重新创建 DPanel 容器
@@ -39,5 +39,5 @@ docker run -it -d --name dpanel --restart=always \
  -p 80:80 -p 443:443 -p 8807:8080 --network dpanel-local \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -v 上方获取的存储卷名称:/dpanel \
- donknap/dpanel:latest
+ dpanel/dpanel:latest
 ```

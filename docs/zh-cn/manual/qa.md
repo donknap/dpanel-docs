@@ -11,7 +11,7 @@ download failed after attempts=6: dial tp 108.160.170.44:443: connect: co
 ```
 
 - 请开启魔法
-- 使用国内镜像源，DPanel 的国内镜像地址为 ccr.ccs.tencentyun.com/donknap/dpanel:latest
+- 使用国内镜像源，DPanel 的国内镜像地址为 ccr.ccs.tencentyun.com/dpanel/dpanel:latest
 
 ### 无法启动 DPanel 
 

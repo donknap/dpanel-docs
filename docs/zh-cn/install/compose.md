@@ -1,11 +1,11 @@
 # 通过 compose 方式创建
 
-> 国内镜像地址： ccr.ccs.tencentyun.com/donknap/dpanel:latest
+> 国内镜像地址： ccr.ccs.tencentyun.com/dpanel/dpanel:latest
 
 ```
 services:
   web:
-    image: donknap/dpanel:latest
+    image: dpanel/dpanel:latest
     container_name: dpanel
     restart: always
     ports:

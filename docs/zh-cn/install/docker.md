@@ -16,16 +16,16 @@ docker network create dpanel-local
 > ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock
 
 ```
-docker run -it -d --name dpanel1 --restart=always \
+docker run -it -d --name dpanel --restart=always \
  -p 80:80 -p 443:443 -p 8808:8080 --network dpanel-local \
  -v /var/run/docker.sock:/var/run/docker.sock \
- donknap/dpanel:latest
+ dpanel/dpanel:latest
 ```
 
 - 8807 指定面板对外暴露的访问端口，创建完成后通过 http://服务器Ip:8807 访问面板，可根据实际情况进行修改
 - 当使用 DPanel 对容器进行域名绑定时，需要绑定暴露 80 及 443 端口
 - 不需要 DPanel 进行转发时或是使用已有的 web 服务（宝塔等）进行转发可去掉此 80 及 443 端口配置
-- 国内镜像地址 ccr.ccs.tencentyun.com/donknap/dpanel:latest
+- 国内镜像地址 ccr.ccs.tencentyun.com/dpanel/dpanel:latest
 
 ##### 手动挂载目录
 

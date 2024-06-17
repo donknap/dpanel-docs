@@ -9,7 +9,7 @@ DinD 的方式允许在容器中直接运行一个 Docker Daemon。
 ```
 services:
   dpanel:
-    image: donknap/dpanel:latest
+    image: dpanel/dpanel:latest
     restart: always
     ports:
       - :8080
