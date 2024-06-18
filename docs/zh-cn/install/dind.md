@@ -10,11 +10,15 @@ DinD 的方式允许在容器中直接运行一个 Docker Daemon。
 services:
   dpanel:
     image: dpanel/dpanel:latest
+    container_name: dpanel
     restart: always
     ports:
-      - :8080
+      - 80:80
+      - 443:443
+      - 8807:8080
     environment:
       DOCKER_HOST: tcp://docker:2375
+      APP_NAME: dpanel # 请保持此名称与 container_name 一致
     networks:
       - dpanel
     depends_on:
