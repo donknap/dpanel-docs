@@ -20,7 +20,7 @@ docker network create dpanel-local
 
 ```
 docker run -it -d --name dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8808:8080 --network dpanel-local \
+ -p 80:80 -p 443:443 -p 8807:8080 --network dpanel-local \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
