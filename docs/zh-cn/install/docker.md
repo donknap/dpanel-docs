@@ -7,9 +7,11 @@
 DPanel 转发域名到容器时，需要将目标容器放置到默认网络中，以 Hostname 的形式进行转发。
 
 如果需要使用域名转发功能，请创建此网络。
-如果提示网络已经存在，请先删除 docker network rm dpanel-local
+
 
 ```
+// 如果提示网络已经存在，请先删除 docker network rm dpanel-local
+
 docker network create dpanel-local
 ```
 
@@ -30,14 +32,7 @@ docker run -it -d --name dpanel --restart=always \
 
 ##### 域名转发
 
-DPanel 提供了基础的域名转发及 ssl 证书功能，不需要使用此功能或是服务器已经安装了 web 服务（宝塔等），去掉 80 及 443 端口配置即可。
-
-```
-docker run -it -d --name dpanel --restart=always \
- -p 8807:8080 --network dpanel-local \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -e APP_NAME=dpanel dpanel/dpanel:latest
-```
+DPanel 提供了基础的域名转发及 ssl 证书功能，不需要使用此功能或是服务器已经安装了宝塔等web服务或是Lucky等转发服务，[请安装 Lite 版](/zh-cn/install/docker-lite)
 
 ##### 自定义面板名称
 
