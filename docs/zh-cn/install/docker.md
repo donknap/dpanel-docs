@@ -2,18 +2,6 @@
 
 > 国内镜像 ccr.ccs.tencentyun.com/dpanel/dpanel:latest
 
-##### 新建 DPanel 默认网络
-
-DPanel 转发域名到容器时，需要将目标容器放置到默认网络中，以 Hostname 的形式进行转发。
-
-如果需要使用域名转发功能，请创建此网络。
-
-
-```
-// 如果提示网络已经存在，请先删除 docker network rm dpanel-local
-
-docker network create dpanel-local
-```
 
 ##### 创建容器
 
@@ -25,14 +13,32 @@ docker network create dpanel-local
 
 ```
 docker run -it -d --name dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 --network dpanel-local \
+ -p 80:80 -p 443:443 -p 8807:8080 \
  -v /var/run/docker.sock:/var/run/docker.sock \
- -e APP_NAME=dpanel dpanel/dpanel:latest
+ -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
+```
+
+##### 自定义宿主机目录存储
+
+面板会产生一些数据存储至容器内的 /dpanel 目录中，默认下此目录会挂载到docker的存储卷中
+
+如果你想将此目录持久化到宿主机目录中，可以通过修改 -v 参数。
+
+指定目录必须是绝对目录，目录不存在时会自动新建，例如：-v /root/dpanel:/dpanel 
+
+```
+docker run -it -d --name dpanel --restart=always \
+ -p 80:80 -p 443:443 -p 8807:8080 \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v 指定宿主机目录:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
 ##### 域名转发
 
-DPanel 提供了基础的域名转发及 ssl 证书功能，不需要使用此功能或是服务器已经安装了宝塔等web服务或是Lucky等转发服务，[请安装 Lite 版](/zh-cn/install/docker-lite)
+DPanel 提供了基础的域名转发及 ssl 证书功能需要绑定 80 及 443 端口
+
+服务器已经安装了宝塔或是Lucky等服务软件时，[请安装 Lite 版](/zh-cn/install/docker-lite)
+
 
 ##### 自定义面板名称
 
@@ -40,9 +46,22 @@ DPanel 提供了基础的域名转发及 ssl 证书功能，不需要使用此�
 
 ```
 docker run -it -d --name my-dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 --network dpanel-local \
+ -p 80:80 -p 443:443 -p 8807:8080 \
  -v /var/run/docker.sock:/var/run/docker.sock \
- -e APP_NAME=my-dpanel dpanel/dpanel:latest
+ -v dpanel:/dpanel -e APP_NAME=my-dpanel dpanel/dpanel:latest
+```
+
+##### 通过 tcp 连接 docker
+
+面板请求 docker 服务时需要绑定宿主机的 /var/run/docker.sock 文件
+
+你也可以开启 docker tcp 连接地址，并通过 DOCKER_HOST 环境变量指定
+
+```
+docker run -it -d --name dpanel --restart=always \
+ -p 80:80 -p 443:443 -p 8807:8080 \
+ -e DOCKER_HOST=tcp://172.16.1.13:2375
+ -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
 #### 访问地址

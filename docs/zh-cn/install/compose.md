@@ -18,9 +18,5 @@ services:
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - dpanel
-networks:
-  dpanel:
-    name: dpanel-local
+      - dpanel:/dpanel
 ```

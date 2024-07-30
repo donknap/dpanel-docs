@@ -36,7 +36,7 @@ docker stop dpanel && docker rm dpanel && docker rmi dpanel/dpanel:latest
 
 ```
 docker run -it -d --name dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 --network dpanel-local \
+ -p 80:80 -p 443:443 -p 8807:8080 \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -v 上方获取的存储卷名称:/dpanel \
  dpanel/dpanel:latest

@@ -19,8 +19,6 @@ services:
     environment:
       DOCKER_HOST: tcp://docker:2375
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
-    networks:
-      - dpanel
     depends_on:
       - docker
   docker:
@@ -28,9 +26,4 @@ services:
     environment:
       DOCKER_TLS_CERTDIR: ""
     privileged: true 
-    networks:
-      - dpanel
-networks:
-  dpanel:
-    name: dpanel-local
 ```

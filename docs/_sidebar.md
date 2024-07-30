@@ -1,8 +1,9 @@
 * **安装部署**
-  * [Docker安装](zh-cn/install/docker.md)
-  * [Lite版安装](zh-cn/install/docker-lite.md)
-  * [Compose安装](zh-cn/install/compose.md)
-  * [InDocker安装](zh-cn/install/dind.md)
+  * [Docker](zh-cn/install/docker.md)
+  * [Docker-Lite](zh-cn/install/docker-lite.md)
+  * [Compose](zh-cn/install/compose.md)
+  * [InDocker](zh-cn/install/dind.md)
+  * [源码编译](zh-cn/install/source.md)
 * **功能手册**
   * **创建容器**
     * [独立容器](zh-cn/manual/container-create.md)
