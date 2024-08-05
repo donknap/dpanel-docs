@@ -1,6 +1,6 @@
 # 使用 Docker 安装
 
-> 国内镜像 ccr.ccs.tencentyun.com/dpanel/dpanel:latest
+> 国内镜像 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest
 
 
 ##### 创建容器
