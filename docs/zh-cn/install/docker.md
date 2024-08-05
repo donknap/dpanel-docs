@@ -60,7 +60,7 @@ docker run -it -d --name my-dpanel --restart=always \
 ```
 docker run -it -d --name dpanel --restart=always \
  -p 80:80 -p 443:443 -p 8807:8080 \
- -e DOCKER_HOST=tcp://172.16.1.13:2375
+ -e DOCKER_HOST=tcp://172.16.1.13:2375 \
  -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
