@@ -18,7 +18,7 @@ https://space.bilibili.com/346309066
 - 可以通过 Zip 或是 Git 构建镜像，快速实现可持续化构建。
 
 #### 概览
-![home.png](https://s2.loli.net/2024/07/30/5qkCGuWHZyPxoRT.png)
+![home.png](./storage/image/home.png)
 #### 容器管理
 ![app-list.png](https://s2.loli.net/2024/05/25/P1RTvFtiwYOB6Hn.png)
 #### 文件管理
