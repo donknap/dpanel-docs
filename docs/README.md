@@ -18,14 +18,14 @@ https://space.bilibili.com/346309066
 - 可以通过 Zip 或是 Git 构建镜像，快速实现可持续化构建。
 
 #### 概览
-![home.png](storage/image/home.png)
+![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/home.png)
 #### 容器管理
-![app-list.png](https://s2.loli.net/2024/05/25/P1RTvFtiwYOB6Hn.png)
+![app-list.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/app-list.png)
 #### 文件管理
-![.png](https://s2.loli.net/2024/07/30/ADTzv1bwlRoSUJd.png)
+![app-file.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/app-file.png)
 #### 镜像管理
-![image-list.png](https://s2.loli.net/2024/05/25/Du3HgGmdXb5qiap.png)
+![image-list.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/image-list.png)
 #### 创建镜像
-![.png](https://s2.loli.net/2024/07/30/YfQONk16T8FdxDV.png)
+![image-create.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/image-create.png)
 #### 系统管理
-![system-basic.png](https://s2.loli.net/2024/05/25/P8N23wqaKlFAfy4.png)
+![system-basic.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/system-basic.png)
