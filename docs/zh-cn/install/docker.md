@@ -35,20 +35,22 @@ docker run -it -d --name dpanel --restart=always \
 
 ##### 域名转发
 
+> 安装 Lite 版不需要再绑定 80 及 443 端口。
+
 DPanel 提供了基础的域名转发及 ssl 证书功能需要绑定 80 及 443 端口
 
 服务器已经安装了宝塔或是Lucky等服务软件时，[请安装 Lite 版](/zh-cn/install/docker-lite)
 
 
-##### 自定义面板名称
+##### 自定义面板用户名密码
 
-面板内部会获取 dpanel 的容器信息，如果创建时想更换其它名称，可以通过 APP_NAME 指定
+默认面板的用户名密码为 admin 123456，在创建时也可以通过指定环境变量指定用户名和密码。
 
 ```
-docker run -it -d --name my-dpanel --restart=always \
+docker run -it -d --name dpanel --restart=always \
  -p 80:80 -p 443:443 -p 8807:8080 \
  -v /var/run/docker.sock:/var/run/docker.sock \
- -v dpanel:/dpanel -e APP_NAME=my-dpanel dpanel/dpanel:latest
+ -v dpanel:/dpanel -e INSTALL_UERNAME=root -e INSTALL_PASSWORD=123456 dpanel/dpanel:latest
 ```
 
 ##### 通过 tcp 连接 docker
@@ -63,6 +65,21 @@ docker run -it -d --name dpanel --restart=always \
  -e DOCKER_HOST=tcp://172.16.1.13:2375 \
  -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
+
+
+##### 自定义面板名称
+
+面板内部会获取 dpanel 的容器信息，在创建时必须使用 dpanel 名称。
+
+如果你想更改创建的容器名称，必须再指定 APP_NAME 环境变量
+
+```
+docker run -it -d --name my-dpanel --restart=always \
+ -p 80:80 -p 443:443 -p 8807:8080 \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v dpanel:/dpanel -e APP_NAME=my-dpanel dpanel/dpanel:latest
+```
+
 
 #### 访问地址
 

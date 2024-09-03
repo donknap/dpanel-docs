@@ -19,6 +19,8 @@ services:
     environment:
       DOCKER_HOST: tcp://docker:2375
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
+      INSTALL_USERNAME: admin
+      INSTALL_PASSWORD: admin
     depends_on:
       - docker
   docker:

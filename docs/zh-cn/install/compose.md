@@ -16,6 +16,8 @@ services:
       - 8807:8080
     environment:
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
+      INSTALL_USERNAME: admin
+      INSTALL_PASSWORD: admin
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - dpanel:/dpanel
