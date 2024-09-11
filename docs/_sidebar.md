@@ -26,6 +26,7 @@
     * [多环境管理](zh-cn/manual/setting-docker-env.md)
     * [更新DPanel面板](zh-cn/manual/setting-upgrade.md)
   * **其它**
+    * [远程管理](zh-cn/manual/remote.md)
     * [更新容器](zh-cn/manual/container-update.md)
     * [常见问题](zh-cn/manual/qa.md)
     * [更新记录](zh-cn/manual/upgrade.md)
