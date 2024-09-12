@@ -19,7 +19,7 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H fd:// --containerd=/run/cont
 ##### 重启 docker 服务
 
 ```
-systemctl restart docker
+systemctl daemon-reload && systemctl restart docker
 ```
 
 ## 使用 HTTPS （开启 TLS ）
@@ -78,5 +78,5 @@ ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=/root/docker-ca/ca.pem --tlsc
 ##### 重启 docker 服务
 
 ```
-systemctl restart docker
+systemctl daemon-reload && systemctl restart docker
 ```
