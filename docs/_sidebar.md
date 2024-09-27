@@ -17,11 +17,13 @@
     * [Zip&Git](zh-cn/manual/image-create-zip.md)
     * [容器Tar包](zh-cn/manual/image-create-container.md)
     * [镜像Tar包](zh-cn/manual/image-create-image.md)
-  * **对外访问**
+  * **绑定域名**
     * [介绍](zh-cn/manual/container-domain.md)
     * [DPanel](zh-cn/manual/container-domain-dpanel.md)
     * [NginxProxyManger](zh-cn/manual/container-domain-npm.md)
     * [宝塔](zh-cn/manual/container-domain-bt.md)
+  * **容器设置**
+    * [绑定宿主机网络](zh-cn/manual/container-bind-host-network.md)
   * **系统设置**
     * [服务器Ip](zh-cn/manual/setting-server.md)
     * [多环境管理](zh-cn/manual/setting-docker-env.md)
