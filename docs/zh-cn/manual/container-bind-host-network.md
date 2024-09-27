@@ -37,3 +37,25 @@ sudo ip link set dev enp1s0 promisc on
 
 ![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/container-bind-host-network-1.png)
 
+通过【存储&网络】-【网络管理】-【创建网络】创建一个 macvlan 或是 ipvlan 类型的网络。
+
+- 父网卡指定为宿主机的网卡名称，在本例中就是 enp1s0。
+- 子网配置为宿主机的子网。
+
+##### 子网
+
+以 192.168.0.0 为例
+
+使用 192.168.0.0/16 时表示你的俺码为 255.255.0.0，可用 ip 范围是 192.168.0.1 到 192.168.255.254。\
+使用 192.168.0.0/24 时表示你的掩码为 255.255.255.0 可用 ip 范围是 192.168.0.1 到 192.168.0.254。
+
+在本例中，宿主机的 ip 为 172.16.1.124，掩码为 255.255.255.0，所以这里子网应该配置为 172.16.1.0/24。
+
+具体配置根据实际情况来决定。
+
+
+### 新建容器添加网络
+
+![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/container-bind-host-network-2.png)
+
+新建容器后，通过【容器关联信息】-【加入已有网络】将容器添加到刚才添加的的网络中，并指定与宿同网段的 ip。
