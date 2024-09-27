@@ -56,6 +56,23 @@ sudo ip link set dev enp1s0 promisc on
 
 ### 新建容器添加网络
 
+新建容器后，通过【容器关联信息】-【加入已有网络】将容器添加到刚才添加的的网络中，并指定与宿同网段的 ip。\
+容器即可通过指定的 ip 进行访问。
+
+需要注意的是，通过此方法容器并不需要再暴露容器内部的端口。
+
 ![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/container-bind-host-network-2.png)
 
-新建容器后，通过【容器关联信息】-【加入已有网络】将容器添加到刚才添加的的网络中，并指定与宿同网段的 ip。
+### 宿主机访问容器
+
+通过上述的方法已经可以实现局域网内的主机通过自定义的 ip 访问到容器内部端口。\
+但是宿主机并不能正常请求。
+
+宿主机还需要使用该容器在 bridge 网络的 ip 进行请求. \
+或是在宿主机上添加一张虚拟网卡进行路由。
+
+```
+sudo ip link add docker-bridge link enp1s0 type macvlan mode bridge
+sudo ip link set docker-bridge up
+sudo ip route add 172.16.1.205 dev docker-bridge
+```
