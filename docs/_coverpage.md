@@ -6,6 +6,10 @@
 - 基于容器易于安装
 - 资源占用低 （镜像 ~50M，内存 ~20M）
 
+<div style="text-align:left; width:500px; margin:0 auto;">
+
+</div>
+
 [GitHub](https://github.com/donknap/dpanel)
 [DockerHub](https://hub.docker.com/r/dpanel/dpanel/tags)
 [面板介绍](README.md)
