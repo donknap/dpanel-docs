@@ -19,18 +19,18 @@ https://space.bilibili.com/346309066
 - 可以通过 Zip 或是 Git 构建镜像，快速实现可持续化构建。
 
 #### 概览
-![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/home.png)
+![home.png](https://cdn.w7.cc/dpanel/home.png)
 #### 容器管理
-![app-list.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/app-list.png)
+![app-list.png](https://cdn.w7.cc/dpanel/app-list.png)
 #### 文件管理
-![app-file.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/app-file.png)
+![app-file.png](https://cdn.w7.cc/dpanel/app-file.png)
 #### 镜像管理
-![image-list.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/image-list.png)
+![image-list.png](https://cdn.w7.cc/dpanel/image-list.png)
 #### 创建镜像
-![image-create.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/image-create.png)
+![image-create.png](https://cdn.w7.cc/dpanel/image-create.png)
 #### 创建Compose
-![compose-create.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/compose-create.png)
+![compose-create.png](https://cdn.w7.cc/dpanel/compose-create.png)
 #### 部署Compose
-![compose-deploy.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/compose-deploy.png)
+![compose-deploy.png](https://cdn.w7.cc/dpanel/compose-deploy.png)
 #### 系统管理
-![system-basic.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/system-basic.png)
+![system-basic.png](https://cdn.w7.cc/dpanel/system-basic.png)

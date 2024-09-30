@@ -35,7 +35,7 @@ sudo ip link set dev enp1s0 promisc on
 
 ### 创建 macvlan 或是 ipvlan 网络
 
-![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/container-bind-host-network-1.png)
+![home.png](https://cdn.w7.cc/dpanel/container-bind-host-network-1.png)
 
 通过【存储&网络】-【网络管理】-【创建网络】创建一个 macvlan 或是 ipvlan 类型的网络。
 
@@ -61,7 +61,7 @@ sudo ip link set dev enp1s0 promisc on
 
 需要注意的是，通过此方法容器并不需要再暴露容器内部的端口。
 
-![home.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/container-bind-host-network-2.png)
+![home.png](https://https://cdn.w7.cc/dpanel/container-bind-host-network-2.png)
 
 ### 宿主机访问容器
 

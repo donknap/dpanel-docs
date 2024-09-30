@@ -6,7 +6,7 @@
 
 【系统】- 【客户端管理】-【添加Docker环境】
 
-![system-docker-env-add.png](https://raw.githubusercontent.com/donknap/dpanel-docs/master/storage/image/system-docker-env-add.png)
+![system-docker-env-add.png](https://cdn.w7.cc/dpanel/system-docker-env-add.png)
 
 
 
