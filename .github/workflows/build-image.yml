@@ -1,9 +1,6 @@
 name: build-image
 permissions: write-all
-on:
-  push:
-    tags:
-    - 'v*'
+on: [push]
 jobs:
   build:
     strategy:
