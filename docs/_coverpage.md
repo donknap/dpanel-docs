@@ -5,6 +5,8 @@
 - 全中文界面易于使用
 - 基于容器易于安装
 - 资源占用低 （镜像 ~50M，内存 ~20M）
+-     
+- ![GitHub stars](https://img.shields.io/github/stars/donknap/dpanel.svg) &nbsp; ![GitHub latest release](https://img.shields.io/github/v/release/donknap/dpanel) &nbsp; ![GitHub latest commit](https://img.shields.io/github/last-commit/donknap/dpanel.svg) &nbsp; 
 
 [GitHub](https://github.com/donknap/dpanel)
 [DockerHub](https://hub.docker.com/r/dpanel/dpanel/tags)
