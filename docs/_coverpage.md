@@ -1,4 +1,4 @@
-# <b>DPanel</b> <small>&nbsp;&nbsp;&nbsp;&nbsp;[![GitHub latest release](https://img.shields.io/github/v/release/donknap/dpanel)](https://github.com/donknap/dpanel/releases)</small>
+# <b>DPanel</b> &nbsp;&nbsp;&nbsp;&nbsp;[![GitHub latest release](https://img.shields.io/github/v/release/donknap/dpanel)](https://github.com/donknap/dpanel/releases)
 
 > Docker 可视化管理面板，提供完善的管理容器的功能。
 
