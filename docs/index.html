@@ -25,11 +25,17 @@
       auto2top: true,
       coverpage: true,
       onlyCover: true,
+      plugins: [
+        EditOnGithubPlugin.create(
+          "https://github.com/donknap/dpanel-docs/tree/master/docs"
+        )
+      ]
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
 </body>
 
 </html>
