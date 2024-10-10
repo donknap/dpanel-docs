@@ -4,7 +4,7 @@
 
 ```
 services:
-  web:
+  dpanel:
     image: dpanel/dpanel:latest
     container_name: dpanel
     restart: always
@@ -32,10 +32,10 @@ services:
 
 ```
 services:
-  web:
+  dpanel:
     image: dpanel/dpanel:lite
     container_name: dpanel
-    restart: always
+    restart: unless-stopped
     ports:
       - 8807:8080
     environment:
@@ -44,9 +44,9 @@ services:
       INSTALL_PASSWORD: admin
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - dpanel:/dpanel
-  dpanel-plugin-explorer: # 该镜像为 dpanel 的文件浏览器,隔离特权
-    image: alpine:latest    
+      - /dpanel:/dpanel
+  dpanel-plugin-explorer:  # 该镜像为 dpanel 的文件浏览器,隔离特权
+    image: alpine:latest	
     container_name: dpanel-plugin-explorer
     restart: unless-stopped
     privileged: true
