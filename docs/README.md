@@ -18,6 +18,10 @@ https://space.bilibili.com/346309066
 - 提供多种环境的基础镜像和模板，可以快速构建属于自己的镜像。
 - 可以通过 Zip 或是 Git 构建镜像，快速实现可持续化构建。
 
+### Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=donknap/dpanel&type=Date)](https://star-history.com/#donknap/dpanel&Date)
+
 #### 概览
 ![home.png](https://cdn.w7.cc/dpanel/home.png)
 #### 容器管理
