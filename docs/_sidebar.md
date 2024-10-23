@@ -32,5 +32,5 @@
     * [远程管理](zh-cn/manual/remote.md)
     * [更新容器](zh-cn/manual/container-update.md)
     * [常见问题](zh-cn/manual/qa.md)
-    * [授权协议](zh-cn/manual/license)
+    * [许可协议](zh-cn/manual/license)
     * [更新记录](zh-cn/manual/upgrade.md)
