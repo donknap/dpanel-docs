@@ -8,8 +8,10 @@
 > macos 下需要先将 docker.sock 文件 link 到 /var/run/docker.sock 目录中 \
 > ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock
 
+!> DPanel 面板为了隔离权限，在后续使用中会自动生成 dpanel-plugin-explorer 容器。\
+此容器并不暴露任何端口，你也可以随时删除。
 
-> 创建容器时不能采用 Host 网络
+创建面板容器时，请根据实际情况修改映射端口。面板不能绑定 host 网络（请勿指定 --network host !!!）
 
 ```
 docker run -it -d --name dpanel --restart=always \
@@ -25,6 +27,8 @@ docker run -it -d --name dpanel --restart=always \
 如果你想将此目录持久化到宿主机目录中，可以通过修改 -v 参数。
 
 指定目录必须是绝对目录，目录不存在时会自动新建，例如：-v /root/dpanel:/dpanel 
+
+> 如果需要挂载 compose yaml 文件，请挂载 /dpanel 目录挂载到宿主机目录，方便管理文件。[创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
 
 ```
 docker run -it -d --name dpanel --restart=always \
@@ -57,7 +61,7 @@ docker run -it -d --name dpanel --restart=always \
 
 面板请求 docker 服务时需要绑定宿主机的 /var/run/docker.sock 文件
 
-你也可以开启 docker tcp 连接地址，并通过 DOCKER_HOST 环境变量指定
+你也可以开启 docker tcp 连接地址，并通过 DOCKER_HOST 环境变量指定。[开启 docker tcp 连接方式](zh-cn/manual/system/remote)
 
 ```
 docker run -it -d --name dpanel --restart=always \
