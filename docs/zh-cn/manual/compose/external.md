@@ -25,6 +25,8 @@ my-compose          running(1)          /home/test1.yaml,/home/test2.yaml
 
 ### 挂载该文件到面板容器中
 
+!> 注意这里必须使用小写目录名称
+
 将此 yaml 文件挂载到面板容器中，并保持路径相同，面板即可管理该 compose 项目。
 
 ```
