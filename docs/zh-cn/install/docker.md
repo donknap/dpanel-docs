@@ -54,7 +54,7 @@ DPanel 提供了基础的域名转发及 ssl 证书功能需要绑定 80 及 443
 docker run -it -d --name dpanel --restart=always \
  -p 80:80 -p 443:443 -p 8807:8080 \
  -v /var/run/docker.sock:/var/run/docker.sock \
- -v dpanel:/dpanel -e INSTALL_UERNAME=root -e INSTALL_PASSWORD=123456 dpanel/dpanel:latest
+ -v dpanel:/dpanel -e INSTALL_USERNAME=root -e INSTALL_PASSWORD=123456 dpanel/dpanel:latest
 ```
 
 ##### 通过 tcp 连接 docker
