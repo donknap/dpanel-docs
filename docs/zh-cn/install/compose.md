@@ -1,12 +1,14 @@
 # 通过 compose 方式创建
 
-> 国内镜像地址： ccr.ccs.tencentyun.com/dpanel/dpanel:latest
+!> 阿里云镜像 \
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 ```
 services:
   dpanel:
     image: dpanel/dpanel:latest
-    container_name: dpanel
+    container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
     restart: always
     ports:
       - 80:80
@@ -20,7 +22,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - dpanel:/dpanel
   dpanel-plugin-explorer: # 该镜像为 dpanel 的文件浏览器,隔离特权
-    image: alpine:latest    
+    image: alpine:latest
     container_name: dpanel-plugin-explorer
     restart: unless-stopped
     privileged: true
@@ -34,7 +36,7 @@ services:
 services:
   dpanel:
     image: dpanel/dpanel:lite
-    container_name: dpanel
+    container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
     restart: unless-stopped
     ports:
       - 8807:8080

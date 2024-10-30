@@ -1,17 +1,22 @@
 # 使用 Docker 安装
 
-!> 国内镜像 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest
+!> 阿里云镜像 \
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 
 ##### 创建容器
 
+!> DPanel 面板为了隔离权限，在使用文件管理功能时需要使用 dpanel-plugin-explorer 容器。此插件容器并不暴露任何端口，你也可以随时删除。\
+此插件容器使用 alpine 镜像，你也可以手动创建，名称保持为 dpanel-plugin-explorer 即可。\
+如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！
+
 > macos 下需要先将 docker.sock 文件 link 到 /var/run/docker.sock 目录中 \
 > ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock
 
-!> DPanel 面板为了隔离权限，在后续使用中会自动生成 dpanel-plugin-explorer 容器。\
-此容器并不暴露任何端口，你也可以随时删除。
-
 创建面板容器时，请根据实际情况修改映射端口。面板不能绑定 host 网络（请勿指定 --network host !!!）
+
+默认版本中提供了域名绑定及Https证书功能，需要绑定 80 及 443 端口。如果你不需要这些功能，请安装 Lite 版
 
 ```
 docker run -it -d --name dpanel --restart=always \
@@ -20,9 +25,24 @@ docker run -it -d --name dpanel --restart=always \
  -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
+##### 安装 Lite 版
+
+在 lite 版中，不包含域名转发功能。即容器内不会安装 nginx 及 acme.sh 等相关组件
+
+需要域名转发请借助外部工具，例如 NginxProxyManager、Lucky、宝塔、Nginx等
+
+> 与普通版只有镜像地址区别，其它配置参数均一致。不需要绑定 80 及 443。后续配置均以默认版举例，请自行替换镜像
+
+```
+docker run -it -d --name dpanel --restart=always \
+ -p 8807:8080 -e APP_NAME=dpanel \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v dpanel:/dpanel dpanel/dpanel:lite
+ ```
+
 ##### 自定义宿主机目录存储
 
-面板会产生一些数据存储至容器内的 /dpanel 目录中，默认下此目录会挂载到docker的存储卷中
+面板会产生一些数据存储至容器内的 /dpanel 目录中，默认下此目录会挂载到 docker 的存储卷中
 
 如果你想将此目录持久化到宿主机目录中，可以通过修改 -v 参数。
 
@@ -36,14 +56,6 @@ docker run -it -d --name dpanel --restart=always \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -v 指定宿主机目录:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
-
-##### 域名转发
-
-> 安装 Lite 版不需要再绑定 80 及 443 端口。
-
-DPanel 提供了基础的域名转发及 ssl 证书功能需要绑定 80 及 443 端口
-
-服务器已经安装了宝塔或是Lucky等服务软件时，[请安装 Lite 版](/zh-cn/install/docker-lite)
 
 
 ##### 自定义面板用户名密码

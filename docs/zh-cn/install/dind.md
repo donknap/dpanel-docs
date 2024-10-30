@@ -10,7 +10,7 @@ DinD 的方式允许在容器中直接运行一个 Docker Daemon。
 services:
   dpanel:
     image: dpanel/dpanel:latest
-    container_name: dpanel
+    container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
     restart: always
     ports:
       - 80:80
@@ -23,6 +23,13 @@ services:
       INSTALL_PASSWORD: admin
     depends_on:
       - docker
+  dpanel-plugin-explorer: # 该镜像为 dpanel 的文件浏览器,隔离特权
+    image: alpine:latest
+    container_name: dpanel-plugin-explorer
+    restart: unless-stopped
+    privileged: true
+    pid: host
+    command: ["sh", "-c", "tail -f /dev/null"]
   docker:
     image: docker:dind
     environment:
