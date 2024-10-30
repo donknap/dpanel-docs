@@ -14,6 +14,8 @@
 
 > 如果有多个 override.yaml 文件，需要有加载顺序时，请用字典顺序命名。例如 1.override.yaml 2.override.yaml
 
+如果你有多个 docker 环境，也可以创建【[环境覆盖配置](/zh-cn/manual/compose/env?id=多-docker-环境)】来为每个环境进行适配。
+
 ### 覆盖配置
 
 假设原始的 yaml 文件内容为
