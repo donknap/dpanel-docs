@@ -7,6 +7,7 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 ##### 创建容器
 
+
 !> DPanel 面板为了隔离权限，在使用文件管理功能时需要使用 dpanel-plugin-explorer 容器。此插件容器并不暴露任何端口，你也可以随时删除。\
 此插件容器使用 alpine 镜像，你也可以手动创建，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！
