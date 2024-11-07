@@ -4,6 +4,7 @@
   * [InDocker](zh-cn/install/dind.md)
   * [源码编译](zh-cn/install/source.md)
   * [绑定域名子目录](zh-cn/install/nginx-location.md)
+  * [控制命令](zh-cn/install/ctrl.md)
 * **功能手册**
   * **创建容器**
     * [独立容器](zh-cn/manual/container/create.md)
