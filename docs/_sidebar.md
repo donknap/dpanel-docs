@@ -14,7 +14,7 @@
     * [创建任务](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
     * [替换服务](zh-cn/manual/compose/replace-service.md)
-    * [覆盖配置](zh-cn/manual/compose/override.md)
+    <!-- * [覆盖配置](zh-cn/manual/compose/override.md) -->
     * [管理外部任务](zh-cn/manual/compose/external.md)
     * [批量拉取镜像](zh-cn/manual/compose/image-pull.md)
   * **创建镜像**
