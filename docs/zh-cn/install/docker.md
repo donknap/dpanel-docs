@@ -5,7 +5,7 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 
-##### 创建容器
+#### 创建容器
 
 
 !> DPanel 面板为了隔离权限，在使用文件管理功能时需要使用 dpanel-plugin-explorer 容器。此插件容器并不暴露任何端口，你也可以随时删除。\
@@ -61,7 +61,7 @@ docker run -it -d --name dpanel --restart=always \
 
 ##### 配置面板管理员用户名密码
 
-创建完成面板容器后，首次进入需要先配置管理员用户和密码。如果你忘记密码可以使用[【重置用户名密码】](/zh-cn/install/ctrl?id=重置管理员用户)
+创建完成面板容器后，首次进入需要先配置管理员用户和密码。如果你忘记密码可以使用 [重置用户名密码](/zh-cn/install/ctrl?id=重置管理员用户)
 
 
 ##### 通过 tcp 连接 docker
@@ -91,6 +91,11 @@ docker run -it -d --name my-dpanel --restart=always \
  -v dpanel:/dpanel -e APP_NAME=my-dpanel dpanel/dpanel:latest
 ```
 
+##### 更新面板
+
+> 如果重新安装面板时发现无法配置管理员用户密码，请更换挂载目录地址或是删除之前的挂载目录数据
+
+更新面板等价于保留挂载目录或是挂载存储卷，重建面板容器。[升级面板](/zh-cn/manual/container/update)
 
 #### 访问地址
 

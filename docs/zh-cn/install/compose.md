@@ -1,5 +1,7 @@
 # 通过 compose 方式创建
 
+#### 普通版
+
 !> 阿里云镜像 \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
