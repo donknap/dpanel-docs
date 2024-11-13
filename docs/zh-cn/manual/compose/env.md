@@ -19,7 +19,7 @@ services:
 
 在部署 compose 任务的时候，也可以再次对环境变量进行修改。
 
-![compose-env](https://cdn.w7.cc/dpanel/compose-env-2.png)
+![compose-env](https://cdn.w7.cc/dpanel/compose-env-2.png?a=1)
 
 #### 多 Docker 环境
 

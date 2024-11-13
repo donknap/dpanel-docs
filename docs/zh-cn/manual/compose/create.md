@@ -2,7 +2,7 @@
 
 ![compose-create](https://cdn.w7.cc/dpanel/compose-create.png)
 
-##### 站点标识
+### 站点标识
 
 用于标识 compose 创建后的项目名称，当同一个 compose.yaml 部署多个项目时，用站点标识进行区分。
 
@@ -38,7 +38,7 @@ https://ghp.ci/https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/ref
 
 每一个项目必须创建一个子目录，该目录的名称即为【站点标识】。子目录中包含 docker-compose.yaml docker-compose.yml compose.yaml compose.yml 文件。
 
-#### 示例
+##### 示例
 
 目录结构如下：
 
