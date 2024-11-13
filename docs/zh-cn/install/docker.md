@@ -59,16 +59,10 @@ docker run -it -d --name dpanel --restart=always \
 ```
 
 
-##### 自定义面板用户名密码
+##### 配置面板管理员用户名密码
 
-默认面板的用户名密码为 admin 123456，在创建时也可以通过指定环境变量指定用户名和密码。
+创建完成面板容器后，首次进入需要先配置管理员用户和密码。如果你忘记密码可以使用[【重置用户名密码】](/zh-cn/install/ctrl?id=重置管理员用户)
 
-```
-docker run -it -d --name dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -v dpanel:/dpanel -e INSTALL_USERNAME=root -e INSTALL_PASSWORD=123456 dpanel/dpanel:latest
-```
 
 ##### 通过 tcp 连接 docker
 
