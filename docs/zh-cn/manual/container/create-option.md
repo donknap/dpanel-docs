@@ -82,6 +82,9 @@
 
 ##### 健康检查
 
+> --health-cmd='curl -f http://localhost/' \
+  --health-interval=10s --health-timeout=5s --health-retries=3 
+
 | 脚本执行环境 | 脚本示例 | 描述 | 
 | --- | --- | --- |
 | 在 Docker 环境中执行 | curl -f http://localhost:80 | docker 将请求容器内的80端口地址，测试是否可以访问 |
