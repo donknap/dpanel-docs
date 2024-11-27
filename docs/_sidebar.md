@@ -15,7 +15,7 @@
     * [创建任务](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
     * [替换服务](zh-cn/manual/compose/replace-service.md)
-    <!-- * [覆盖配置](zh-cn/manual/compose/override.md) -->
+    * [覆盖配置](zh-cn/manual/compose/override.md)
     * [管理外部任务](zh-cn/manual/compose/external.md)
     * [批量拉取镜像](zh-cn/manual/compose/image-pull.md)
   * **创建镜像**
@@ -35,6 +35,7 @@
   * **系统设置**
     * [服务器Ip](zh-cn/manual/setting/server.md)
     * [多环境管理](zh-cn/manual/setting/docker-env.md)
+    * [应用商店](zh-cn/manual/setting/store.md)
     * [更新DPanel面板](zh-cn/manual/setting/upgrade.md)
   * **其它**
     * [远程管理](zh-cn/manual/system/remote.md)

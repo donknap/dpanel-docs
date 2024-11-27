@@ -8,6 +8,17 @@
 
 ### yaml 来源
 
+#### 通过应用商店创建
+
+> 默认情况下【应用商店】菜单会不会显示出来，需要你先添加一个第三方的应用商店。[如何添加？](/zh-cn/manual/setting/store)
+
+![compose-store-1](https://cdn.w7.cc/dpanel/compose-store-1.png)
+
+点击安装后，会跳转至 Compose 【创建任务】页面，完善、修改环境变量及相关信息就可以进行部署容器。
+
+通过应用商店安装后，相关的文件会同步至 /dpanel/compose 目录中。\
+为了保证应用商店中的 yaml 文件可以随时更新，在修改 yaml 配置时建议采用[【覆盖配置】](/zh-cn/manual/compose/override)
+
 #### 通过 yaml 文本创建
 
 在 DPanel 面板中，你可以直接通过 yaml 文本创建一个 compose 任务进行部署容器。
@@ -56,19 +67,6 @@ https://ghp.ci/https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/ref
 └─ ....
 ```
 
-#### 通过指定路径创建
-
-> 需要注意的时，这里所指的【服务器路径】是指的容器内部的，并非宿主机。
-
-面板会自动发现位于 /dpanel/compose 目录中的 compose 项目。
-
-你可以自定指定或是挂载目录，并通过【服务器路径】的方式添加这些 yaml 文件。
-
-##### 示例
-
-创建面板时挂载宿主机的 /home/app/ 目录到面板的 /compose/ 目录中。
-
-通过指定 /compose/test.yaml 路径创建 compose 任务。
 
 
 

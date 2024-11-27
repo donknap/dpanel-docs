@@ -1,20 +1,17 @@
 # 创建覆盖配置
 
-在使用第三方的 compose yaml 文件时，大多数我们需要针对自己的情况去修改诸如端口、存储、环境变量等参数。
+在使用远程 yaml 或是应用商店创建 Compose 任务时 \
+通中为了保证原始的 yaml 文件可以随时的更新，一般不直接对原始 yaml 文件进行修改。 
 
-直接去修改第三方的 yaml 文件又显示的不够优雅。后续升级 yaml 文件内容时又要对比对文件。\
-或是在传递给其他人时，容易泄漏一些自己的配置信息。
+但是在部署 compose 时，大多数情况又需要针对自己的情况去修改诸如端口、存储等参数。\
+这时候使用【新建覆盖 yaml】的方式去新建一个差异的 yaml 文件覆盖到原始的 yaml 文件中。
 
 
 ### 创建覆盖配置文件
 
-在 DPanel 面板中约定在同级目录中的以 override.yaml 或是 override.yml 结尾的文件为覆盖文件。
+> 覆盖配置文件只需要新建需要变更的配置
 
-在部署项目时会连带主 yaml 文件一同加载进行部署。
-
-> 如果有多个 override.yaml 文件，需要有加载顺序时，请用字典顺序命名。例如 1.override.yaml 2.override.yaml
-
-如果你有多个 docker 环境，也可以创建【[环境覆盖配置](/zh-cn/manual/compose/env?id=多-docker-环境)】来为每个环境进行适配。
+![compose-override-yaml.png](https://cdn.w7.cc/dpanel/compose-override-yaml.png)
 
 ### 覆盖配置
 
