@@ -21,10 +21,10 @@ DPanel 面板需要根据不同的规范协议解析出商店的说明信息。
 
 欢迎大家提交 Issue 丰富第三方应用商店，目前支持以下两种规范的商店。
 
-|商店类型|示例仓库|说明|
+|商店类型|示例地址|说明|
 |---|---|---|
 |1panel|https://github.com/1Panel-dev/appstore|[规范说明](https://github.com/1Panel-dev/appstore/wiki/%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4%E8%87%AA%E5%B7%B1%E6%83%B3%E8%A6%81%E7%9A%84%E5%BA%94%E7%94%A8)|
-|CasaOS|https://github.com/Cp0204/CasaOS-AppStore-Play|[规范说明](https://awesome.casaos.io/content/3rd-party-app-stores/create-your-first-custom-appstore.html)|
+|CasaOS|https://play.cuse.eu.org/Cp0204-AppStore-Play.zip|[规范说明](https://awesome.casaos.io/content/3rd-party-app-stores/create-your-first-custom-appstore.html)|
 
 ### 全商店搜索
 
