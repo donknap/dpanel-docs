@@ -1,18 +1,32 @@
 # 更新 DPanel 面板
 
-> 普通容器可以通过 [容器更新](/zh-cn/manual/container-update) 升级容器到最新的镜像。
-
-更新 DPanel 面板时，无法通过面板自己更新自己，需要在宿主机上采用命令的形式进行更新。
+更新 DPanel 面板时，面板无法自己去更新自己，需要在宿主机上采用命令的形式进行更新。
 
 更新面板操作实际上就是重新拉取镜像并重建 dpanel 容器。
 
 在此操作中，你要保证重新时容器的 /dpanel 目录还是挂载到之前的存储卷或是路径中。
 
-### 获取更新脚本
+### 使用 docker run 命令更新
 
 可以通过 【系统】 -> 【系统更新】 菜单，获取面板更新脚本命令。
 
 更新脚本中会自动获取 dpanel 容器的安装参数，并生成更新命令。
+
+### 使用 docker compose 更新
+
+如果你使用的是 dpanel/dpanel:latest 或是 dpanel/dpanel:lite，直接重新拉取镜像再次部署即可。\
+否则需要先修改 compose.yaml 中的镜像标签。
+
+```
+# 修改镜像标签为最新版本
+image: dpanel/dpanel:1.3.0
+```
+
+```
+docker compose pull 
+docker compose up -d
+```
+
 
 ### 手动更新系统
 
