@@ -1,6 +1,6 @@
 # 通过 compose 方式创建
 
-!> 阿里云镜像 \
+?> 阿里云加速镜像地址 \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
