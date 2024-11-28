@@ -19,8 +19,10 @@
 
 ```
 # 修改镜像标签为最新版本
-image: dpanel/dpanel:1.3.0
+image: dpanel/dpanel:修改为你想要部署的标签
 ```
+
+执行重新部署命令
 
 ```
 docker compose pull 
