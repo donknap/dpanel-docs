@@ -16,5 +16,5 @@
 
 [GitHub](https://github.com/donknap/dpanel)
 [DockerHub](https://hub.docker.com/r/dpanel/dpanel/tags)
-[面板介绍](README.md)
-[快速开始](zh-cn/install/docker)
+[面板介绍](https://doc.dpanel.cc/#/README)
+[快速开始](https://doc.dpanel.cc/#/zh-cn/install/docker)
