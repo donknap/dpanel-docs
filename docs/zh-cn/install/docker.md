@@ -103,3 +103,11 @@ http://127.0.0.1:8807
 
 配置中的 -p 8807:8080 指定面板对外暴露的访问端口，可根据实际情况进行修改
 
+
+#### 赞助感谢
+
+###### 服务器 & CDN
+
+<a href="https://www.anycast.ai" target="_blank">
+<img src="https://doc.dpanel.cc/storage/image/sponsor-server.png" width="200" />
+</a>
