@@ -11,6 +11,9 @@
     * [关联容器](zh-cn/manual/container/create-link.md)
     * [基础镜像](zh-cn/manual/container/create-image.md)
     * [参数详解](zh-cn/manual/container/create-option.md)
+  * **容器设置**
+    * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
+    * [配置镜像仓库](zh-cn/manual/image/registry.md)
   * **Compose**
     * [创建任务](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
@@ -29,9 +32,6 @@
     * [DPanel](zh-cn/manual/container/domain-dpanel.md)
     * [NginxProxyManger](zh-cn/manual/container/domain-npm.md)
     * [宝塔](zh-cn/manual/container/domain-bt.md)
-  * **容器设置**
-    * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
-    * [配置镜像仓库](zh-cn/manual/image/registry.md)
   * **系统设置**
     * [服务器Ip](zh-cn/manual/setting/server.md)
     * [多环境管理](zh-cn/manual/setting/docker-env.md)
