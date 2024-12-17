@@ -11,9 +11,10 @@
     * [关联容器](zh-cn/manual/container/create-link.md)
     * [基础镜像](zh-cn/manual/container/create-image.md)
     * [参数详解](zh-cn/manual/container/create-option.md)
-  * **容器设置**
+  * **容器管理**
     * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
     * [配置镜像仓库](zh-cn/manual/image/registry.md)
+    * [计划任务](zh-cn/manual/container/cron.md)
   * **Compose**
     * [创建任务](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
@@ -36,6 +37,7 @@
     * [服务器Ip](zh-cn/manual/setting/server.md)
     * [多环境管理](zh-cn/manual/setting/docker-env.md)
     * [应用商店](zh-cn/manual/setting/store.md)
+    * [脚本模板](zh-cn/manual/setting/cron-template.md)
     * [更新DPanel面板](zh-cn/manual/setting/upgrade.md)
   * **其它**
     * [远程管理](zh-cn/manual/system/remote.md)
