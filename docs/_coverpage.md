@@ -1,4 +1,4 @@
-# <b>DPanel</b> &nbsp; <small>![GitHub latest release](https://img.shields.io/docker/v/dpanel/dpanel)</small>
+# <img src="//cdn.w7.cc/dpanel/dpanel-logo-1.png" width="456" />
 
 > Docker 可视化管理面板，提供完善的管理容器的功能。
 
