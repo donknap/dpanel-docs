@@ -2,7 +2,7 @@
   * [Docker](zh-cn/install/docker.md)
   * [Compose](zh-cn/install/compose.md)
   * [InDocker](zh-cn/install/dind.md)
-  * [源码编译](zh-cn/install/source.md)
+  * [独立启动](zh-cn/install/source.md)
   * [绑定域名子目录](zh-cn/install/nginx-location.md)
   * [控制命令](zh-cn/install/ctrl.md)
 * **功能手册**
