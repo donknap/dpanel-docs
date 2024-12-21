@@ -65,9 +65,10 @@ make build GO_TARGET_DIR=/root
 - 编译需要开启 cgo，请确保已经正确安装 libc，Alpine 系统需要安装 musl
 - 可通过 GO_TARGET_DIR 指定编译的目标目录
 
-### 启动命令
+### 启动
 
-> 运行相关配置可在 config.yaml 中配置或是指定环境变量
+> 运行相关配置可直接修改 config.yaml 中
+> 也可以在运行程序时，指定 config.yaml 中定义的环境变量值
 
 ```
 /root/dpanel server:start -f /root/config.yaml
@@ -76,4 +77,31 @@ make build GO_TARGET_DIR=/root
 ```
 // 修改运行端口为 8807，其它环境变量可查看 config.yaml 
 export APP_SERVER_PORT=8807 && /root/dpanel server:start -f /root/config.yaml
+```
+
+#### 当前环境未安装 docker
+
+通过修改目标 docker 的启动配置[开启 docker tcp 连接方式](zh-cn/manual/system/remote)，通过远程的方式的连接 docker。
+
+你也可以在运行 dpanel 面板后，通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，添加远程 docker 。
+
+
+#### windows 
+
+在 windows 平台中并不能直接连接 docker.sock，需要你先开启 docker 的 tcp 连接。
+
+##### docker desktop
+
+在 docker desktop 中可以通过设置中打开 tcp 连接。具体文档 [Change your Docker Desktop settings](https://docs.docker.com/desktop/settings-and-maintenance/settings/)
+
+
+##### wsl2
+
+如果你通过 wsl2 安装 docker，通过修改 wsl2 中的 docker 的启动配置[开启 docker tcp 连接方式](zh-cn/manual/system/remote)。
+
+##### 启动（PowerShell）
+
+```
+set DOCKER_HOST=tcp://[本机ip或是wsl2的ip]:2375
+.\dpanel.exe server:start -f .\config.yaml
 ```

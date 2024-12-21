@@ -8,6 +8,12 @@
 systemctl edit docker
 ```
 
+或直接创建覆盖配置文件 
+
+```
+sudo vi /etc/systemd/system/docker.service.d/override.conf
+```
+
 ##### 添加配置
 
 ```
