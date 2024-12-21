@@ -1,10 +1,10 @@
-# <img src="//cdn.w7.cc/dpanel/dpanel-logo-1.png" width="456" />
+# <img src="https://cdn.w7.cc/dpanel/dpanel-logo-1.png" width="456" />
 
-> Docker 可视化管理面板，提供完善的管理容器的功能。
+> 轻量化的 Docker 可视化管理面板，提供完善的容器管理功能。
 
-- 全中文界面易于使用
-- 基于容器易于安装
-- 资源占用低 （镜像 ~50M，内存 ~20M）
+- 全中文更适合中文环境使用
+- 基于容器简单、易用、兼容性好
+- 资源占用极低 （镜像 ~50M，内存 ~20M）
 - &nbsp;&nbsp;&nbsp;&nbsp;
 - &nbsp;&nbsp;&nbsp;&nbsp;
 - [![GitHub stars](https://img.shields.io/github/stars/donknap/dpanel.svg)](https://github.com/donknap/dpanel) &nbsp;
