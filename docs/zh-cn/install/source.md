@@ -6,6 +6,8 @@ dpanel 面板也允许你不以容器的方式运行。
 
 你可以在仓库的 Release 页面中找到你使用系统平台的二进制包，[https://github.com/donknap/dpanel/releases](https://github.com/donknap/dpanel/releases)
 
+> 通过源码编译的方式编译运行的是 dpanel-lite 版，不包含域名转发等相关功能
+
 ##### 适用于 ubuntu, centos 等主流发行版
 
 - dpanel-amd64 
@@ -31,7 +33,6 @@ dpanel 面板也允许你不以容器的方式运行。
 
 - dpanel.exe 
 
-通过源码编译的方式编译运行的是 dpanel-lite 版，不包含域名转发等相关功能
 
 ### 编译环境
 
@@ -83,7 +84,9 @@ export APP_SERVER_PORT=8807 && /root/dpanel server:start -f /root/config.yaml
 
 通过修改目标 docker 的启动配置[开启 docker tcp 连接方式](zh-cn/manual/system/remote)，通过远程的方式的连接 docker。
 
-你也可以在运行 dpanel 面板后，通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，添加远程 docker 。
+你也可以在运行 dpanel 面板后，通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，配置默认 docker 环境。
+
+![system-docker-env-default.png](https://cdn.w7.cc/dpanel/system-docker-env-default.png)
 
 
 #### windows 

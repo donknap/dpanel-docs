@@ -61,7 +61,7 @@ sudo ip link set dev enp1s0 promisc on
 
 需要注意的是，通过此方法容器并不需要再暴露容器内部的端口。
 
-![home.png](https://https://cdn.w7.cc/dpanel/container-bind-host-network-2.png)
+![home.png](https://cdn.w7.cc/dpanel/container-bind-host-network-2.png)
 
 ### 宿主机访问容器
 
