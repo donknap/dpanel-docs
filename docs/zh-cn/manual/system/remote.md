@@ -63,9 +63,37 @@ chmod 755 docker-ca.sh
 
 ##### 生成证书
 
+> 没有域名时，全部填入 Ip 即可
+
 ```
 ./docker-ca.sh 域名 服务器Ip
 ```
+
+```
+Enter pass phrase for ca-key.pem: 输入证书密码
+Verifying - Enter pass phrase for ca-key.pem: 再次证书密码
+Enter pass phrase for ca-key.pem: 输入证书密码
+
+####### 以下内容根据情况输入或是直接回车 ############
+Country Name (2 letter code) [XX]:CN
+State or Province Name (full name) []: 
+Locality Name (eg, city) [Default City]:
+Organization Name (eg, company) [Default Company Ltd]:
+Organizational Unit Name (eg, section) []:
+################################################
+
+
+Common Name (eg, your name or your server's hostname) []: 这里必须填写服务器的ip
+Email Address []: 填入邮箱地址
+
+Enter pass phrase for ca-key.pem: 输入证书密码
+```
+
+##### 证书文件
+
+ca.pem cert.pem key.pem 三个文件在面板中添加客户端时需要
+
+ca.pem server-cert.pem server-key.pem 则在 docker 服务端开启 tsl 连接时需要
 
 ##### 修改 docker 启动参数
 

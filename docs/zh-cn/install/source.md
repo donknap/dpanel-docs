@@ -86,8 +86,6 @@ export APP_SERVER_PORT=8807 && /root/dpanel server:start -f /root/config.yaml
 
 你也可以在运行 dpanel 面板后，通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，配置默认 docker 环境。
 
-![system-docker-env-default.png](https://cdn.w7.cc/dpanel/system-docker-env-default.png)
-
 
 #### windows 
 
