@@ -15,6 +15,7 @@
     * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
     * [配置镜像仓库](zh-cn/manual/image/registry.md)
     * [计划任务](zh-cn/manual/container/cron.md)
+    * [升级容器](zh-cn/manual/container/upgrade.md)
   * **Compose**
     * [创建任务](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
