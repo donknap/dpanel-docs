@@ -24,5 +24,5 @@ jobs:
         run: |
           docker buildx build \
           -t registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:doc \
-          --platform linux/arm64,linux/amd64,linux/arm/v7 \
+          --platform linux/arm64 \
           . --push
