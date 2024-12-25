@@ -23,3 +23,11 @@ docker exec -it dpanel /bin/sh
 ```
 /app/server/dpanel -f /app/server/config.yaml user:reset --password 123456 --username root
 ```
+
+### 更新应用商店数据
+
+- \--name 指定应用商店名称
+
+```
+/app/server/dpanel -f /app/server/config.yaml store:sync --name storename
+```
