@@ -4,6 +4,8 @@
 
 控制命令需要进入 DPanel 面板容器运行。
 
+> 如果你更改了 DPanel 面板的容器名称，请将下方命令中的 dpanel 替换成你的名字
+
 ```
 docker exec -it dpanel /bin/sh
 ```

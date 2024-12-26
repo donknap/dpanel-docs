@@ -1,6 +1,7 @@
 # 使用 Docker 安装
 
-!> DPanel 面板为了隔离权限，在使用文件管理功能时需要使用 dpanel-plugin-explorer 容器。此插件容器并不暴露任何端口，你也可以随时删除。\
+!> DPanel 面板为了隔离权限，在使用文件管理功能时需要使用 dpanel-plugin-explorer 容器。\
+此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动清理掉此容器。\
 此插件容器使用 alpine 镜像，你也可以手动创建，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！
 
@@ -28,7 +29,7 @@ docker run -it -d --name dpanel --restart=always \
 
 在 lite 版中，不包含域名转发功能。即容器内不会安装 nginx 及 acme.sh 等相关组件
 
-需要域名转发请借助外部工具，例如 NginxProxyManager、Lucky、宝塔、Nginx等
+需要域名转发请借助外部工具，例如 NginxProxyManager、Lucky、Nginx等
 
 > 与普通版只有镜像地址区别，其它配置参数均一致。不需要绑定 80 及 443。后续配置均以默认版举例，请自行替换镜像
 
@@ -75,6 +76,12 @@ docker run -it -d --name dpanel --restart=always \
  -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
+#### 独立运行
+
+通常情况下，推荐你使用容器的方式创建面板，这样更具有兼容性。
+
+面板也支持直接使用二进制的方式并且脱离 docker 环境的方式运行。你可以在创建面板后，再配置默认的 docker 连接客户端，[【独立运行 DPanel 面板】](/zh-cn/install/source?id=启动)
+
 #### 自定义面板名称
 
 面板内部会获取 dpanel 的容器信息，在创建时必须使用 dpanel 名称。
@@ -109,5 +116,5 @@ http://127.0.0.1:8807
 ###### 服务器 & CDN
 
 <a href="https://www.anycast.ai" target="_blank">
-<img src="https://doc.dpanel.cc/storage/image/sponsor-server.png" width="200" />
+<img src="https://dpanel.cc/storage/image/sponsor-server.png" width="200" />
 </a>

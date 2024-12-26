@@ -103,6 +103,6 @@ export APP_SERVER_PORT=8807 && /root/dpanel server:start -f /root/config.yaml
 ##### 启动（PowerShell）
 
 ```
-set DOCKER_HOST=tcp://[本机ip或是wsl2的ip]:2375
+# 启动后配置默认 docker 连接
 .\dpanel.exe server:start -f .\config.yaml
 ```
