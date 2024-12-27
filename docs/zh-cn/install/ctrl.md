@@ -22,7 +22,7 @@ docker exec -it dpanel /bin/sh
 
 #### 重置用户名
 
-> 重置用户名时，必须指定命令
+> 重置用户名时，必须指定用户名
 
 ```
 /app/server/dpanel -f /app/server/config.yaml user:reset --password 123456 --username root
