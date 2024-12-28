@@ -1,6 +1,6 @@
 # 独立运行
 
-dpanel 面板也允许你不以容器的方式运行。
+dpanel 面板允许不依赖容器，直接通过二进制包的方式运行。
 
 ### 下载二进制包
 
@@ -34,37 +34,56 @@ dpanel 面板也允许你不以容器的方式运行。
 - dpanel.exe 
 
 
-### 编译环境
+### 编译 DPanel 源码
 
 如果在 Release 页面并未提供你所适用的平台，你也可以通过自行编译源码的方式构建二进制包。
 
 ##### 本机环境
 
+> Go Version >= 1.23
+
 编译源码前，请确保你已经有了 go 语言的运行环境，通过 go version 查看环境版本
 
 ```
-root@513220d36158:/go# go version
-go version go1.22.5 linux/amd64
+go version
+### go version go1.23.4 linux/amd64
 ```
 
-##### 通过容器创建编译环境
-
-> 可通过挂载目录或是 docker cp 的方式导出编译结果
+```
+go version
+### go version go1.23.4 windows/amd64
+```
 
 ```
-docker run -it --rm --name dpanel-compile golang:latest
+docker run -it --rm --name dpanel-compile golang:latest go version
+#### go version go1.23.4 linux/amd64
 ```
 
 #### 编译源码
 
+###### 下载源码并切至源码目录
+
 ```
 git clone https://github.com/donknap/dpanel.git
 cd dpanel
-make build GO_TARGET_DIR=/root
 ```
 
-- 编译需要开启 cgo，请确保已经正确安装 libc，Alpine 系统需要安装 musl
-- 可通过 GO_TARGET_DIR 指定编译的目标目录
+###### make 
+
+> 请确保已经正确安装 libc，alpine 系统需要安装 musl
+
+```
+make build PROJECT_NAME=dpanel CGO_ENABLED=1 VERSION=1.5.0
+```
+
+###### windows 
+
+> 需要安装 MinGW https://winlibs.com/#download-release 并配置到环境变量中
+
+```
+set CGO_ENABLED=1
+go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel.exe
+```
 
 ### 启动
 
@@ -72,12 +91,12 @@ make build GO_TARGET_DIR=/root
 > 也可以在运行程序时，指定 config.yaml 中定义的环境变量值
 
 ```
-/root/dpanel server:start -f /root/config.yaml
+./runtime/dpanel server:start -f config.yaml
 ```
 
 ```
 // 修改运行端口为 8807，其它环境变量可查看 config.yaml 
-export APP_SERVER_PORT=8807 && /root/dpanel server:start -f /root/config.yaml
+export APP_SERVER_PORT=8807 && ./runtime/dpanel server:start -f config.yaml
 ```
 
 #### 当前环境未安装 docker
@@ -99,10 +118,3 @@ export APP_SERVER_PORT=8807 && /root/dpanel server:start -f /root/config.yaml
 ##### wsl2
 
 如果你通过 wsl2 安装 docker，通过修改 wsl2 中的 docker 的启动配置[开启 docker tcp 连接方式](zh-cn/manual/system/remote)。
-
-##### 启动（PowerShell）
-
-```
-# 启动后配置默认 docker 连接
-.\dpanel.exe server:start -f .\config.yaml
-```
