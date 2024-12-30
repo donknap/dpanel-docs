@@ -33,6 +33,12 @@ dpanel 面板允许不依赖容器，直接通过二进制包的方式运行。
 
 - dpanel.exe 
 
+### 更改权限
+
+```
+chmod 755 dpanel
+```
+
 
 ### 编译 DPanel 源码
 
@@ -61,28 +67,37 @@ docker run -it --rm --name dpanel-compile golang:latest go version
 
 #### 编译源码
 
-###### 下载源码并切至源码目录
+- 请确保已经正确安装 libc，并将 CC CXX 配置到环境变量中
+- alpine 系统需要安装 musl
+- windows 系统需要安装 [MinGW](https://winlibs.com/#download-release) 
+- 编译时将 1.5.0 替换成当时的程序版本号
+
+##### 下载源码并切至源码目录
 
 ```
 git clone https://github.com/donknap/dpanel.git
 cd dpanel
 ```
 
-###### make 
-
-> 请确保已经正确安装 libc，alpine 系统需要安装 musl
+##### 使用 make 命令编译 
 
 ```
 make build PROJECT_NAME=dpanel CGO_ENABLED=1 VERSION=1.5.0
 ```
 
-###### windows 
+##### 使用 go build 编译 
 
-> 需要安装 MinGW https://winlibs.com/#download-release 并配置到环境变量中
+###### windows
 
 ```
 set CGO_ENABLED=1
 go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel.exe
+```
+
+###### linux 
+
+```
+CGO_ENABLED=1 go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel
 ```
 
 ### 启动
@@ -92,11 +107,6 @@ go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel.exe
 
 ```
 ./runtime/dpanel server:start -f config.yaml
-```
-
-```
-// 修改运行端口为 8807，其它环境变量可查看 config.yaml 
-export APP_SERVER_PORT=8807 && ./runtime/dpanel server:start -f config.yaml
 ```
 
 ### 当前环境未安装 docker
