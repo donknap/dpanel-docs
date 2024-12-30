@@ -99,22 +99,22 @@ go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel.exe
 export APP_SERVER_PORT=8807 && ./runtime/dpanel server:start -f config.yaml
 ```
 
-#### 当前环境未安装 docker
+### 当前环境未安装 docker
 
-通过修改目标 docker 的启动配置[开启 docker tcp 连接方式](zh-cn/manual/system/remote)，通过远程的方式的连接 docker。
+独立运行 DPanel 时，会自动连接当前默认的的 Docker Engine 接口。
+在 linux 系统下为 /var/run/docker.sock，在 windows 下为 //./pipe/docker_engine。
 
-你也可以在运行 dpanel 面板后，通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，配置默认 docker 环境。
+#### 安装 docker-cli 命令
 
+DPanel 部分功能依赖于 docker、docker compose (docker-compose) 命令。
+如果你未安装 docker engine 需要手动安装这些客户端命令组件, 根据使用的系统 [添加 Docker 软件源](https://docs.docker.com/engine/install/debian/)。
 
-#### windows 
+安装 docker-cli 客户端命令组件。
 
-在 windows 平台中并不能直接连接 docker.sock，需要你先开启 docker 的 tcp 连接。
+```
+# Debian 系统
 
-##### docker desktop
+sudo apt install docker-ce-cli docker-compose-plugin
+```
 
-在 docker desktop 中可以通过设置中打开 tcp 连接。具体文档 [Change your Docker Desktop settings](https://docs.docker.com/desktop/settings-and-maintenance/settings/)
-
-
-##### wsl2
-
-如果你通过 wsl2 安装 docker，通过修改 wsl2 中的 docker 的启动配置[开启 docker tcp 连接方式](zh-cn/manual/system/remote)。
+启动面板后通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，配置默认 docker 环境。
