@@ -1,23 +1,22 @@
 # 创建单容器
 
-> 单容器是指不需要关联其它容器可独立运行的应用。
-
-这里以 Minio 为例，演示如何通过镜像创建一个应用容器。
+单容器是指不需要关联其它容器可独立运行的应用。
 
 ### 配置
 
-创建 Minio 时候，暴露 9000 和 9001 端口，并配置启动 cmd 命令为 
+以创建 minio 容器为例
 
-```
-server /data --console-address :9001
-```
+| 配置组 | 配置项 | 值 | 描述 | 
+| ------ | --- | --- | --- |
+| 基本配置 | 容器标识 | minio | 创建的容器的名称 |
+|基本配置| 镜像 | docker.1panel.live/minio/minio:latest | 使用【拉取镜像】按钮获取镜像 |
+|基本配置| 绑定端口 | 9000 | 映射9000端口，为空为随机生成 |
+|基本配置| 绑定端口 | 9001 | 映射9001端口，为空为随机生成 |
+| 存储配置| 自定义挂载或是存储卷 | miniodata 或是 /home/miniodata | 指定挂载 /data 目录或是存储卷，为空为生成存储卷 |
+| 运行配置 | Command | server /data --console-address :9001 | 配置启动参数 |
 
 ### 访问
 
 使用 http://127.0.0.1:9001 进行访问
 
 默认用户为 minioadmin / minioadmin
-
-# 演示
-
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112484158931712&bvid=BV1MfgcehEZy&cid=500001554797263&p=1" scrolling="no" border="0" height="600" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
