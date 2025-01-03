@@ -27,11 +27,10 @@ docker run -it -d --name dpanel --restart=always \
 
 #### 安装 Lite 版
 
+> 与普通版只有镜像地址区别，其它配置参数均一致。不需要绑定 80 及 443。后续配置均以【标准版】举例，请自行替换镜像
+
 在 lite 版中，不包含域名转发功能。即容器内不会安装 nginx 及 acme.sh 等相关组件
-
-需要域名转发请借助外部工具，例如 NginxProxyManager、Lucky、Nginx等
-
-> 与普通版只有镜像地址区别，其它配置参数均一致。不需要绑定 80 及 443。后续配置均以默认版举例，请自行替换镜像
+需要域名转发请借助外部工具，例如 NginxProxyManager、Lucky、Nginx等。
 
 ```
 docker run -it -d --name dpanel --restart=always \
