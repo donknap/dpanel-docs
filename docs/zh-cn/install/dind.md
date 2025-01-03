@@ -19,17 +19,8 @@ services:
     environment:
       DOCKER_HOST: tcp://docker:2375
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
-      INSTALL_USERNAME: admin
-      INSTALL_PASSWORD: admin
     depends_on:
       - docker
-  dpanel-plugin-explorer: # 该镜像为 dpanel 的文件浏览器,隔离特权
-    image: alpine:latest
-    container_name: dpanel-plugin-explorer
-    restart: unless-stopped
-    privileged: true
-    pid: host
-    command: ["sh", "-c", "tail -f /dev/null"]
   docker:
     image: docker:dind
     environment:
