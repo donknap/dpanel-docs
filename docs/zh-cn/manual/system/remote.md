@@ -16,6 +16,23 @@ sudo vi /etc/systemd/system/docker.service.d/override.conf
 
 ##### 添加配置
 
+添加配置时，需要以你实际的环境配置为准，获取到原始的配置信息
+
+```
+cat /lib/systemd/system/docker.service
+
+#### 输出以下内容
+....
+
+[Service]
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+```
+
+将 ExecStart 中的内容复制出来，增加 -H tcp://0.0.0.0:2375 的相关内容
+完整的配置类似以下内容：
+
+
 ```
 [Service]
 ExecStart=
