@@ -38,7 +38,7 @@
 将 github 中的 CasaOs 应用商店中的 easyimage 项目添加为 compose 任务
 
 ```
-https://ghp.ci/https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/refs/heads/main/Apps/easyimage/docker-compose.yml
+https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/refs/heads/main/Apps/easyimage/docker-compose.yml
 ```
 
 #### 通过挂载存储路径的方式创建
@@ -67,10 +67,21 @@ https://ghp.ci/https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/ref
 └─ ....
 ```
 
+#### 多 Docker 客户端数据隔离
 
+> DPanel Version > 1.5.1
 
+默认情况下，多个 docker 客户端是共享 compose 任务数据，即你创建一个 compose 任务后，这些数据可以在每个客户端进行部署。\
+在一些功能类似的多 docker 客户端中，共享数据可以带来极大的方便。
 
+面板同时支持给任意一个远程的 docker 客户端配置独立的 Compose 目录，用于数据的隔离。
 
+##### 开启配置
+
+查看【[管理远程客户端](/zh-cn/manual/setting/docker-env?id=开启独立-compose-目录)】开启独立目录
+
+独立 compose 目录以 compose- 为前缀，以当前环境名称结尾。\
+例如：远程 docker 环境名为 test123，则目录名称为 compose-test123。其内部结构与默认的 compose 目录一致。
 
 
 

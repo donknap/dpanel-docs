@@ -14,7 +14,7 @@
   * **容器管理**
     * [一键更新容器](zh-cn/manual/container/upgrade.md)
     * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
-    * [配置镜像仓库](zh-cn/manual/image/registry.md)
+    * [镜像仓库及加速](zh-cn/manual/image/registry.md)
     * [计划任务](zh-cn/manual/container/cron.md)
   * **Compose**
     * [创建任务](zh-cn/manual/compose/create.md)
