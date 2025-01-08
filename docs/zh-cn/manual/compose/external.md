@@ -1,10 +1,32 @@
 # 管理非面板创建任务
 
-对于非面板创建的 compose 项目，面板并没有管理权限。
+对于非面板创建的 compose 项目，需要将 compose.yaml 文件挂载到目录中
 
 你可以通过挂载该项目 yaml 文件或是将外部任务的 yaml 根据规范添加到【[存储目录](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)】中，让面板可以找到该项目的 yaml 文件并进行管理。
 
-### 查找外部任务的 Yaml
+### Portainer 迁移
+
+假如你的 portainer 容器的 /data 目录挂载在宿主机的 /home/portainer 目录。
+
+在创建 DPanel 面板的时候你需要将 /home/protainer/compose 目录挂载到 DPanel 面板的 /data/compose 目录中即可。
+
+```
+docker run -it -d --name dpanel ...(省略其它参数)... \
+ -v /home/protainer/compose:/data/compose \
+ dpanel/dpanel:lite
+```
+
+### dockage 迁移
+
+```
+docker run -it -d --name dpanel ...(省略其它参数)... \
+ -v /opt/stacks:/opt/stacks \
+ dpanel/dpanel:lite
+```
+
+### 挂载单个 Yaml
+
+#### 查找 compose 任务使用的 yaml 文件
 
 ```
 docker compose ls
@@ -23,7 +45,7 @@ my-compose          running(1)          /home/test1.yaml,/home/test2.yaml
 ```
 
 
-### 挂载该文件到面板容器中
+#### 挂载该文件到面板容器中
 
 
 将此 yaml 文件挂载到面板容器中，并保持路径相同，面板即可管理该 compose 项目。
@@ -34,7 +56,7 @@ docker run -d -it --name dpanel ...(省略其它参数)... \
 dpanel/dpanel:latest
 ```
 
-### 新建目录到存储目录中
+### 在 compose 中新建外部任务
 
 按规范新建下方目录
 
@@ -42,7 +64,6 @@ dpanel/dpanel:latest
 /dpanel
 ├─ /compose
 │  ├─ /my-compose   
-│  │  ├─ 1.override.yaml              该项目的覆盖 yaml 文件，内容为 test2.yaml
 │  │  └─ compose.yaml                 该项目的主 yaml 文件，内容为 test1.yaml
 │  └─ ... 
 └─ ....
