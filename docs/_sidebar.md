@@ -23,6 +23,7 @@
     * [覆盖配置](zh-cn/manual/compose/override.md)
     * [管理外部任务](zh-cn/manual/compose/external.md)
     * [批量拉取镜像](zh-cn/manual/compose/image-pull.md)
+    * [迁移其它平台](zh-cn/manual/compose/third-party.md)
   * **创建镜像**
     * [介绍](zh-cn/manual/image/create.md)
     * [Dockerfile](zh-cn/manual/image/create-dockerfile.md)

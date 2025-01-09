@@ -4,26 +4,6 @@
 
 你可以通过挂载该项目 yaml 文件或是将外部任务的 yaml 根据规范添加到【[存储目录](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)】中，让面板可以找到该项目的 yaml 文件并进行管理。
 
-### Portainer 迁移
-
-假如你的 portainer 容器的 /data 目录挂载在宿主机的 /home/portainer 目录。
-
-在创建 DPanel 面板的时候你需要将 /home/protainer/compose 目录挂载到 DPanel 面板的 /data/compose 目录中即可。
-
-```
-docker run -it -d --name dpanel ...(省略其它参数)... \
- -v /home/protainer/compose:/data/compose \
- dpanel/dpanel:lite
-```
-
-### dockage 迁移
-
-```
-docker run -it -d --name dpanel ...(省略其它参数)... \
- -v /opt/stacks:/opt/stacks \
- dpanel/dpanel:lite
-```
-
 ### 挂载单个 Yaml
 
 #### 查找 compose 任务使用的 yaml 文件
