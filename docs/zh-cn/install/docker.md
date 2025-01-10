@@ -41,13 +41,14 @@ docker run -it -d --name dpanel --restart=always \
 
 #### 自定义宿主机目录存储
 
+> 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请挂载宿主机目录。[创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
+
 面板会产生一些数据存储至容器内的 /dpanel 目录中，默认下此目录会挂载到 docker 的存储卷中
 
 如果你想将此目录持久化到宿主机目录中，可以通过修改 -v 参数。
 
 指定目录必须是绝对目录，目录不存在时会自动新建，例如：-v /root/dpanel:/dpanel 
 
-> 如果需要挂载 compose yaml 文件，请挂载 /dpanel 目录挂载到宿主机目录，方便管理文件。[创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
 
 ```
 docker run -it -d --name dpanel --restart=always \
