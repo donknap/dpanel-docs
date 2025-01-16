@@ -43,10 +43,10 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
 
 ![pro-1](https://cdn.w7.cc/dpanel/pro-1.png)
 
+#### 自定义logo及标题
+
+![pro-1](https://cdn.w7.cc/dpanel/pro-4.png)
+
 #### 查看镜像远程 Tag
 
 ![pro-3](https://cdn.w7.cc/dpanel/pro-3.png)
-
-#### 登录开始双因素
-
-![pro-2](https://cdn.w7.cc/dpanel/pro-2.png)
