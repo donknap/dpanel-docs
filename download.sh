@@ -7,8 +7,11 @@ mkdir -p static
 wget -O static/buble.css "https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css"
 wget -O static/light.css "https://unpkg.com/docsify-plugin-toc@1.3.1/dist/light.css"
 wget -O static/fonts.css "https://fonts.googleapis.com/css?family=Inconsolata|Inconsolata-Bold"
+wget -O static/font.ttf "https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WR32kg.ttf"
 
 sed -i '' 's#https://fonts\.googleapis\.com/css\?family=Inconsolata|Inconsolata-Bold#https://cdn.w7.cc/dpanel/static/fonts.css#g' static/buble.css
+sed -i '' 's#https://fonts.gstatic.com/s/inconsolata/v32/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmAwLYxYWI2qfdm7Lpp4U8WR32kg.ttf#https://cdn.w7.cc/dpanel/static/font.ttf#g' static/fonts.css
+
 
 # 下载 JS 文件
 wget -LO static/docsify.js "https://cdn.jsdelivr.net/npm/docsify@4"
