@@ -26,7 +26,7 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
 
 ### 价格及功能
 
-!> Pro 版的定价是： 99 RMB / 年，如果需要购买请联系 QQ：914417117，感谢你的支持与厚爱。
+!> Pro 版的定价是： 99 RMB / 年，
 
 - [x] 可开启登录 2Fa 验证
 - [x] 镜像详情页面可查看所有远程 Tag
@@ -35,7 +35,40 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
 - [ ] 容器迁移至其它 docker 环境
 - [ ] 概览页面中查看当前所有容器是否有新版镜像
 - [ ] 配置标题、logo、底部信息
-- [ ] 登录页面可配置背景图片
+- [ ] 自定义面板皮肤，背景图，主色系及透明度
+
+### 安装方式
+
+安装方式与[【社区版】](/zh-cn/install/docker)一致，在命令中替换 pe 版的镜像即可。示例：
+
+```
+docker run -d -it --name dpanel ...(省略其它参数)... \
+dpanel/dpanel:pe
+```
+
+```
+docker run -d -it --name dpanel ...(省略其它参数)... \
+dpanel/dpanel:pe-lite
+```
+
+#### 国内源
+
+```
+docker run -d -it --name dpanel ...(省略其它参数)... \
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:pe
+```
+
+```
+docker run -d -it --name dpanel ...(省略其它参数)... \
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:pe-lite
+```
+
+### 获取授权
+
+生成授权证书时需要提供面板的授权码信息，在【首页】-【概览】页面中下载【授权码】文件。
+
+通过【授权码】得到的【授权证书（dpanel.lic）】文件放置到 dpanel 面板的挂载目录即可。
+
 
 ### 部分功能预览
 
