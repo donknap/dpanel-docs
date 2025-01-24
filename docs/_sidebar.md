@@ -1,6 +1,7 @@
 * **安装部署**
   * [Docker](zh-cn/install/docker.md)
   * [Compose](zh-cn/install/compose.md)
+  * [集成脚本](zh-cn/install/shell.md)
   * [InDocker](zh-cn/install/dind.md)
   * [独立启动](zh-cn/install/source.md)
   * [绑定域名子目录](zh-cn/install/nginx-location.md)
