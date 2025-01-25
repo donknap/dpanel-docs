@@ -11,6 +11,8 @@ CURRENT_DIR=$(
     pwd
 )
 
+LOG_FILE="$CURRENT_DIR/run.log"
+
 LANG_DIR="$CURRENT_DIR/lang"
 LANG_CODES=("en" "zh")
 LANG_NAMES=("English" "中文(简体)")
@@ -18,11 +20,11 @@ LANG_CHOICE=2
 LANG_SELECTED="zh"
 LANG_FILE="$LANG_DIR/$LANG_SELECTED.sh"
 
-PUBLIC_IP=
-LOCAL_IP="127.0.0.1"
+IP_PUBLIC=
+IP_LOCAL="127.0.0.1"
+IP_REGION=""
 
-VERSION_CODES=("se" "le", "be")
-
+VERSION_CODES=("se" "le" "pse" "ple" "be")
 IMAGE_CODES=("hub" "aliyun")
 
 INSTALL_DIR="/home/dpanel"
@@ -38,16 +40,16 @@ function log() {
     message="[DPanel Install Log]: $1 "
     case "$1" in
         *"$TXT_RUN_AS_ROOT"*|*"$TXT_RESULT_FAILED"*)
-            echo -e "${RED}${message}${NC}" 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+            echo -e "${RED}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
             ;;
         *"$TXT_SUCCESS_MESSAGE"* )
-            echo -e "${GREEN}${message}${NC}" 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+            echo -e "${GREEN}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
             ;;
         *"$TXT_IGNORE_MESSAGE"*|*"$TXT_SKIP_MESSAGE"* )
-            echo -e "${YELLOW}${message}${NC}" 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+            echo -e "${YELLOW}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
             ;;
         * )
-            echo -e "${BLUE}${message}${NC}" 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+            echo -e "${BLUE}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
             ;;
     esac
 }
@@ -55,8 +57,14 @@ function log() {
 function check_command() {
     local cmd_name=$1
     if ! command -v "$cmd_name" &> /dev/null; then
-      log "$cmd_name $TXT_COMMAND_NOT_FOUND"
+      log "$cmd_name $TXT_COMMAND_NOT_FOUND" 
       exit 1
+    fi
+}
+
+function check_uname() {
+    if [[ $(uname -a) == *"$1"* ]]; then
+        echo "$1"
     fi
 }
 
@@ -145,6 +153,14 @@ function install_version() {
     INSTALL_IMAGE="dpanel/dpanel:beta"
   fi
 
+  if [ "$INSTALL_VERSION" = "pse" ]; then
+    INSTALL_IMAGE="dpanel/dpanel:pe"
+  fi
+
+  if [ "$INSTALL_VERSION" = "ple" ]; then
+    INSTALL_IMAGE="dpanel/dpanel:pe-lite"
+  fi
+
   for i in "${!IMAGE_CODES[@]}"; do
     echo "$((i + 1)). ${TXT_INSTALL_VERSION_REGISTRY_NAME[$i]}"
   done
@@ -200,9 +216,6 @@ function install_dir(){
           INSTALL_DIR="/home/${INSTALL_CONTAINER_NAME}"
         fi
     fi
-#    if [[ ! -d $INSTALL_DIR ]];then
-#        mkdir -p "$INSTALL_DIR"
-#    fi
     log "$TXT_INSTALL_DIR_SET $INSTALL_DIR"
 }
 
@@ -243,7 +256,7 @@ function install_docker(){
 
     log "$TXT_INSTALL_DOCKER_INSTALL_ONLINE"
 
-    if [[ $(curl -s ipinfo.io/country) == "CN" ]]; then
+    if [[ "$IP_REGION" == "CN" ]]; then
       sources=(
         "https://mirrors.aliyun.com/docker-ce"
         "https://mirrors.tencent.com/docker-ce"
@@ -311,7 +324,7 @@ function install_docker(){
             exit 1
           fi
 
-          sh get-docker.sh 2>&1 | tee -a ${CURRENT_DIR}/install.log
+          sh get-docker.sh 2>&1 | tee -a "$LOG_FILE"
 
           docker_config_folder="/etc/docker"
           if [[ ! -d "$docker_config_folder" ]];then
@@ -324,7 +337,7 @@ function install_docker(){
             exit 1
           else
             log "$TXT_INSTALL_DOCKER_INSTALL_SUCCESS"
-            systemctl enable docker 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+            systemctl enable docker 2>&1 | tee -a "$LOG_FILE"
           fi
         else
           log "$TXT_INSTALL_DOCKER_CANNOT_SELECT_SOURCE"
@@ -334,10 +347,10 @@ function install_docker(){
       log "$TXT_DOWNLOAD_REGIONS_OTHER_THAN_CHINA"
       export DOWNLOAD_URL="https://download.docker.com"
       curl -fsSL "https://get.docker.com" -o get-docker.sh
-      sh get-docker.sh 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+      sh get-docker.sh 2>&1 | tee -a "$LOG_FILE"
 
       log "$TXT_INSTALL_DOCKER_START_NOTICE"
-      systemctl enable docker; systemctl daemon-reload; systemctl start docker 2>&1 | tee -a "${CURRENT_DIR}"/install.log
+      systemctl enable docker; systemctl daemon-reload; systemctl start docker 2>&1 | tee -a "$LOG_FILE"
 
       docker_config_folder="/etc/docker"
       if [[ ! -d "$docker_config_folder" ]];then
@@ -345,7 +358,7 @@ function install_docker(){
       fi
       docker version >/dev/null 2>&1
       if [[ $? -ne 0 ]]; then
-        log "$TXT_INSTALL_DOCKER_INSTALL_FAIL"
+        log "$TXT_INSTALL_DOCKER_INSTALL_FAILED"
         exit 1
       else
         log "$TXT_INSTALL_DOCKER_INSTALL_SUCCESS"
@@ -354,20 +367,56 @@ function install_docker(){
   fi
 }
 
+function install_docker_alpine() {
+  if which docker >/dev/null 2>&1; then
+    docker_version=$(docker --version | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
+    major_version=${docker_version%%.*}
+    minor_version=${docker_version##*.}
+    if [[ $major_version -lt 20 ]]; then
+        log "$TXT_INSTALL_LOW_DOCKER_VERSION"
+    fi
+  else
+    read -p "$TXT_INSTALL_DOCKER_MESSAGE" DO_INSTALL_DOCKER
+    if [ "$DO_INSTALL_DOCKER" == "n" ]; then
+      exit 1
+    fi
+
+    log "$TXT_INSTALL_DOCKER_INSTALL_ONLINE"
+    apk add --no-cache --update docker 2>&1 | tee -a "$LOG_FILE"
+
+    docker_config_folder="/etc/docker"
+    if [[ ! -d "$docker_config_folder" ]];then
+        mkdir -p "$docker_config_folder"
+    fi
+    log "$TXT_INSTALL_DOCKER_INSTALL_SUCCESS"
+    service docker start 2>&1 | tee -a "$LOG_FILE"
+    rc-update add docker 2>&1 | tee -a "$LOG_FILE"
+    docker version >/dev/null 2>&1
+    if [[ $? -ne 0 ]]; then
+        log "$TXT_INSTALL_DOCKER_INSTALL_FAILED"
+        exit 1
+    fi
+  fi
+}
+
 function get_ip(){
     active_interface=$(ip route get 8.8.8.8 | awk 'NR==1 {print $5}')
     if [[ -z $active_interface ]]; then
-        LOCAL_IP="127.0.0.1"
+        IP_LOCAL="127.0.0.1"
     else
-        LOCAL_IP=$(ip -4 addr show dev "$active_interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+        IP_LOCAL=$(ip -4 addr show dev "$active_interface" | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
     fi
 
-    PUBLIC_IP=$(curl -s https://api64.ipify.org)
-    if [[ -z "$PUBLIC_IP" ]]; then
-        PUBLIC_IP="N/A"
+    IP_PUBLIC=$(curl -s https://api64.ipify.org)
+    if [[ -z "$IP_PUBLIC" ]]; then
+        IP_PUBLIC="N/A"
     fi
-    if echo "$PUBLIC_IP" | grep -q ":"; then
-        PUBLIC_IP=[${PUBLIC_IP}]
+    if echo "$IP_PUBLIC" | grep -q ":"; then
+        IP_PUBLIC=[${IP_PUBLIC}]
+    fi
+
+    if [[ $(curl -s ipinfo.io/country) == "CN" ]]; then
+      IP_REGION="CN"
     fi
 }
 
@@ -385,8 +434,8 @@ function result(){
   log "$TXT_RESULT_THANK_YOU_WAITING"
   log ""
   log "$TXT_RESULT_BROWSER_ACCESS_PANEL"
-  log "$TXT_RESULT_EXTERNAL_ADDRESS http://$PUBLIC_IP:$INSTALL_PORT"
-  log "$TXT_RESULT_INTERNAL_ADDRESS http://$LOCAL_IP:$INSTALL_PORT"
+  log "$TXT_RESULT_EXTERNAL_ADDRESS http://$IP_PUBLIC:$INSTALL_PORT"
+  log "$TXT_RESULT_INTERNAL_ADDRESS http://$IP_LOCAL:$INSTALL_PORT"
   log "$TXT_RESULT_OPEN_PORT_SECURITY_GROUP $INSTALL_PORT"
   log ""
   log "$TXT_RESULT_PROJECT_WEBSITE"
@@ -398,6 +447,16 @@ function result(){
 log "$TXT_START_INSTALLATION"
 
 function main(){
+  if [ "$(check_uname alpine)" != "" ];then
+    if [ "$IP_REGION" = "CN" ]; then
+      sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+    fi
+    apk add --no-cache --update curl grep 2>&1 
+    LANG_FILE="$LANG_DIR/en.sh"
+    LANG_CHOICE=1
+    source "$LANG_FILE"
+  fi
+
   check_command bash
   check_command curl
   check_command ip
@@ -405,11 +464,18 @@ function main(){
   get_ip
   select_lang
   check_root
-  install_docker
+
+  if [ "$(check_uname alpine)" != "" ];then 
+    install_docker_alpine
+  else
+    install_docker
+  fi
+  
   install_version
   install_name
   install_dir
   install_port
+
   if [[ "$INSTALL_IMAGE" == *lite ]]; then
     docker run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always \
     -p ${INSTALL_PORT}:8080 \

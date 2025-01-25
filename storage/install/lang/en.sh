@@ -12,10 +12,10 @@ TXT_FAILED_MESSAGE="Failed"
 TXT_IGNORE_MESSAGE="Ignored"
 TXT_SKIP_MESSAGE="Skipped"
 
-TXT_COMMAND_NOT_FOUND="Command not found. Please install it to proceed."
+TXT_COMMAND_NOT_FOUND="Command not found. Please install it to proceed. (apt install | yum install | apk add | brew install)"
 
 TXT_INSTALL_VERSION="Select the version to install:"
-TXT_INSTALL_VERSION_NAME=("Standard Edition (requires binding ports 80 & 443)" "Lite Edition (no domain forwarding)" "Beta Edition (internal testing)")
+TXT_INSTALL_VERSION_NAME=("Standard Edition (requires binding ports 80 & 443)" "Lite Edition (no domain forwarding)" "Standard Pro Edition" "Lite Pro Edition" "Beta Edition (internal testing)")
 TXT_INSTALL_VERSION_CHOICE="Enter version number [default: 2]: "
 TXT_INSTALL_VERSION_IMAGE_SET="Selected image:"
 TXT_INSTALL_VERSION_REGISTRY_CHOICE="Select image registry [default: 1]: "
@@ -48,11 +48,10 @@ TXT_INSTALL_DOCKER_MESSAGE="Attempt online Docker installation? [Y/n]: "
 TXT_INSTALL_DOCKER_INSTALL_ONLINE="Installing Docker online..."
 TXT_INSTALL_DOCKER_CHOOSE_LOWEST_LATENCY_SOURCE="Select the lowest latency source."
 TXT_INSTALL_DOCKER_CHOOSE_LOWEST_LATENCY_DELAY="Latency (seconds)"
-TXT_INSTALL_DOCKER_INSTALL_FAILED="Docker installation failed. Use offline package: https://1panel.cn/docs/installation/package_installation/"
+TXT_INSTALL_DOCKER_INSTALL_FAILED="Docker installation failed. Use offline package:"
 TXT_INSTALL_DOCKER_INSTALL_SUCCESS="Docker installed successfully."
 TXT_INSTALL_DOCKER_CANNOT_SELECT_SOURCE="Unable to select installation source."
 TXT_INSTALL_DOCKER_START_NOTICE="Starting Docker..."
-TXT_INSTALL_DOCKER_INSTALL_FAIL="Docker installation failed. Use offline package: https://1panel.cn/docs/installation/package_installation/"
 
 TXT_DOWNLOAD_DOCKER_SCRIPT_FAIL="Failed to download installation script."
 TXT_DOWNLOAD_DOCKER_SCRIPT_SUCCESS="Docker installation script downloaded successfully."

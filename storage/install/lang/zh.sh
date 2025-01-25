@@ -12,10 +12,10 @@ TXT_FAIELD_MESSAGE="失败"
 TXT_IGNORE_MESSAGE="忽略"
 TXT_SKIP_MESSAGE="跳过"
 
-TXT_COMMAND_NOT_FOUND="命令不存在，请安装后继续"
+TXT_COMMAND_NOT_FOUND="命令不存在，请安装后继续 (apt install | yum install | apk add | brew install)"
 
 TXT_INSTALL_VERSION="选择你需要安装的版本"
-TXT_INSTALL_VERSION_NAME=("标准版 (需要绑定 80 及 443 端口)" "Lite版 (不包含域名转发相关功能)" "Beta版 (内测版本)")
+TXT_INSTALL_VERSION_NAME=("标准版 (需要绑定 80 及 443 端口)" "Lite版 (不包含域名转发相关功能)" "标准版 (Pro)" "Lite版 (Pro)" "Beta版 (内测版本)")
 TXT_INSTALL_VERSION_CHOICE="输入你要安装的版本编号 [默认: 2]: "
 TXT_INSTALL_VERSION_IMAGE_SET="你安装使用的镜像为"
 TXT_INSTALL_VERSION_REGISTRY_CHOICE="选择镜像源 [默认: 1]: "
@@ -48,11 +48,10 @@ TXT_INSTALL_DOCKER_MESSAGE="是否尝试在线安装 Docker (安装失败后请�
 TXT_INSTALL_DOCKER_INSTALL_ONLINE="... 在线安装Docker"
 TXT_INSTALL_DOCKER_CHOOSE_LOWEST_LATENCY_SOURCE="选择延迟最低的源"
 TXT_INSTALL_DOCKER_CHOOSE_LOWEST_LATENCY_DELAY="延迟(秒)"
-TXT_INSTALL_DOCKER_INSTALL_FAILED="Docker安装失败\n您可以尝试使用离线包安装Docker，详细安装步骤请参见以下链接: https://1panel.cn/docs/installation/package_installation/"
+TXT_INSTALL_DOCKER_INSTALL_FAILED="Docker安装失败\n您可以尝试使用离线包安装Docker"
 TXT_INSTALL_DOCKER_INSTALL_SUCCESS="Docker安装成功"
 TXT_INSTALL_DOCKER_CANNOT_SELECT_SOURCE="无法选择安装源"
 TXT_INSTALL_DOCKER_START_NOTICE="... 启动Docker"
-TXT_INSTALL_DOCKER_INSTALL_FAIL="Docker安装失败\n您可以尝试使用离线包安装Docker，详细安装步骤请参见以下链接: https://1panel.cn/docs/installation/package_installation/"
 
 TXT_DOWNLOAD_DOCKER_SCRIPT_FAIL="下载安装脚本失败"
 TXT_DOWNLOAD_DOCKER_SCRIPT_SUCCESS="已成功下载Docker安装脚本"

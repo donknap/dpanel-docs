@@ -4,8 +4,8 @@
 
 ### Docker 环境
 
-当宿主机没有 Docker 环境时，集成脚本会尝试通过 get.docker.com 官方脚本安装 Docker 环境。\
-部分没有 systemctl 命令的发行版并不支持安装。
+当宿主机没有 Docker 环境时，集成脚本会尝试通过 https://get.docker.com 官方脚本安装 Docker 环境。\
+脚本在 Debian、Ubuntu、Alpine 发行版下通过测试，推荐使用 Debian。
 
 当脚本无法正常安装 Docker 环境时，请确保在运行脚本之前宿主机已经正常安装 Docker 环境。
 
@@ -23,4 +23,3 @@ curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
 ### 预览
 
 ![install-1](https://cdn.w7.cc/dpanel/install-1.png?t=1)
-
