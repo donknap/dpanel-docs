@@ -478,7 +478,7 @@ function main(){
   install_dir
   install_port
 
-  if [[ "$INSTALL_IMAGE" == *lite ]]; then
+  if [[ "$INSTALL_IMAGE" == *lite ]] || [[ "$INSTALL_IMAGE" == *beta ]]; then
     docker run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always \
     -p ${INSTALL_PORT}:8080 \
     -e APP_NAME=${INSTALL_CONTAINER_NAME} \
