@@ -34,7 +34,7 @@ TXT_UPGRADE_EMPTY_MOUNT="No directories or files mounted in the old container."
 TXT_UPGRADE_BACKUP="Backing up old container and creating new one..."
 TXT_UPGRADE_BACKUP_RESUME="Restoring backup container..."
 
-TXT_INSTALL_DIR="Set DPanel mount directory [default: /home/dpanel]: "
+TXT_INSTALL_DIR="Set DPanel mount directory [default:"
 TXT_INSTALL_DIR_PROVIDE_FULL_PATH="Provide an absolute path, e.g., /home/dpanel."
 TXT_INSTALL_DIR_SET="Mount directory set to:"
 

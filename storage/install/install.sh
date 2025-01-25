@@ -208,7 +208,7 @@ function install_name() {
 function install_dir(){
     INSTALL_DIR="/home/${INSTALL_CONTAINER_NAME}"
     
-    if read -p "$TXT_INSTALL_DIR" INSTALL_DIR;then
+    if read -p "$TXT_INSTALL_DIR $INSTALL_DIR]: " INSTALL_DIR;then
         if [[ "$INSTALL_DIR" != "" ]];then
             if [[ "$INSTALL_DIR" != /* ]];then
                 log "$TXT_INSTALL_DIR_PROVIDE_FULL_PATH"
