@@ -33,6 +33,7 @@ TXT_UPGRADE_EMPTY_PORT="旧容器未暴露任何端口"
 TXT_UPGRADE_EMPTY_MOUNT="旧容器未挂载任何目录或是文件"
 TXT_UPGRADE_BACKUP="... 正在备份旧容器并创建新容器 "
 TXT_UPGRADE_BACKUP_RESUME="... 正在恢复备份容器 "
+TXT_UPGRADE_JOIN_DPANEL_LOCAL="... 加入网络"
 
 TXT_INSTALL_DIR="设置 DPanel 容器挂载目录 [默认:"
 TXT_INSTALL_DIR_PROVIDE_FULL_PATH="请指定绝对路径，例如：/home/dpanel"

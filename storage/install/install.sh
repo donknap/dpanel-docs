@@ -494,8 +494,9 @@ function main(){
 
   DPANEL_LOCAL_NETWORK="dpanel-local"
   if [ -n "$(docker network ls | grep $DPANEL_LOCAL_NETWORK)" ]; then
-    docker network connect $DPANEL_LOCAL_NETWORK ${INSTALL_CONTAINER_NAME}
-    docker restart ${INSTALL_CONTAINER_NAME}
+    log "$TXT_UPGRADE_JOIN_DPANEL_LOCAL $DPANEL_LOCAL_NETWORK"
+    docker network connect $DPANEL_LOCAL_NETWORK $INSTALL_CONTAINER_NAME
+    docker restart $INSTALL_CONTAINER_NAME
   fi
 
   result
