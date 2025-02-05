@@ -21,7 +21,7 @@ TXT_INSTALL_VERSION_IMAGE_SET="你安装使用的镜像为"
 TXT_INSTALL_VERSION_REGISTRY_CHOICE="选择镜像源 [默认: 1]: "
 TXT_INSTALL_VERSION_REGISTRY_NAME=("Docker Hub" "ALiYun")
 
-TXT_INSTALL_NAME="设置 DPanel 容器名称，安装多个面板时根据名称区分"
+TXT_INSTALL_NAME="设置 DPanel 容器名称，更新面板时请配置为当前面板容器名称"
 TXT_INSTALL_NAME_INPUT="请输入名称 [默认:"
 TXT_INSTALL_NAME_RULE="错误: 容器名称仅支持字母、数字，长度为3-30个字符"
 TXT_INSTALL_NAME_SET="你指定的容器名称为"
