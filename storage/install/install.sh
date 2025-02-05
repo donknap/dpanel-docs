@@ -431,6 +431,13 @@ function result(){
       docker start $INSTALL_CONTAINER_NAME
     fi
     exit 1
+  else
+    DPANEL_LOCAL_NETWORK="dpanel-local"
+    if [ -n "$(docker network ls | grep $DPANEL_LOCAL_NETWORK)" ]; then
+      log "$TXT_UPGRADE_JOIN_DPANEL_LOCAL $DPANEL_LOCAL_NETWORK"
+      docker network connect $DPANEL_LOCAL_NETWORK $INSTALL_CONTAINER_NAME
+      docker restart $INSTALL_CONTAINER_NAME
+    fi
   fi
   log ""
   log "$TXT_RESULT_THANK_YOU_WAITING"
@@ -490,13 +497,6 @@ function main(){
     -e APP_NAME=${INSTALL_CONTAINER_NAME} \
     -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel \
     ${INSTALL_IMAGE}
-  fi
-
-  DPANEL_LOCAL_NETWORK="dpanel-local"
-  if [ -n "$(docker network ls | grep $DPANEL_LOCAL_NETWORK)" ]; then
-    log "$TXT_UPGRADE_JOIN_DPANEL_LOCAL $DPANEL_LOCAL_NETWORK"
-    docker network connect $DPANEL_LOCAL_NETWORK $INSTALL_CONTAINER_NAME
-    docker restart $INSTALL_CONTAINER_NAME
   fi
 
   result
