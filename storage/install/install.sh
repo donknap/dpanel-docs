@@ -491,6 +491,13 @@ function main(){
     -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel \
     ${INSTALL_IMAGE}
   fi
+
+  DPANEL_LOCAL_NETWORK="dpanel-local"
+  if [ -n "$(docker network ls | grep $DPANEL_LOCAL_NETWORK)" ]; then
+    docker network connect $DPANEL_LOCAL_NETWORK ${INSTALL_CONTAINER_NAME}
+    docker restart ${INSTALL_CONTAINER_NAME}
+  fi
+
   result
 }
 
