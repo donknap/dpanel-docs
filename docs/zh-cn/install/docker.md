@@ -39,6 +39,17 @@ docker run -it -d --name dpanel --restart=always \
  -v dpanel:/dpanel dpanel/dpanel:lite
  ```
 
+#### 配置面板代理
+
+创建面板时指定代理环境变量
+
+```
+docker run -it -d --name dpanel ...(省略其它参数)... \
+-e HTTP_PROXY="http://代理地址:端口" -e HTTPS_PROXY="http://代理地址:端口" \
+dpanel/dpanel:latest
+ 
+```
+
 #### 自定义宿主机目录存储
 
 > 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请挂载宿主机目录。[创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
