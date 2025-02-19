@@ -44,6 +44,11 @@ TXT_INSTALL_PORT_RULE="Error: Port must be between 1 and 65535."
 TXT_INSTALL_PORT_SET="Port set to: "
 TXT_INSTALL_PORT_OCCUPIED="If the port is occupied, rerun the script with a different port."
 
+TXT_INSTALL_PROXY="Configure the proxy address for the panel container. Leave it blank if no proxy is required."
+TXT_INSTALL_PROXY_SET="The panel proxy address you configured is"
+TXT_INVALID_PROXY_NOT_HTTP="The proxy address must start with http or https, e.g., http://192.168.1.2:7890."
+TXT_INVALID_PROXY_NOT_LOCAHOST="Localhost resolves to the container itself, not the host machine. Please use an IP address within the local network."
+
 TXT_INSTALL_LOW_DOCKER_VERSION="Docker version is below 20.x. Upgrade recommended to avoid limitations."
 TXT_INSTALL_DOCKER_MESSAGE="Attempt online Docker installation? [Y/n]: "
 TXT_INSTALL_DOCKER_INSTALL_ONLINE="Installing Docker online..."

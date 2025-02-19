@@ -31,6 +31,7 @@ INSTALL_DIR="/home/dpanel"
 INSTALL_PORT=8807
 INSTALL_CONTAINER_NAME="dpanel"
 INSTALL_IMAGE="dpanel/dpanel:lite"
+INSTALL_PROXY=""
 
 BACKUP_CONTAINER_NAME=""
 
@@ -238,6 +239,24 @@ function install_port(){
         log "$TXT_INSTALL_PORT_OCCUPIED"
         break
     done
+}
+
+function install_proxy() {
+  if read -p "$TXT_INSTALL_PROXY: " INSTALL_PROXY;then
+    if [[ -n "$INSTALL_PROXY" ]]; then  # 检查输入是否为空
+        if [[ ! "$INSTALL_PROXY" =~ ^http(s)?:// ]]; then
+            log "$TXT_INVALID_PROXY_NOT_HTTP"
+            install_proxy
+            return
+        fi
+        if [[ "$INSTALL_PROXY" =~ ^(http(s)?://(127\.0\.0\.1|localhost)) ]]; then
+            log "$TXT_INVALID_PROXY_NOT_LOCAHOST"
+            install_proxy
+            return
+        fi
+        log "$TXT_INSTALL_PROXY_SET: $INSTALL_PROXY"
+    fi
+  fi
 }
 
 function install_docker(){
@@ -466,11 +485,14 @@ function main(){
     source "$LANG_FILE"
   fi
 
-  check_command bash
-  check_command curl
-  check_command ip
+  if [ $1 != "test" ]; then
+    check_command bash
+    check_command curl
+    check_command ip
 
-  get_ip
+    get_ip
+  fi
+  
   select_lang
   check_root
 
@@ -484,22 +506,28 @@ function main(){
   install_name
   install_dir
   install_port
+  install_proxy
 
-  if [[ "$INSTALL_IMAGE" == *lite ]] || [[ "$INSTALL_IMAGE" == *beta ]]; then
-    docker run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always \
-    -p ${INSTALL_PORT}:8080 \
-    -e APP_NAME=${INSTALL_CONTAINER_NAME} \
-    -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel \
-    ${INSTALL_IMAGE}
-  else
-    docker run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always \
-    -p 80:80 -p 443:443 -p ${INSTALL_PORT}:8080 \
-    -e APP_NAME=${INSTALL_CONTAINER_NAME} \
-    -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel \
-    ${INSTALL_IMAGE}
+  DOCKER_CMD="run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always"
+  DOCKER_CMD="$DOCKER_CMD -e APP_NAME=${INSTALL_CONTAINER_NAME}"
+  if [[ -n "$INSTALL_PROXY" ]]; then
+    DOCKER_CMD="$DOCKER_CMD -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
   fi
+  if [[ "$INSTALL_IMAGE" == *lite ]] || [[ "$INSTALL_IMAGE" == *beta ]]; then
+    DOCKER_CMD="$DOCKER_CMD -p ${INSTALL_PORT}:8080"
+  else
+    DOCKER_CMD="$DOCKER_CMD -p 80:80 -p 443:443 -p ${INSTALL_PORT}:8080"
+  fi
+  DOCKER_CMD="$DOCKER_CMD -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel $INSTALL_IMAGE"
+
+  if [ $1 == "test" ]; then
+    echo "docker $DOCKER_CMD"
+    exit 1
+  fi
+  
+  docker $DOCKER_CMD
 
   result
 }
 
-main
+main $1
