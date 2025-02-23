@@ -4,7 +4,7 @@
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
-#### 使用宿主机目录挂载 /dpanel 目录 
+#### 标准版
 
 ```
 services:
@@ -15,7 +15,7 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 8807:8080
+      - 8807:8080 # 替换 8807 可更改面板访问端口
     environment:
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
     volumes:
@@ -23,7 +23,7 @@ services:
       - /home/dpanel:/dpanel # 将 /home/dpanel 更改为你想要挂载的宿主机目录
 ```
 
-#### lite 版
+#### Lite 版
 
 ```
 services:
@@ -32,7 +32,7 @@ services:
     container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
     restart: unless-stopped
     ports:
-      - 8807:8080
+      - 8807:8080 # 替换 8807 可更改面板访问端口
     environment:
       APP_NAME: dpanel # 请保持此名称与 container_name 一致
     volumes:

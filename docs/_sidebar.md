@@ -17,6 +17,10 @@
     * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
     * [镜像仓库及加速](zh-cn/manual/image/registry.md)
     * [计划任务](zh-cn/manual/container/cron.md)
+  * **域名转发**
+    * [证书管理](zh-cn/manual/container/domain-cert.md)
+    * [域名转发](zh-cn/manual/container/domain.md)
+    * [宝塔](zh-cn/manual/container/domain-bt.md)
   * **Compose**
     * [创建任务](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
@@ -31,11 +35,6 @@
     * [Zip&Git](zh-cn/manual/image/create-zip.md)
     * [容器Tar包](zh-cn/manual/image/create-container.md)
     * [镜像Tar包](zh-cn/manual/image/create-image.md)
-  * **绑定域名**
-    * [介绍](zh-cn/manual/container/domain.md)
-    * [DPanel](zh-cn/manual/container/domain-dpanel.md)
-    * [NginxProxyManger](zh-cn/manual/container/domain-npm.md)
-    * [宝塔](zh-cn/manual/container/domain-bt.md)
   * **系统设置**
     * [服务器Ip](zh-cn/manual/setting/server.md)
     * [多环境管理](zh-cn/manual/setting/docker-env.md)

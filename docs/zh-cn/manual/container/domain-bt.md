@@ -1,10 +1,9 @@
 # 使用宿主机已安装宝塔转发
 
-如果宿主已经安装过宝塔或是已经有 Nginx 服务时
+如果宿主已经安装过宝塔或是其它类似的服务器管理软件时。
+再安装 DPanel 标准版时就会提示 80 及 443端口已经被占用，无法正常安装。
 
-就会导致 DPanel 或是 Nginx Proxy Manager 这些系统无法绑定到 80 及 443端口上。
-
-这时候也可以通过宿主机已有的 宝塔（Nginx） 进行反向代理转发。
+这时候你可以选择安装 [DPanel Lite](/zh-cn/install/docker?id=%e5%ae%89%e8%a3%85-lite-%e7%89%88) 版，通过宝塔的反向代理功能进行域名转绑定。
 
 #### 通过 ip 转发
 
@@ -31,7 +30,3 @@ location / {
     proxy_pass http://127.0.0.1:容器暴露端口;
 }
 ```
-
-### 演示
-
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112562268015426&bvid=BV1vfTZePEJJ&cid=500001572078639&p=1" scrolling="no" border="0" height="600" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>

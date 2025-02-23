@@ -15,57 +15,60 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 > macos 下需要先将 docker.sock 文件 link 到 /var/run/docker.sock 目录中 \
 > ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock \
 
+> windows 请在 wsl 中运行命令
+
 创建面板容器时，请根据实际情况修改映射端口。面板不能绑定 host 网络<span style="color: red">（请勿使用 --network host 参数!!!）</span> \
 默认版本中提供了域名绑定及Https证书功能，需要绑定 80 及 443 端口。如果你不需要这些功能，请安装 Lite 版
 
 ```
-docker run -it -d --name dpanel --restart=always \
+docker run -d --name dpanel --restart=always \
  -p 80:80 -p 443:443 -p 8807:8080 \
  -v /var/run/docker.sock:/var/run/docker.sock \
- -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
+ -v /home/dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
 #### 安装 Lite 版
 
-> 与普通版只有镜像地址区别，其它配置参数均一致。不需要绑定 80 及 443。后续配置均以【标准版】举例，请自行替换镜像
+> 与标准版只有镜像地址区别，其它配置参数均一致。不需要绑定 80 及 443。后续配置均以【标准版】举例，请自行替换镜像
 
-在 lite 版中，不包含域名转发功能。即容器内不会安装 nginx 及 acme.sh 等相关组件
-需要域名转发请借助外部工具，例如 NginxProxyManager、Lucky、Nginx等。
+在 lite 版中，不包含域名转发功能。即容器内不会安装 nginx 及 acme.sh 等相关组件需要域名转发请借助外部工具。
 
 ```
-docker run -it -d --name dpanel --restart=always \
+docker run -d --name dpanel --restart=always \
  -p 8807:8080 -e APP_NAME=dpanel \
  -v /var/run/docker.sock:/var/run/docker.sock \
- -v dpanel:/dpanel dpanel/dpanel:lite
+ -v /home/dpanel:/dpanel dpanel/dpanel:lite
  ```
+
+ #### 自定义面板访问端口
+
+默认情况下安装完成面板后通过 http://127.0.0.1:8807 地址访问管理面板。\
+你也可以通过 -p 参数，指定面板对外暴露的访问端口
+
+```
+docker run -d --name dpanel ...(省略其它参数)... -p 访问端口:8080 dpanel/dpanel:latest
+```
 
 #### 配置面板代理
 
-创建面板时指定代理环境变量
+创建面板时通过环境变量配置容器内的代理地址 \
+如果代理地址为宿主机，请勿使用 127.0.0.1 或 localhost，这些地址指向的是容器本身而非宿主机，请使用宿主机局域网地址
 
 ```
-docker run -it -d --name dpanel ...(省略其它参数)... \
--e HTTP_PROXY="http://代理地址:端口" -e HTTPS_PROXY="http://代理地址:端口" \
-dpanel/dpanel:latest
- 
+docker run -d --name dpanel ...(省略其它参数)... -e HTTP_PROXY="http://代理地址:端口" -e HTTPS_PROXY="http://代理地址:端口" dpanel/dpanel:latest
 ```
 
 #### 自定义宿主机目录存储
 
-> 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请挂载宿主机目录。[创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
+> 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请务必将挂载 /dpanel 目录到宿主机，在目录中新建 compose 任务查看 [创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
 
-面板会产生一些数据存储至容器内的 /dpanel 目录中，默认下此目录会挂载到 docker 的存储卷中
-
-如果你想将此目录持久化到宿主机目录中，可以通过修改 -v 参数。
+面板会产生一些数据存储至容器内的 /dpanel 目录中，如果不指定该目录的挂载目录，默认会挂载到 docker 的存储卷中 \
+如果你想自定义挂载到宿主机的目录，可以通过修改 -v 参数。
 
 指定目录必须是绝对目录，目录不存在时会自动新建，例如：-v /root/dpanel:/dpanel 
 
-
 ```
-docker run -it -d --name dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -v 指定宿主机目录:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
+docker run -d --name dpanel  ...(省略其它参数)... -v 指定宿主机目录:/dpanel dpanel/dpanel:latest
 ```
 
 
@@ -81,29 +84,27 @@ docker run -it -d --name dpanel --restart=always \
 你也可以开启 docker tcp 连接地址，并通过 DOCKER_HOST 环境变量创建面板。[开启 docker tcp 连接方式](zh-cn/manual/system/remote)
 
 ```
-docker run -it -d --name dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 \
- -e DOCKER_HOST=tcp://172.16.1.13:2375 \
- -v dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
+docker run -d --name dpanel ...(省略其它参数)... -e DOCKER_HOST=tcp://172.16.1.13:2375 dpanel/dpanel:latest
 ```
 
 #### 独立运行
 
-通常情况下，推荐你使用容器的方式创建面板，这样更具有兼容性。
+> 通常情况下，推荐你使用容器的方式创建面板，这样更具有兼容性。
 
 面板也支持直接使用二进制的方式并且脱离 docker 环境的方式运行。你可以在创建面板后，再配置默认的 docker 连接客户端，[【独立运行 DPanel 面板】](/zh-cn/install/source?id=启动)
 
 #### 自定义面板名称
 
-面板内部会获取 dpanel 的容器信息，在创建时必须使用 dpanel 名称。
+> 面板默认使用 dpanel 做为容器名称 
 
-如果你想更改创建的容器名称，必须再指定 APP_NAME 环境变量，请保证 APP_NAME 环境变量与面板容器名称一致。
+如果你想更改面板容器名称或是同时安装多个面板，可以在安装命令中指定 APP_NAME 环境变量为指定的容器名称。
 
 ```
-docker run -it -d --name my-dpanel --restart=always \
- -p 80:80 -p 443:443 -p 8807:8080 \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -v dpanel:/dpanel -e APP_NAME=my-dpanel dpanel/dpanel:latest
+docker run -d --name dpanel-lite ...(省略其它参数)... -e APP_NAME=dpanel-lite dpanel/dpanel:lite
+```
+
+```
+docker run -d --name dpanel-test ...(省略其它参数)... -e APP_NAME=dpanel-test dpanel/dpanel:latest
 ```
 
 #### 更新或重建面板
@@ -112,11 +113,3 @@ docker run -it -d --name my-dpanel --restart=always \
 如果删除宿主机挂载目录或是重新指定目录，则为重建面板。
 
 更新面板则等价于保留挂载目录或是挂载存储卷，重建面板容器。[升级面板](/zh-cn/manual/setting/upgrade)
-
-#### 访问地址
-
-```
-http://127.0.0.1:8807
-```
-
-配置中的 -p 8807:8080 指定面板对外暴露的访问端口，可根据实际情况进行修改
