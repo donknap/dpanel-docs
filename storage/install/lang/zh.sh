@@ -66,7 +66,7 @@ TXT_DOWNLOAD_DOCKER_TRY_NEXT_LINK="尝试下一个备用链接"
 TXT_DOWNLOAD_ALL_ATTEMPTS_FAILED="所有下载尝试均已失败。您可以尝试通过运行以下命令手动安装Docker: "
 TXT_DOWNLOAD_REGIONS_OTHER_THAN_CHINA="无需更改源"
 
-TXT_RESULT_FAILED="安装失败, 请确保 Docker 已经正常安装并且镜像可以正常拉取"
+TXT_RESULT_FAILED="安装失败, 请确保 Docker 已经正常安装、镜像可以正常拉取、端口没有被占用"
 TXT_RESULT_THANK_YOU_WAITING="=================感谢您的耐心等待, 安装、升级已完成=================="
 TXT_RESULT_BROWSER_ACCESS_PANEL="请使用您的浏览器访问面板, 并初始化管理员帐号: "
 TXT_RESULT_EXTERNAL_ADDRESS="外部地址: "

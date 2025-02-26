@@ -520,8 +520,8 @@ function main(){
   fi
   DOCKER_CMD="$DOCKER_CMD -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel $INSTALL_IMAGE"
 
-  if [ $1 == "test" ]; then
-    echo "docker $DOCKER_CMD"
+  if [[ $1 == "test" ]]; then
+    echo "docker $DOCKER_CMD \n"
     exit 1
   fi
   
