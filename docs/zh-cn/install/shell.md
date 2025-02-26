@@ -19,7 +19,7 @@
 ### 使用
 
 ```
-curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
+sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
 ```
 
 ### 预览
