@@ -503,10 +503,10 @@ function main(){
   fi
   
   install_version
+  install_proxy
   install_name
   install_dir
   install_port
-  install_proxy
 
   DOCKER_CMD="run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always"
   DOCKER_CMD="$DOCKER_CMD -e APP_NAME=${INSTALL_CONTAINER_NAME}"
