@@ -545,7 +545,7 @@ function main(){
   if [[ -n "$INSTALL_DNS" ]]; then
     DOCKER_CMD="$DOCKER_CMD --dns $INSTALL_DNS"
   fi
-  if [[ "$INSTALL_IMAGE" == *lite ]] || [[ "$INSTALL_IMAGE" == *beta ]]; then
+  if [[ "$INSTALL_IMAGE" == *lite ]]; then
     DOCKER_CMD="$DOCKER_CMD -p ${INSTALL_PORT}:8080"
   else
     DOCKER_CMD="$DOCKER_CMD -p 80:80 -p 443:443 -p ${INSTALL_PORT}:8080"
