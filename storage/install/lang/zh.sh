@@ -15,7 +15,7 @@ TXT_SKIP_MESSAGE="跳过"
 TXT_COMMAND_NOT_FOUND="命令不存在, 请安装后继续 (apt install | yum install | apk add | brew install)"
 
 TXT_INSTALL_VERSION="选择你需要安装的版本"
-TXT_INSTALL_VERSION_NAME=("标准版 (需要绑定 80 及 443 端口)" "Lite版 (不包含域名转发相关功能)" "标准版 (Pro)" "Lite版 (Pro)" "Beta版 (内测版本)")
+TXT_INSTALL_VERSION_NAME=("标准版 (需要绑定 80 及 443 端口)" "Lite版 (不包含域名转发相关功能)" "标准版 (Pro)" "Lite版 (Pro)" "标准版 (Beta)" "Lite版 (Beta)")
 TXT_INSTALL_VERSION_CHOICE="输入你要安装的版本编号 [默认: 2]: "
 TXT_INSTALL_VERSION_IMAGE_SET="你安装使用的镜像为"
 TXT_INSTALL_VERSION_REGISTRY_CHOICE="选择镜像源 [默认: 1]: "
@@ -48,6 +48,9 @@ TXT_INSTALL_PROXY="配置面板容器代理地址, 为空时不配置代理"
 TXT_INSTALL_PROXY_SET="您配置的面板代理地址是"
 TXT_INVALID_PROXY_NOT_HTTP="代理地址必须以 http 或是 https 开头, 例如: http://192.168.1.2:7890"
 TXT_INVALID_PROXY_NOT_LOCAHOST="本地地址指向的是容器并非宿主机, 请使用局域网内 ip 地址"
+
+TXT_INSTALL_DNS="容器内无法解析域名时, 请手动配置 DNS 地址, 为空时为不配置"
+TXT_INSTALL_DNS_SET="您配置的面板 DNS 地址是"
 
 TXT_INSTALL_LOW_DOCKER_VERSION="检测到服务器Docker版本低于20.x, 建议手动升级以避免功能受限。"
 TXT_INSTALL_DOCKER_MESSAGE="是否尝试在线安装 Docker (安装失败后请手动安装)？ [Y/n]: "

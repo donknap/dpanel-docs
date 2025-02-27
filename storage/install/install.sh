@@ -24,7 +24,7 @@ IP_PUBLIC=
 IP_LOCAL="127.0.0.1"
 IP_REGION=""
 
-VERSION_CODES=("se" "le" "pse" "ple" "be")
+VERSION_CODES=("se" "le" "pse" "ple" "bse" "ble")
 IMAGE_CODES=("hub" "aliyun")
 
 INSTALL_DIR="/home/dpanel"
@@ -32,6 +32,7 @@ INSTALL_PORT=8807
 INSTALL_CONTAINER_NAME="dpanel"
 INSTALL_IMAGE="dpanel/dpanel:lite"
 INSTALL_PROXY=""
+INSTALL_DNS=""
 
 BACKUP_CONTAINER_NAME=""
 
@@ -119,10 +120,24 @@ function upgrade_panel() {
     RUN_COMMAND="$RUN_COMMAND $MOUNTS"
   fi
 
+  if [[ -n "$INSTALL_PROXY" ]]; then
+    RUN_COMMAND="$RUN_COMMAND -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
+  fi
+
+  if [[ -n "$INSTALL_DNS" ]]; then
+    RUN_COMMAND="$RUN_COMMAND --dns $INSTALL_DNS"
+  fi
+
   CONTAINER_ID=$(docker inspect --format '{{.Id}}' "$INSTALL_CONTAINER_NAME")
 
   log "$TXT_UPGRADE_BACKUP $INSTALL_CONTAINER_NAME"
   BACKUP_CONTAINER_NAME="$INSTALL_CONTAINER_NAME-${CONTAINER_ID:0:12}"
+
+  if [[ $1 == "test" ]]; then
+    echo -e "docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME" \n"
+    echo -e "docker run -d --pull always --name $INSTALL_CONTAINER_NAME $RUN_COMMAND $INSTALL_IMAGE \n"
+    exit 1
+  fi
 
   docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME"
   docker run -d --pull always --name $INSTALL_CONTAINER_NAME $RUN_COMMAND $INSTALL_IMAGE
@@ -146,12 +161,17 @@ function install_version() {
   fi
 
   INSTALL_IMAGE="dpanel/dpanel:latest"
+
   if [ "$INSTALL_VERSION" = "le" ]; then
     INSTALL_IMAGE="dpanel/dpanel:lite"
   fi
 
-  if [ "$INSTALL_VERSION" = "be" ]; then
+  if [ "$INSTALL_VERSION" = "bse" ]; then
     INSTALL_IMAGE="dpanel/dpanel:beta"
+  fi
+
+  if [ "$INSTALL_VERSION" = "ble" ]; then
+    INSTALL_IMAGE="dpanel/dpanel:beta-lite"
   fi
 
   if [ "$INSTALL_VERSION" = "pse" ]; then
@@ -195,7 +215,7 @@ function install_name() {
       log "$TXT_UPGRADE_MESSAGE"
       read -p "$TXT_UPGRADE_CHOICE" DO_UPGRADE
       if [ "$DO_UPGRADE" == "y" ]; then
-        upgrade_panel
+        upgrade_panel $1
       else
         continue
       fi
@@ -255,6 +275,14 @@ function install_proxy() {
             return
         fi
         log "$TXT_INSTALL_PROXY_SET: $INSTALL_PROXY"
+    fi
+  fi
+}
+
+function install_dns() {
+  if read -p "$TXT_INSTALL_DNS: " INSTALL_DNS;then
+    if [[ -n "$INSTALL_DNS" ]]; then
+        log "$TXT_INSTALL_DNS_SET: $INSTALL_DNS"
     fi
   fi
 }
@@ -504,14 +532,18 @@ function main(){
   
   install_version
   install_proxy
-  install_name
+  install_dns
+  install_name $1
   install_dir
   install_port
 
-  DOCKER_CMD="run -it -d --name ${INSTALL_CONTAINER_NAME} --restart=always"
+  DOCKER_CMD="run -d --name ${INSTALL_CONTAINER_NAME} --restart=always"
   DOCKER_CMD="$DOCKER_CMD -e APP_NAME=${INSTALL_CONTAINER_NAME}"
   if [[ -n "$INSTALL_PROXY" ]]; then
     DOCKER_CMD="$DOCKER_CMD -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
+  fi
+  if [[ -n "$INSTALL_DNS" ]]; then
+    DOCKER_CMD="$DOCKER_CMD --dns $INSTALL_DNS"
   fi
   if [[ "$INSTALL_IMAGE" == *lite ]] || [[ "$INSTALL_IMAGE" == *beta ]]; then
     DOCKER_CMD="$DOCKER_CMD -p ${INSTALL_PORT}:8080"
@@ -521,7 +553,7 @@ function main(){
   DOCKER_CMD="$DOCKER_CMD -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel $INSTALL_IMAGE"
 
   if [[ $1 == "test" ]]; then
-    echo "docker $DOCKER_CMD \n"
+    echo -e "docker $DOCKER_CMD \n"
     exit 1
   fi
   
