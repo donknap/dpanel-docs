@@ -4,6 +4,7 @@
   * [集成脚本](zh-cn/install/shell.md)
   * [InDocker](zh-cn/install/dind.md)
   * [独立启动](zh-cn/install/source.md)
+  * [自定义镜像](zh-cn/install/build.md)
   * [绑定域名子目录](zh-cn/install/nginx-location.md)
   * [控制命令](zh-cn/install/ctrl.md)
 * **功能手册**
