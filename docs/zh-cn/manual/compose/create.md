@@ -44,8 +44,9 @@ https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/refs/heads/main/Ap
 #### 通过挂载存储路径的方式创建
 
 在创建 DPanel 面板时，你可以将面板的 /dpanel 目录挂载到宿主机的某个路径。
-
 将项目放置到 /dpanel/compose 中，面板将会自动发现这些目录并创建对应的 compose 任务。
+
+如果你并不想更改你之前的任务目录，也可以单独挂载 /dpanel/compose 目录，例如：宿主机原始compose目录:/dpanel/compose
 
 每一个项目必须创建一个子目录，该目录的名称即为【站点标识】。子目录中包含 docker-compose.yaml docker-compose.yml compose.yaml compose.yml 文件。
 
