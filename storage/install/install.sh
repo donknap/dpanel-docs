@@ -94,18 +94,28 @@ function check_root() {
 function upgrade_panel() {
   log "$TXT_UPGRADE_START"
 
-  PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{range $conf}}{{printf "-p %s:%s " (index . "HostPort") $p}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
-  if [ -z "$PORTS" ]; then
-    log $TXT_UPGRADE_EMPTY_PORT
-    PORTS=""
+  
+  if [[ "$INSTALL_IMAGE" == *lite ]]; then
+    PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{if eq $p "8080/tcp"}}{{range $conf}}{{printf "-p %s:%s " (index . "HostPort") $p}}{{end}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
+    if [ -z "$PORTS" ]; then
+      log $TXT_UPGRADE_EMPTY_PORT
+      PORTS=""
+    fi
+  else
+    PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{range $conf}}{{printf "-p %s:%s " (index . "HostPort") $p}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
+    if [ -z "$PORTS" ]; then
+      log $TXT_UPGRADE_EMPTY_PORT
+      PORTS=""
+    fi
   fi
 
+  # 获取最后显示访问的端口值
   HOST_PORT=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{if eq $p "8080/tcp"}}{{range $conf}}{{.HostPort}}{{end}}{{end}}{{end}}' "$INSTALL_CONTAINER_NAME")
   if [ -n "$HOST_PORT" ]; then
     INSTALL_PORT=$HOST_PORT
   fi
-
-  MOUNTS=$(docker inspect --format='{{range .Mounts}}{{if .Source}}{{printf "-v %s:%s " .Source .Destination}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
+  
+  MOUNTS=$(docker inspect --format='{{range .Mounts}}{{if eq .Type "volume"}}-v {{.Name}}:{{.Destination}} {{else if eq .Type "bind"}}-v {{.Source}}:{{.Destination}} {{end}}{{end}}' $INSTALL_CONTAINER_NAME)
   if [ -z "$MOUNTS" ]; then
     log $TXT_UPGRADE_EMPTY_MOUNT
     MOUNTS=""
@@ -116,6 +126,7 @@ function upgrade_panel() {
   if [ -n "$PORTS" ]; then
     RUN_COMMAND="$RUN_COMMAND $PORTS"
   fi
+  
   if [ -n "$MOUNTS" ]; then
     RUN_COMMAND="$RUN_COMMAND $MOUNTS"
   fi
@@ -542,14 +553,17 @@ function main(){
   if [[ -n "$INSTALL_PROXY" ]]; then
     DOCKER_CMD="$DOCKER_CMD -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
   fi
+
   if [[ -n "$INSTALL_DNS" ]]; then
     DOCKER_CMD="$DOCKER_CMD --dns $INSTALL_DNS"
   fi
+
   if [[ "$INSTALL_IMAGE" == *lite ]]; then
     DOCKER_CMD="$DOCKER_CMD -p ${INSTALL_PORT}:8080"
   else
     DOCKER_CMD="$DOCKER_CMD -p 80:80 -p 443:443 -p ${INSTALL_PORT}:8080"
   fi
+
   DOCKER_CMD="$DOCKER_CMD -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel $INSTALL_IMAGE"
 
   if [[ $1 == "test" ]]; then
