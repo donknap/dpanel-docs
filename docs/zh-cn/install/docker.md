@@ -59,6 +59,14 @@ docker run -d --name dpanel ...(省略其它参数)... -p 访问端口:8080 dpan
 docker run -d --name dpanel ...(省略其它参数)... -e HTTP_PROXY="http://代理地址:端口" -e HTTPS_PROXY="http://代理地址:端口" dpanel/dpanel:latest
 ```
 
+#### 自定义登录 jwt 密钥
+
+> 需要在计划任务中使用面板的【[控制命令](/zh-cn/install/ctrl)】必须配置此值，配置时请务必使用强密码。
+
+```
+docker run -d --name dpanel  ...(省略其它参数)... -e DP_JWT_SECRET=强密码随机字符串  dpanel/dpanel:latest
+```
+
 #### 自定义宿主机目录存储
 
 > 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请务必将挂载 /dpanel 目录到宿主机，在目录中新建 compose 任务查看 [创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
@@ -71,7 +79,6 @@ docker run -d --name dpanel ...(省略其它参数)... -e HTTP_PROXY="http://代
 ```
 docker run -d --name dpanel  ...(省略其它参数)... -v 指定宿主机目录:/dpanel dpanel/dpanel:latest
 ```
-
 
 #### 配置面板管理员用户名密码
 

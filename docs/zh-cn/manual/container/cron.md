@@ -9,17 +9,36 @@
 #### 执行容器
 
 因为 DPanel 面板是运行在容器中的，并不具有直接在宿主上运行脚本命令的权限。
-在配置计划任务中，需要指定一个运行命令的容器，默认不指定为在 DPanel 面板容器中运行。
+在配置计划任务中，需要指定一个运行命令的容器，默认在 DPanel 面板容器中运行。
 
-在 DPanel 面板中，可以直接使用 docker 、docker compose、curl、git 相关命令。
-你也可以通过 apk add 命令添加自己需要的命令。
+在 DPanel 面板容器中，你可以正常使用 docker 、docker compose、curl、git 等相关命令。
+面板容器是基于 alpine 系统，你也可以通过 apk add 命令添加自己需要的包，示例:
 
-#### 怎么操作宿主机？
+```
+// 安装 vim
+apk add --no-cache --update vim 
+```
+
+#### 操作面板命令
+
+面板提供了一些【[控制命令](/zh-cn/install/ctrl)】，用于通过命令行的形式操作一些功能接口。在计划任务中的脚本使用这些命令时，需要先[配置面板的 DP_JWT_SECRET 环境变量](/zh-cn/install/docker?id=自定义登录-jwt-密钥)。以便于控制命令可以获取到面板的用户授权信息。
+
+```
+# 检测容器更新并升级，指定运行在 DPanel 面板容器
+CHECK=$(/app/server/dpanel -f /app/server/config.yaml container:upgrade --name nginx-test)
+if [ $CHECK == *"true"* ]; then
+  # 容器有更新时，删除当前容器重新创建
+  docker stop nginx-test && docker rm nginx-test
+  docker run --name nginx-test -p 8080:80 nginx
+fi
+```
+
+
+#### 操作宿主机环境
 
 在 docker 中的容器，并不是不能操作宿主机，但是赋予的过大的权限会带来很大的安全风险，这也是 docker 守护进程一直被诟病的地方。
-如果你不得不去操作宿主机时，完成后一定要将相关容器销毁。
 
-通过新建特权容器来切换至宿主机的 namespace 中，下面以 busybox 镜像做为演示，新建一个代理容器。
+在计划中可以通过新建特权代理容器来切换至宿主机的 shell 环境执行脚本代码。示例：
 
 ##### 获取宿主机的网络信息
 
