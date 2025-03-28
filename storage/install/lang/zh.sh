@@ -44,6 +44,12 @@ TXT_INSTALL_PORT_RULE="错误: 输入的端口号必须在 1 到 65535 之间"
 TXT_INSTALL_PORT_SET="您设置的端口是: "
 TXT_INSTALL_PORT_OCCUPIED="如果端口已经被占用, 请再次执行脚本更换端口后重新安装"
 
+TXT_INSTALL_SOCK_TIPS_1="当前 Docker Sock 可能位于: "
+TXT_INSTALL_SOCK_TIPS_2="你可以手动执行下方命令，将 sock 文件映射到默认路径"
+TXT_INSTALL_SOCK_TIPS_3="如果创建后依然无法正常请求, 请手动查找 sock 文件并指定"
+TXT_INSTALL_SOCK="挂载 Docker Sock 文件 [默认:"
+TXT_INSTALL_SOCK_SET="您挂载的 Docker Sock 文件是: "
+
 TXT_INSTALL_PROXY="配置面板容器代理地址, 为空时不配置代理"
 TXT_INSTALL_PROXY_SET="您配置的面板代理地址是"
 TXT_INVALID_PROXY_NOT_HTTP="代理地址必须以 http 或是 https 开头, 例如: http://192.168.1.2:7890"

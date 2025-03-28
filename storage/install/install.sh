@@ -33,6 +33,7 @@ INSTALL_CONTAINER_NAME="dpanel"
 INSTALL_IMAGE="dpanel/dpanel:lite"
 INSTALL_PROXY=""
 INSTALL_DNS=""
+INSTALL_SOCK_FILE="/var/run/docker.sock"
 
 BACKUP_CONTAINER_NAME=""
 
@@ -298,6 +299,23 @@ function install_dns() {
   fi
 }
 
+function install_sock() {
+  DEFAULT_SOCK_FILE=$(docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Host}}')
+
+  log "$TXT_INSTALL_SOCK_TIPS_1 ${DEFAULT_SOCK_FILE#unix://}"
+  log "$TXT_INSTALL_SOCK_TIPS_2"
+  log "ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
+  log "$TXT_INSTALL_SOCK_TIPS_3"
+
+  if read -p "$TXT_INSTALL_SOCK $INSTALL_SOCK_FILE]: " DEFAULT_SOCK_FILE;then
+    if [[ -n "$DEFAULT_SOCK_FILE" ]]; then
+        INSTALL_SOCK_FILE=$DEFAULT_SOCK_FILE
+    fi
+  fi
+
+  log "$TXT_INSTALL_SOCK_SET: $INSTALL_SOCK_FILE"
+}
+
 function install_docker(){
   if which docker >/dev/null 2>&1; then
     docker_version=$(docker --version | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
@@ -547,6 +565,7 @@ function main(){
   install_name $1
   install_dir
   install_port
+  install_sock
 
   DOCKER_CMD="run -d --name ${INSTALL_CONTAINER_NAME} --restart=always"
   DOCKER_CMD="$DOCKER_CMD -e APP_NAME=${INSTALL_CONTAINER_NAME}"
@@ -564,7 +583,7 @@ function main(){
     DOCKER_CMD="$DOCKER_CMD -p 80:80 -p 443:443 -p ${INSTALL_PORT}:8080"
   fi
 
-  DOCKER_CMD="$DOCKER_CMD -v /var/run/docker.sock:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel $INSTALL_IMAGE"
+  DOCKER_CMD="$DOCKER_CMD -v $INSTALL_SOCK_FILE:/var/run/docker.sock -v ${INSTALL_DIR}:/dpanel $INSTALL_IMAGE"
 
   if [[ $1 == "test" ]]; then
     echo -e "docker $DOCKER_CMD \n"

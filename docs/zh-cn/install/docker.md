@@ -4,19 +4,18 @@
 此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动清理掉此容器。\
 此插件容器使用 alpine 镜像，你也可以手动创建，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ \
-如果想你保留此容器创建时或是编辑该容器的标签 com.dpanel.container.auto_remove=false 即可。
+如果想你保留此容器避免频繁的销毁创建，可以在创建时或是编辑该容器的标签 com.dpanel.container.auto_remove=false 即可。
 
 ?> DPanel 阿里云镜像地址 \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
-
-#### 安装标准版
-
 > macos 下需要先将 docker.sock 文件 link 到 /var/run/docker.sock 目录中 \
 > ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock \
 
 > windows 请在 wsl 中运行命令
+
+#### 安装标准版
 
 创建面板容器时，请根据实际情况修改映射端口。面板不能绑定 host 网络<span style="color: red">（请勿使用 --network host 参数!!!）</span> \
 默认版本中提供了域名绑定及Https证书功能，需要绑定 80 及 443 端口。如果你不需要这些功能，请安装 Lite 版
@@ -40,6 +39,45 @@ docker run -d --name dpanel --restart=always \
  -v /var/run/docker.sock:/var/run/docker.sock \
  -v /home/dpanel:/dpanel dpanel/dpanel:lite
  ```
+
+#### 挂载 docker.sock 文件
+
+创建面板时需要挂载 docker.sock 文件用于与 docker 服务端通信，如果你的当前环境并非使用默认的 /var/run/docker.sock 文件，你可以在创建时指定 sock 文件挂载。
+
+如果查找出的 sock 文件不正确，请手动查找出正确的 sock 文件地址挂载或是采用 tcp 的方式连接 docker。
+
+##### 查看当前环境的 sock 位置
+
+```
+docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Host}}'
+
+# 输出当前环境的 sock 文件位置
+# unix:///Users/test/.docker/run/docker.sock
+```
+
+##### 自定义挂载 sock 文件
+
+```
+docker run -d --name dpanel ...(省略其它参数)... -v /Users/test/.docker/run/docker.sock:/var/run/docker.sock dpanel/dpanel:latest
+```
+
+#### 通过 tcp 管理 docker
+
+如果无法找到 docker.sock 文件，你也可以通过查看 systemctrl status docker 查看当前 docker 是否开启 tcp 连接。
+
+```
+# systemctl status docker 
+
+● docker.service - Docker Application Container Engine
+     CGroup: /system.slice/docker.service
+             ├─ 964 /usr/bin/dockerd -H 0.0.0.0:2375 -H fd:// --containerd=/run/containerd/containerd.sock
+
+```
+
+上面的输出内容中 0.0.0.0:2375 为 docker 的 tcp 连接地址，注意需要把 0.0.0.0 替换为你主机的内网地址。如果你的输出中未包含类似的信息。
+你可以参考 [开启 docker tcp 连接方式](zh-cn/manual/system/remote) 配置 tcp 连接。
+
+创建完成面板后，通过 【配置默认 docker 客户端】配置 docker 管理地址即可。
 
  #### 自定义面板访问端口
 
@@ -84,16 +122,6 @@ docker run -d --name dpanel  ...(省略其它参数)... -v 指定宿主机目录
 
 创建完成面板容器后，首次进入需要先配置管理员用户和密码。如果你忘记密码可以使用 [重置用户名密码](/zh-cn/install/ctrl?id=重置管理员用户)
 
-
-#### 通过 tcp 管理 docker
-
-创建面板时需要挂载 docker 的 /var/run/docker.sock 文件，用于请求 docker API。
-
-你也可以开启 docker tcp 连接地址，并通过 DOCKER_HOST 环境变量创建面板。[开启 docker tcp 连接方式](zh-cn/manual/system/remote)
-
-```
-docker run -d --name dpanel ...(省略其它参数)... -e DOCKER_HOST=tcp://172.16.1.13:2375 dpanel/dpanel:latest
-```
 
 #### 独立运行
 
