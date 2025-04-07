@@ -14,10 +14,11 @@
     * [基础镜像](zh-cn/manual/container/create-image.md)
     * [参数详解](zh-cn/manual/container/create-option.md)
   * **容器管理**
-    * [一键更新容器](zh-cn/manual/container/upgrade.md)
-    * [绑定宿主机网络](zh-cn/manual/container/bind-host-network.md)
-    * [镜像仓库及加速](zh-cn/manual/image/registry.md)
+    * [更新容器](zh-cn/manual/container/upgrade.md)
+    * [镜像加速](zh-cn/manual/image/registry.md)
     * [计划任务](zh-cn/manual/container/cron.md)
+    * [容器快照](zh-cn/manual/container/snapshot.md)
+    * [桥接宿主机网络](zh-cn/manual/container/bind-host-network.md)
   * **域名转发**
     * [证书管理](zh-cn/manual/container/domain-cert.md)
     * [域名转发](zh-cn/manual/container/domain.md)
