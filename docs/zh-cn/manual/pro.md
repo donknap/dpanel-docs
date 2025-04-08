@@ -76,12 +76,6 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
-        <td>容器回收站快速恢复</td>
-        <td> - </td>
-        <td>✅</td>
-        <td>✅</td>
-      </tr>
-      <tr>
         <td>Compose 基础管理</td>
         <td>✅</td>
         <td>✅</td>
@@ -112,14 +106,26 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
+        <td>多 Docker 服务端</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>导入容器快照数据</td>
+        <td> - </td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
         <td>查看镜像远程Tag</td>
         <td>-</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
-        <td>多 Docker 服务端</td>
-        <td>✅</td>
+        <td>容器回收站快速恢复</td>
+        <td> - </td>
         <td>✅</td>
         <td>✅</td>
       </tr>
