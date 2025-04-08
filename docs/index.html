@@ -23,6 +23,49 @@
     section.cover .cover-main {
       top: 50px;
     }
+
+    /* 表格外层容器样式 */
+    .feature-wrap {
+      width: 100%;
+      overflow-x: auto;
+      /* 如果内容过长，支持横向滚动 */
+    }
+
+    /* 表格整体样式 */
+    .feature-wrap table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    /* 表头样式 */
+    .feature-wrap thead tr {
+      background-color: #CFE2FC99;
+    }
+
+    /* 表头单元格样式 */
+    .feature-wrap th {
+      padding: 12px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .feature-wrap td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .feature-wrap tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .feature-wrap .feature-table-group {
+      font-weight: bold;
+      text-align: left;
+      padding-left: 80px;
+    }
   </style>
 </head>
 <!-- edit by 2024123100011 -->

@@ -26,17 +26,136 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
 
 ### 价格及功能
 
-!> Pro 版的定价是： 99 RMB / 年，
+!> Pro 版的定价是： 99 RMB / 年
 
-- [x] 可开启登录 2Fa 验证
-- [x] 镜像详情页面可查看所有远程 Tag
-- [x] 宿主机 WebShell，可在面板直接进入宿主机命令行
-- [x] 多语言（中、英双语）
-- [ ] 容器迁移至其它 docker 环境
-- [ ] 概览页面中查看当前所有容器是否有新版镜像
-- [x] 配置标题、logo、底部信息
-- [x] 自定义面板皮肤，背景图，主色系及透明度
-- [ ] 多用户，多权限
+<div class="feature-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th width="75%" >功能</th>
+        <th>社区版</th>
+        <th>专业版</th>
+        <th>企业版</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>容器基础管理</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>容器复制、保存镜像、导出</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>容器快速升级</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>容器快照备份</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>域名转发、证书管理</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>容器计划任务</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>容器回收站快速恢复</td>
+        <td> - </td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Compose 基础管理</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+       <tr>
+        <td>Compose 应用商店</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>镜像基础管理</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>镜像仓库管理</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>镜像仓库加速</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>查看镜像远程Tag</td>
+        <td>-</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>多 Docker 服务端</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>自定义系统皮肤、Logo、背影图、底部版权</td>
+        <td>-</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>登录开启 2fa </td>
+        <td>-</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>连接宿主机SSH</td>
+        <td>-</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>多语言</td>
+        <td>-</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>多用户及权限管理</td>
+        <td>-</td>
+        <td>-</td>
+        <td>✅</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### 安装方式
 
