@@ -18,7 +18,7 @@
 
 ### 使用
 
-> 当前如果已经是 root 用户，则不需要 sudo
+> 当前如果已经是 root 用户则删除掉命令中的两个 sudo 
 
 ```
 sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh

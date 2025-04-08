@@ -177,28 +177,17 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
 
 ### 安装方式
 
-安装方式与[【社区版】](/zh-cn/install/docker)一致，在命令中替换 pe 版的镜像即可。示例：
+安装方式与[【社区版】](/zh-cn/install/docker)一致，区别在于镜像不同
+
+- dpanel/dpanel-pe:lite
+- dpanel/dpanel-pie:latest
+- registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:lite
+- registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:latest
+
+> 当前如果已经是 root 用户则删除掉命令中的两个 sudo 
 
 ```
-docker run -d -it --name dpanel ...(省略其它参数)... \
-dpanel/dpanel:pe
-```
-
-```
-docker run -d -it --name dpanel ...(省略其它参数)... \
-dpanel/dpanel:pe-lite
-```
-
-#### 国内源
-
-```
-docker run -d -it --name dpanel ...(省略其它参数)... \
-registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:pe
-```
-
-```
-docker run -d -it --name dpanel ...(省略其它参数)... \
-registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:pe-lite
+sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
 ```
 
 ### 获取授权
