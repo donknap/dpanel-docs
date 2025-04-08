@@ -52,25 +52,25 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
-        <td>容器快速升级</td>
+        <td>容器镜像升级检测、快速升级</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
-        <td>容器快照备份</td>
+        <td>容器快照备份、恢复、迁移到其它 docker 环境</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
-        <td>域名转发、证书管理</td>
+        <td>域名转发、https 证书管理</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
-        <td>容器计划任务</td>
+        <td>容器计划任务、任务模板</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
@@ -82,7 +82,7 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
        <tr>
-        <td>Compose 应用商店</td>
+        <td>Compose 应用商店，支持 1panel、casaos、本地商店</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
@@ -94,19 +94,31 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
-        <td>镜像仓库管理</td>
+        <td>镜像创建，支持导入、Dockerfile、zip包、git 创建</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
-        <td>镜像仓库加速</td>
+        <td>镜像仓库管理，支持远程仓库，本地 registry 仓库</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>镜像仓库加速，支持多个加速地址</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
         <td>多 Docker 服务端</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>界面配置，暗色皮肤、菜单位置、字体大小、分页数</td>
         <td>✅</td>
         <td>✅</td>
         <td>✅</td>
@@ -154,7 +166,7 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
-        <td>多用户及权限管理</td>
+        <td>多用户、菜单权限、数据权限</td>
         <td>-</td>
         <td>-</td>
         <td>✅</td>
