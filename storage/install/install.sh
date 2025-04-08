@@ -187,11 +187,11 @@ function install_version() {
   fi
 
   if [ "$INSTALL_VERSION" = "pse" ]; then
-    INSTALL_IMAGE="dpanel/dpanel:pe"
+    INSTALL_IMAGE="dpanel/dpanel-pe:latest"
   fi
 
   if [ "$INSTALL_VERSION" = "ple" ]; then
-    INSTALL_IMAGE="dpanel/dpanel:pe-lite"
+    INSTALL_IMAGE="dpanel/dpanel-pe:lite"
   fi
 
   for i in "${!IMAGE_CODES[@]}"; do
