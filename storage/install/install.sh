@@ -550,18 +550,18 @@ function main(){
     get_ip
   fi
   
-  # select_lang
-  # check_root
+  select_lang
+  check_root
 
-  # if [ "$(check_uname alpine)" != "" ];then 
-  #   install_docker_alpine
-  # else
-  #   install_docker
-  # fi
+  if [ "$(check_uname alpine)" != "" ];then 
+    install_docker_alpine
+  else
+    install_docker
+  fi
   
-  # install_version
-  # install_proxy
-  # install_dns
+  install_version
+  install_proxy
+  install_dns
   install_name $1
   install_dir
   install_port
