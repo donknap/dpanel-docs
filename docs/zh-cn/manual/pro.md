@@ -21,7 +21,7 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
 
 ### 价格及功能
 
-!> Pro 版的定价是： 99 RMB / 年
+!> Pro 版的定价是： 99 RMB / 年，[支持并购买](https://afdian.com/item/56df0a88d6dd11efa8bc5254001e7c00)
 
 <div class="feature-wrap">
   <table>
@@ -132,6 +132,12 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
       </tr>
       <tr>
         <td>容器回收站快速恢复</td>
+        <td> - </td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>每日定时检测容器更新，首页及容器列表提示更新</td>
         <td> - </td>
         <td>✅</td>
         <td>✅</td>
