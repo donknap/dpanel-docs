@@ -218,7 +218,7 @@ function install_name() {
         INSTALL_CONTAINER_NAME=$DEFAULT_NAME
     fi
 
-    if [[ ! "$INSTALL_CONTAINER_NAME" =~ ^[_.a-z0-9-]{3,30}$ ]]; then
+    if [[ ! "$INSTALL_CONTAINER_NAME" =~ ^[_.a-zA-Z0-9-]{3,30}$ ]]; then
           log "$TXT_INSTALL_NAME_RULE"
           continue
     fi
@@ -542,7 +542,7 @@ function main(){
     source "$LANG_FILE"
   fi
 
-  if [ $1 != "test" ]; then
+  if [ "${1:-}" != "test" ]; then
     check_command bash
     check_command curl
     check_command ip
