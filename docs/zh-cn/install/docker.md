@@ -11,7 +11,7 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 > macos 下需要先将 docker.sock 文件 link 到 /var/run/docker.sock 目录中 \
-> ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock \
+> sudo ln -s -f /Users/用户/.docker/run/docker.sock /var/run/docker.sock \
 
 > windows 请在 wsl 中运行命令
 

@@ -18,10 +18,18 @@
 
 ### 使用
 
-> 当前如果已经是 root 用户则删除掉命令中的两个 sudo 
+#### 非 root 用户
 
 ```
 sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
+```
+
+#### root 用户
+
+当前使用的 root 用户或是提示 sudo: command not found
+
+```
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
 ```
 
 ### 预览

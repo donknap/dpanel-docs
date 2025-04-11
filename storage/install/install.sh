@@ -304,7 +304,7 @@ function install_sock() {
 
   log "$TXT_INSTALL_SOCK_TIPS_1 ${DEFAULT_SOCK_FILE#unix://}"
   log "$TXT_INSTALL_SOCK_TIPS_2"
-  log "ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
+  log "sudo ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
   log "$TXT_INSTALL_SOCK_TIPS_3"
 
   if read -p "$TXT_INSTALL_SOCK $INSTALL_SOCK_FILE]: " DEFAULT_SOCK_FILE;then
