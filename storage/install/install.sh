@@ -134,10 +134,22 @@ function upgrade_panel() {
 
   if [[ -n "$INSTALL_PROXY" ]]; then
     RUN_COMMAND="$RUN_COMMAND -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
+  else
+    ENV_LIST=$(docker inspect --format '{{range .Config.Env}}{{println .}}{{end}}' "$INSTALL_CONTAINER_NAME")
+    while read -r line; do
+      if [[ $line == *"HTTP_PROXY="* || $line == *"HTTPS_PROXY="* ]]; then
+        RUN_COMMAND="$RUN_COMMAND -e $line"
+      fi
+    done < <(echo "$ENV_LIST")
   fi
 
   if [[ -n "$INSTALL_DNS" ]]; then
     RUN_COMMAND="$RUN_COMMAND --dns $INSTALL_DNS"
+  else
+    DNS_LIST=$(docker inspect dpanel --format '{{range .HostConfig.DNS}}{{print "--dns " . " "}}{{end}}')
+    if [[ -n "$DNS_LIST" ]]; then
+      RUN_COMMAND="$RUN_COMMAND $DNS_LIST"
+    fi
   fi
 
   CONTAINER_ID=$(docker inspect --format '{{.Id}}' "$INSTALL_CONTAINER_NAME")
