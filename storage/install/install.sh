@@ -230,7 +230,7 @@ function install_name() {
         INSTALL_CONTAINER_NAME=$DEFAULT_NAME
     fi
 
-    if [[ ! "$INSTALL_CONTAINER_NAME" =~ ^[_.a-z0-9-]{3,30}$ ]]; then
+    if [[ ! "$INSTALL_CONTAINER_NAME" =~ ^[_.a-zA-Z0-9-]{3,30}$ ]]; then
           log "$TXT_INSTALL_NAME_RULE"
           continue
     fi
@@ -316,7 +316,7 @@ function install_sock() {
 
   log "$TXT_INSTALL_SOCK_TIPS_1 ${DEFAULT_SOCK_FILE#unix://}"
   log "$TXT_INSTALL_SOCK_TIPS_2"
-  log "ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
+  log "sudo ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
   log "$TXT_INSTALL_SOCK_TIPS_3"
 
   if read -p "$TXT_INSTALL_SOCK $INSTALL_SOCK_FILE]: " DEFAULT_SOCK_FILE;then
@@ -554,7 +554,7 @@ function main(){
     source "$LANG_FILE"
   fi
 
-  if [ $1 != "test" ]; then
+  if [ "${1:-}" != "test" ]; then
     check_command bash
     check_command curl
     check_command ip
