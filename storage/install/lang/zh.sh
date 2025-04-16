@@ -50,7 +50,7 @@ TXT_INSTALL_SOCK_TIPS_3="如果创建后依然无法正常请求, 请手动查�
 TXT_INSTALL_SOCK="挂载 Docker Sock 文件 [默认:"
 TXT_INSTALL_SOCK_SET="您挂载的 Docker Sock 文件是: "
 
-TXT_INSTALL_PROXY="配置面板容器代理地址, 为空时不配置代理"
+TXT_INSTALL_PROXY="配置面板容器代理地址用于访问 docker, 为空时不配置代理"
 TXT_INSTALL_PROXY_SET="您配置的面板代理地址是"
 TXT_INVALID_PROXY_NOT_HTTP="代理地址必须以 http 或是 https 开头, 例如: http://192.168.1.2:7890"
 TXT_INVALID_PROXY_NOT_LOCAHOST="本地地址指向的是容器并非宿主机, 请使用局域网内 ip 地址"
