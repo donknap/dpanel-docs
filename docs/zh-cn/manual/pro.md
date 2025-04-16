@@ -59,6 +59,12 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
+        <td>容器添加标签分组，方便查询</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
         <td>域名转发、https 证书管理</td>
         <td>✅</td>
         <td>✅</td>
@@ -125,19 +131,19 @@ Pro 版只针对社区版中的部分功能进行强化和升级，或是一些�
         <td>✅</td>
       </tr>
       <tr>
-        <td>查看镜像远程Tag</td>
-        <td>-</td>
-        <td>✅</td>
-        <td>✅</td>
-      </tr>
-      <tr>
-        <td>查看镜像内的文件 RootFS</td>
+        <td>查看镜像远程Tag，及镜像内的 rootfs 文件目录</td>
         <td>-</td>
         <td>✅</td>
         <td>✅</td>
       </tr>
       <tr>
         <td>容器回收站快速恢复</td>
+        <td> - </td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>容器首页快捷打开、启动&停止</td>
         <td> - </td>
         <td>✅</td>
         <td>✅</td>
