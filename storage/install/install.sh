@@ -280,6 +280,9 @@ function install_port(){
             continue
         fi
         log "$TXT_INSTALL_PORT_SET $INSTALL_PORT"
+        if [[ "$INSTALL_IMAGE" != *lite ]]; then
+          log "$TXT_INSTALL_PORT_USE_80"
+        fi
         log "$TXT_INSTALL_PORT_OCCUPIED"
         break
     done

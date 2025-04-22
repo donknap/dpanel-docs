@@ -41,8 +41,9 @@ TXT_INSTALL_DIR_SET="您选择的面板容器挂载目录是"
 
 TXT_INSTALL_PORT="设置 DPanel 端口 [默认:"
 TXT_INSTALL_PORT_RULE="错误: 输入的端口号必须在 1 到 65535 之间"
-TXT_INSTALL_PORT_SET="您设置的端口是: "
-TXT_INSTALL_PORT_OCCUPIED="如果端口已经被占用, 请再次执行脚本更换端口后重新安装"
+TXT_INSTALL_PORT_SET="您设置的面板访问端口是: "
+TXT_INSTALL_PORT_USE_80="您当前安装的标准版还需要绑定 80 及 443 端口, 请保证端口均被未被占用或是安装 Lite 版"
+TXT_INSTALL_PORT_OCCUPIED="如果端口已经被占用, 请修复后再次执行脚本更换端口后重新安装"
 
 TXT_INSTALL_SOCK_TIPS_1="当前 Docker Sock 可能位于: "
 TXT_INSTALL_SOCK_TIPS_2="你可以手动执行下方命令，将 sock 文件映射到默认路径"
