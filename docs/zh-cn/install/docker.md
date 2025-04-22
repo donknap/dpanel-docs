@@ -15,6 +15,10 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 > windows 请在 wsl 中运行命令
 
+#### 集成脚本
+
+DPanel 面板提供了 [集成脚本](/zh-cn/install/shell) 的安装方式，可快速安装、升级面板容器。
+
 #### 安装标准版
 
 创建面板容器时，请根据实际情况修改映射端口。面板不能绑定 host 网络<span style="color: red">（请勿使用 --network host 参数!!!）</span> \
