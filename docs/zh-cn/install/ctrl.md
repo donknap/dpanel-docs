@@ -99,3 +99,23 @@ docker exec dpanel ./dpanel -f config.yaml container:backup --name 容器名称 
 ```
 {"path":"/dpanel/backup/dpanel-doc/dpanel-dpanel-doc-20250424175215.snapshot"}
 ```
+
+### 部署或升级 compose 任务
+
+- \--name compose 任务名称，面板已经部署或是可发现的任务名称
+- \--docker-env 指定 docker env 环境名称
+- \--environment yaml 中所需要的环境变量，可配置多个
+- \--service-name 只定要部署的的服务名称，可配置多个
+- \--remove-orphans 清理删除已失效的服务容器
+- \--pull-image 指定拉取镜像方式 dpanel command
+
+```
+docker exec dpanel ./dpanel -f config.yaml compose:deploy --name 任务名称 --remove-orphans 1 --environment name=test --environment age=10 --service-name test --service-name test2 --pull-image dpanel
+```
+
+#### 返回
+
+```
+{"name":"test123"}
+
+```
