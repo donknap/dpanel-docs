@@ -21,10 +21,11 @@ apk add --no-cache --update vim
 
 #### 操作面板命令
 
-面板提供了一些【[控制命令](/zh-cn/install/ctrl)】，用于通过命令行的形式操作一些功能接口。在计划任务中的脚本使用这些命令时，需要先[配置面板的 DP_JWT_SECRET 环境变量](/zh-cn/install/docker?id=自定义登录-jwt-密钥)。以便于控制命令可以获取到面板的用户授权信息。
+使用面板 [控制命令](/zh-cn/install/ctrl) 检测容器是否有更新。在计划任务中使用控制命令时，不必须配置 DP_JWT_SECRET 环境变量。
+
+运行时需要指定运行在 DPanel 面板容器，脚本如下：
 
 ```
-# 检测容器更新并升级，指定运行在 DPanel 面板容器
 CHECK=$(/app/server/dpanel -f /app/server/config.yaml container:upgrade --name nginx-test)
 if [ $CHECK == *"true"* ]; then
   # 容器有更新时，删除当前容器重新创建
@@ -32,7 +33,6 @@ if [ $CHECK == *"true"* ]; then
   docker run --name nginx-test -p 8080:80 nginx
 fi
 ```
-
 
 #### 操作宿主机环境
 

@@ -103,7 +103,7 @@ docker run -d --name dpanel ...(省略其它参数)... -e HTTP_PROXY="http://代
 
 #### 自定义登录 jwt 密钥
 
-> 需要在计划任务中使用面板的【[控制命令](/zh-cn/install/ctrl)】必须配置此值，配置时请务必使用强密码。
+> 执行面板【[控制命令](/zh-cn/install/ctrl)】时必须配置此值，配置时请务必使用强密码。
 
 ```
 docker run -d --name dpanel  ...(省略其它参数)... -e DP_JWT_SECRET=强密码随机字符串  dpanel/dpanel:latest

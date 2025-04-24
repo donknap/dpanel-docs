@@ -26,17 +26,58 @@ docker exec dpanel ./dpanel -f config.yaml user:reset --password 123456
 
 #### 重置用户名
 
-> 重置用户名时，必须指定用户名
+重置用户名时，必须指定用户名
 
 ```
 docker exec dpanel ./dpanel -f config.yaml user:reset user:reset --password 123456 --username root
 ```
 
+!> 使用以下命令时，需要先 [配置面板的 DP_JWT_SECRET 环境变量](/zh-cn/install/docker?id=自定义登录-jwt-密钥)
 
 ### 更新应用商店数据
 
 - \--name 指定应用商店名称
 
 ```
-docker exec dpanel ./dpanel -f config.yaml store:sync --name storename
+docker exec dpanel ./dpanel -f config.yaml store:sync --name 应用商店标识
+```
+
+#### 返回
+
+```
+{"total":151}
+```
+
+### 检测容器镜像是否有新版
+
+- \--name 指定检测的容器名称
+
+```
+docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称
+```
+
+#### 返回
+
+> upgrade 为 true 表示有更新
+
+```
+{"upgrade":false,"digest":"sha256:8f4ac2974ff707bace98ab14923fdf220f44a9803045b655f1d8d3e098f97e55","digestLocal":["registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel@sha256:8f4ac2974ff707bace98ab14923fdf220f44a9803045b655f1d8d3e098f97e55"]}
+```
+
+### 当容器有更新时升级容器
+
+- \--name 指定检测的容器名称
+- \--upgrade 当容器有更新时升级容器
+
+```
+docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称 --upgrade
+```
+
+#### 返回
+
+> 当容没有更新时，返回与 【检测容器镜像是否有新版】 一致
+
+```
+{"containerId": "14fc0a4d5e3e31f98f9179512085299b5c502ddf57d584ce39a7cadab6e3f643"}
+
 ```
