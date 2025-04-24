@@ -51,9 +51,10 @@ docker exec dpanel ./dpanel -f config.yaml store:sync --name 应用商店标识
 ### 检测容器镜像是否有新版
 
 - \--name 指定检测的容器名称
+- \--docker-env 指定 docker env 环境名称
 
 ```
-docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称
+docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称 --docker-env local
 ```
 
 #### 返回
@@ -68,6 +69,7 @@ docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称
 
 - \--name 指定检测的容器名称
 - \--upgrade 当容器有更新时升级容器
+- \--docker-env 指定 docker env 环境名称
 
 ```
 docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称 --upgrade
@@ -80,4 +82,20 @@ docker exec dpanel ./dpanel -f config.yaml container:upgrade --name 容器名称
 ```
 {"containerId": "14fc0a4d5e3e31f98f9179512085299b5c502ddf57d584ce39a7cadab6e3f643"}
 
+```
+
+### 生成容器快照
+
+- \--name 指定检测的容器名称
+- \--docker-env 指定 docker env 环境名称
+- \--enable-image 是否备份容器镜像
+
+```
+docker exec dpanel ./dpanel -f config.yaml container:backup --name 容器名称 --enable-image 1
+```
+
+#### 返回
+
+```
+{"path":"/dpanel/backup/dpanel-doc/dpanel-dpanel-doc-20250424175215.snapshot"}
 ```
