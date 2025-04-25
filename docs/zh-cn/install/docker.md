@@ -15,9 +15,9 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 > windows 请在 wsl 中运行命令
 
-#### 集成脚本
+#### 一键安装脚本
 
-DPanel 面板提供了 [集成脚本](/zh-cn/install/shell) 的安装方式，可快速安装、升级面板容器。
+DPanel 面板提供了 [一键脚本](/zh-cn/install/shell) 的安装方式，可快速安装、升级面板容器。
 
 #### 安装标准版
 
