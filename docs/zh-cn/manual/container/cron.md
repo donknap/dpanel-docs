@@ -19,20 +19,23 @@
 apk add --no-cache --update vim 
 ```
 
-#### 操作面板命令
+#### 使用面板控制命令
 
-使用面板 [控制命令](/zh-cn/install/ctrl) 检测容器是否有更新。在计划任务中使用控制命令时，不必须配置 DP_JWT_SECRET 环境变量。
+使用面板 [控制命令](/zh-cn/install/ctrl) 检测容器是否有更新。在计划任务中使用控制命令时，因为是面板自身发起的执行操作所以可以不配置 [DP_JWT_SECRET](zh-cn/install/docker?id=自定义登录-jwt-密钥) 环境变量，如果是直接手动调用控制命令则必须要配置此环境变量。
 
+下面示例中展示如何通过控制命令判断 nginx-test 容器是否有新版本，从而执行一些操作。
 运行时需要指定运行在 DPanel 面板容器，脚本如下：
 
 ```
 CHECK=$(/app/server/dpanel -f /app/server/config.yaml container:upgrade --name nginx-test)
 if [ $CHECK == *"true"* ]; then
-  # 容器有更新时，删除当前容器重新创建
+  # 容器有更新时,执行一些操作
   docker stop nginx-test && docker rm nginx-test
   docker run --name nginx-test -p 8080:80 nginx
 fi
 ```
+
+你也可以利用计划任务 + 控制命令，完成更多自动化部署的相关操作。
 
 #### 操作宿主机环境
 
