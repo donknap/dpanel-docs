@@ -2,9 +2,8 @@
 
 !> DPanel 面板为了隔离权限，在使用文件管理功能时需要使用 dpanel-plugin-explorer 容器。\
 此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动清理掉此容器。\
-此插件容器使用 alpine 镜像，你也可以手动创建，名称保持为 dpanel-plugin-explorer 即可。\
-如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ \
-如果想你保留此容器避免频繁的销毁创建，可以在创建时或是编辑该容器的标签 com.dpanel.container.auto_remove=false 即可。
+此插件容器使用 alpine 镜像，你也可以 [手动创建](/zh-cn/install/docker?id=手动创建文件管理插件)，名称保持为 dpanel-plugin-explorer 即可。\
+如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ 
 
 ?> DPanel 阿里云镜像地址 \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
@@ -153,3 +152,11 @@ docker run -d --name dpanel-test ...(省略其它参数)... -e APP_NAME=dpanel-t
 如果删除宿主机挂载目录或是重新指定目录，则为重建面板。
 
 更新面板则等价于保留挂载目录或是挂载存储卷，重建面板容器。[升级面板](/zh-cn/manual/setting/upgrade)
+
+#### 手动创建文件管理插件
+
+```
+docker run -it -d --name dpanel-plugin-explorer --restart always --pid host --label com.dpanel.container.title="dpanel 文件管理助手" --label com.dpanel.container.auto_remove=false alpine
+```
+
+在手动创建文件管理插件时，如果将 com.dpanel.container.auto_remove=true 配置为 true，则面板会在每次关闭浏览之后自动清理容器
