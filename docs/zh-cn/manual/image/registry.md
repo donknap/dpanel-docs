@@ -53,3 +53,20 @@ denied: requested access to the resource is denied
 
 面板的加速地址并未修改 docker 的 daemon.json 文件，所以在面板中配置的加速地址并不会在 docker pull 命令中生效。
 所有需要拉取镜像的操作需要在面板中完成。
+
+#### 在 docker 中配置代理地址
+
+编辑 /lib/systemd/system/docker.service 文件，在 [Service] 节点中添加以下内容
+
+```
+[Service]
+Environment="http_proxy=http://192.168.0.2:7890"
+Environment="https_proxy=http://192.168.0.2:7890"
+... 其它配置 ...
+```
+
+重启 docker 服务
+
+```
+systemctl daemon-reload && systemctl restart docker
+```

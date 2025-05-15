@@ -44,7 +44,7 @@
     * [脚本模板](zh-cn/manual/setting/cron-template.md)
     * [更新DPanel面板](zh-cn/manual/setting/upgrade.md)
   * **其它**
-    * [Docker TLS 证书](zh-cn/manual/system/remote.md)
+    * [Docker 远程连接](zh-cn/manual/system/remote.md)
     <!-- * [更新容器](zh-cn/manual/container/update.md) -->
     * [常见问题](zh-cn/manual/system/qa.md)
     * [许可协议](zh-cn/manual/license)
