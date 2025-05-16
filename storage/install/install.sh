@@ -159,12 +159,12 @@ function upgrade_panel() {
 
   if [[ $1 == "test" ]]; then
     echo -e "docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME" \n"
-    echo -e "docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local $RUN_COMMAND $INSTALL_IMAGE \n"
+    echo -e "docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local --add-host host.dpanel.local:host-gateway $RUN_COMMAND $INSTALL_IMAGE \n"
     exit 1
   fi
 
   docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME"
-  docker run -d --pull always --name $INSTALL_CONTAINER_NAME $RUN_COMMAND $INSTALL_IMAGE
+  docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local --add-host host.dpanel.local:host-gateway $RUN_COMMAND $INSTALL_IMAGE
 
   result
   exit 1
@@ -582,7 +582,7 @@ function main(){
   install_port
   install_sock
 
-  DOCKER_CMD="run -d --name ${INSTALL_CONTAINER_NAME} --restart=always --hostname dpanel.pod.dpanel.local "
+  DOCKER_CMD="run -d --name ${INSTALL_CONTAINER_NAME} --restart=always --hostname dpanel.pod.dpanel.local --add-host host.dpanel.local:host-gateway"
   DOCKER_CMD="$DOCKER_CMD -e APP_NAME=${INSTALL_CONTAINER_NAME}"
   if [[ -n "$INSTALL_PROXY" ]]; then
     DOCKER_CMD="$DOCKER_CMD -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
