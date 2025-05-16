@@ -38,7 +38,8 @@
     * [容器Tar包](zh-cn/manual/image/create-container.md)
     * [镜像Tar包](zh-cn/manual/image/create-image.md)
   * **系统设置**
-    * [服务器Ip](zh-cn/manual/setting/server.md)
+    * [主机管理](zh-cn/manual/setting/host.md)
+    * [容器访问ip](zh-cn/manual/setting/server.md)
     * [多环境管理](zh-cn/manual/setting/docker-env.md)
     * [应用商店](zh-cn/manual/setting/store.md)
     * [脚本模板](zh-cn/manual/setting/cron-template.md)

@@ -146,6 +146,14 @@ docker run -d --name dpanel-lite ...(省略其它参数)... -e APP_NAME=dpanel-l
 docker run -d --name dpanel-test ...(省略其它参数)... -e APP_NAME=dpanel-test dpanel/dpanel:latest
 ```
 
+#### 绑定宿主机 host
+
+- host.dpanel.host 为在容器中可以访问主机的域名
+
+```
+docker run -d --name dpanel ...(省略其它参数)... --add-host=host.dpanel.local:host-gateway dpanel/dpanel:latest
+```
+
 #### 更新或重建面板
 
 更新与重建的区别就在于是否保留之前面板挂载的目录（/dpanel）数据。\

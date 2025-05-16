@@ -6,7 +6,7 @@
 
 【系统】- 【客户端管理】-【添加Docker环境】。
 
-![system-docker-env-add.png](https://cdn.w7.cc/dpanel/system-docker-env-add.png?t=2)
+![system-docker-env-add.png](https://cdn.w7.cc/dpanel/system-docker-env-add.png?t=7)
 
 #### 通过 docker api 添加
 
