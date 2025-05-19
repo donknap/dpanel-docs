@@ -18,6 +18,8 @@
 面板同时也支持通过 SSH 权限管理远程 docker 服务端。通过这样的试可以避免繁琐的配置证书的过程。
 在添加 SSH 权限时，请使用非 root 帐号，并将该帐号添加 docker 用户组。
 
+##### 配置用户
+
 将用户添加 docker 用户组时可编辑 /etc/group 文件，在 docker 组后增加用户。
 
 ```
@@ -39,6 +41,15 @@ docker ps
 
 # 正常输出容器列表，而不是没有权限信息
 ```
+
+##### docker 版本一致
+
+```
+Docker 客户端连接失败，错误信息：Error response from daemon: \
+client version 1.48 is too new. Maximum supported API version is 1.45
+```
+
+如果添加时返回该信息则表示你的远程的 docker 客户端版本太旧，需要升级 docker 或是采用 docker api 的形式。
 
 ### 切换不同的环境
 
