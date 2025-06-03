@@ -21,11 +21,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dpanel:/dpanel # 将 /home/dpanel 更改为你想要挂载的宿主机目录
-    networks:
-      - dpanel-local
-    networks:
-      dpanel-local:
-        driver: bridge
 ```
 
 #### Lite 版
