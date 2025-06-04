@@ -19,4 +19,5 @@ wget -LO static/zoom-image.min.js "https://cdn.jsdelivr.net/npm/docsify/lib/plug
 wget -LO static/docsify-plugin-toc.min.js "https://unpkg.com/docsify-plugin-toc@1.3.1/dist/docsify-plugin-toc.min.js"
 wget -LO static/beian.min.js "https://cdn.jsdelivr.net/npm/docsify-beian@latest/dist/beian.min.js"
 wget -LO static/docsify-edit-on-github.js "https://cdn.jsdelivr.net/npm/docsify-edit-on-github"
+wget -LO static/search.min.js "https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"
 echo "资源下载完成并保存到 static 目录"
