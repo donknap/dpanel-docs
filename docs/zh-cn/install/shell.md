@@ -1,6 +1,6 @@
 # 一键安装脚本
 
-集成安装脚本是采用 Docker 容器的方式部署及升级面板。
+集成脚本是通过向导模式，生成并运行创建面板容器的 docker run 命令。
 
 - Alpine 系统下请先安装 bash， apk add bash
 

@@ -8,12 +8,11 @@
   * [绑定域名子目录](zh-cn/install/nginx-location.md)
   * [控制命令](zh-cn/install/ctrl.md)
 * **功能手册**
-  * **创建容器**
-    * [独立容器](zh-cn/manual/container/create.md)
-    * [关联容器](zh-cn/manual/container/create-link.md)
-    * [基础镜像](zh-cn/manual/container/create-image.md)
-    * [参数详解](zh-cn/manual/container/create-option.md)
   * **容器管理**
+    * [快速创建](zh-cn/manual/container/create.md)
+    <!-- * [关联容器](zh-cn/manual/container/create-link.md) -->
+    <!-- * [基础镜像](zh-cn/manual/container/create-image.md) -->
+    * [参数详解](zh-cn/manual/container/create-option.md)
     * [更新容器](zh-cn/manual/container/upgrade.md)
     * [镜像加速](zh-cn/manual/image/registry.md)
     * [计划任务](zh-cn/manual/container/cron.md)
@@ -24,9 +23,8 @@
     * [域名转发](zh-cn/manual/container/domain.md)
     * [宝塔](zh-cn/manual/container/domain-bt.md)
   * **Compose**
-    * [创建任务](zh-cn/manual/compose/create.md)
+    * [快速开始](zh-cn/manual/compose/create.md)
     * [环境变量](zh-cn/manual/compose/env.md)
-    * [替换服务](zh-cn/manual/compose/replace-service.md)
     * [覆盖配置](zh-cn/manual/compose/override.md)
     * [管理外部任务](zh-cn/manual/compose/external.md)
     * [批量拉取镜像](zh-cn/manual/compose/image-pull.md)
