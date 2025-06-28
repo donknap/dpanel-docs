@@ -1,41 +1,37 @@
-# 通过 compose 方式创建
+# Via Compose
 
-?> 阿里云加速镜像地址 \
-registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
-registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
-
-#### 标准版
+#### Standard Edition
 
 ```
 services:
   dpanel:
     image: dpanel/dpanel:latest
-    container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
+    container_name: dpanel # Changing contianer_name, please modify the APP_NAME environment variable below
     restart: always
     ports:
       - 80:80
       - 443:443
-      - 8807:8080 # 替换 8807 可更改面板访问端口
+      - 8807:8080 # Replace 8807 to change the panel management port
     environment:
-      APP_NAME: dpanel # 请保持此名称与 container_name 一致
+      APP_NAME: dpanel # Please keep this name consistent with container_name
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/dpanel:/dpanel # 将 /home/dpanel 更改为你想要挂载的宿主机目录
+      - /home/dpanel:/dpanel # Change /home/dpanel to the host directory you want to mount.
 ```
 
-#### Lite 版
+#### Lite Edition
 
 ```
 services:
   dpanel:
     image: dpanel/dpanel:lite
-    container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
+    container_name: dpanel # Changing contianer_name, please modify the APP_NAME environment variable below
     restart: unless-stopped
     ports:
-      - 8807:8080 # 替换 8807 可更改面板访问端口
+      - 8807:8080 # Replace 8807 to change the panel management port
     environment:
-      APP_NAME: dpanel # 请保持此名称与 container_name 一致
+      APP_NAME: dpanel # Please keep this name consistent with container_name
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/dpanel:/dpanel # 将 /home/dpanel 更改为你想要挂载的宿主机目录
+      - /home/dpanel:/dpanel # Change /home/dpanel to the host directory you want to mount.
 ```

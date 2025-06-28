@@ -1,12 +1,12 @@
 * **Install**  
-  * [Script](en-us/install/shell.md)  
+  * [Install Script](en-us/install/shell.md)  
   * [Docker](en-us/install/docker.md)  
-  <!-- * [Compose](en-us/install/compose.md)   -->
-  <!-- * [InDocker](en-us/install/dind.md)   -->
-  <!-- * [Binary](en-us/install/source.md)   -->
+  * [Compose](en-us/install/compose.md)  
+  * [InDocker](en-us/install/dind.md)  
+  * [Binary](en-us/install/source.md)  
   <!-- * [Custom Image](en-us/install/build.md)   -->
   <!-- * [Nginx Proxy Subpath](en-us/install/nginx-location.md)   -->
-  <!-- * [Control Commands](en-us/install/ctrl.md)   -->
+  * [Control Commands](en-us/install/ctrl.md)  
 <!-- * **Guide**   -->
   <!-- * **Container Management**   -->
     <!-- * [Quick Start](en-us/manual/container/create.md)   -->

@@ -26,7 +26,7 @@ docker exec dpanel ./dpanel -f config.yaml user:reset --password 123456
 
 #### 重置用户名
 
-重置用户名时，必须指定用户名
+重置用户名时，必须指定密码
 
 ```
 docker exec dpanel ./dpanel -f config.yaml user:reset user:reset --password 123456 --username root

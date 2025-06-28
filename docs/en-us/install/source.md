@@ -1,54 +1,44 @@
-# 独立运行
+# Run with binary
 
-dpanel 面板允许不依赖容器，直接通过二进制包的方式运行。
+DPanel supports running via binary packages. You can download the packaged binary packages from the [Release](https://github.com/donknap/dpanel/releases) page.
+If your system does not support it, you can also compile the binary package yourself from source code.
 
-### 下载二进制包
+> Running via binary package is equivalent to Lite Edition
 
-你可以在仓库的 Release 页面中找到你使用系统平台的二进制包，[https://github.com/donknap/dpanel/releases](https://github.com/donknap/dpanel/releases)
-
-> 通过源码编译的方式编译运行的是 dpanel-lite 版，不包含域名转发等相关功能
-
-##### 适用于 ubuntu, centos 等主流发行版
+##### For Ubuntu、Centos、Debian etc
 
 - dpanel-amd64 
 - dpanel-arm
 - dpanel-arm64
 
-##### 适用于 apline 等使用 musl 库的发行版 
+##### For Alpine and using the MUSL library
 - dpanel-musl-amd64
 - dpanel-musl-arm64
 - dpanel-musl-arm
 
-##### 适用于 macosx 
+##### For MacOSX 
 
 - dpanel-darwin-ARM64
 - dpanel-darwin-X64
 
-##### 适用于群晖
+##### For Synology
 
 - dpanel-synology-arm64 
 - dpanel-synology-amd64 
 
-##### 适用于 windows
+##### For Windows
 
 - dpanel.exe 
 
-### 更改权限
+### Compile
 
-```
-chmod 755 dpanel
-```
+##### Environmental requirements
 
+- Go Version >= 1.23
+- Please make sure that the Libc or Musl library has been installed and CC CXX has been configured in the environment variables.
+- Windows system needs to install [MinGW](https://winlibs.com/#download-release) 
 
-### 编译 DPanel 源码
-
-如果在 Release 页面并未提供你所适用的平台，你也可以通过自行编译源码的方式构建二进制包。
-
-##### 本机环境
-
-> Go Version >= 1.23
-
-编译源码前，请确保你已经有了 go 语言的运行环境，通过 go version 查看环境版本
+Please make sure you have the Golang runtime. Check the environment version through go version
 
 ```
 go version
@@ -65,66 +55,67 @@ docker run -it --rm --name dpanel-compile golang:latest go version
 #### go version go1.23.4 linux/amd64
 ```
 
-#### 编译源码
-
-- 请确保已经正确安装 libc，并将 CC CXX 配置到环境变量中
-- alpine 系统需要安装 musl
-- windows 系统需要安装 [MinGW](https://winlibs.com/#download-release) 
-- 编译时将 1.5.0 替换成当时的程序版本号
-
-##### 下载源码并切至源码目录
+##### Download source and switch to the source directory
 
 ```
 git clone https://github.com/donknap/dpanel.git
 cd dpanel
 ```
 
-##### 使用 make 命令编译 
+##### Compile using the make command
+
+> 1.5.0 is replaced with the actual version number, which will be displayed in the system information on the home page
 
 ```
 make build PROJECT_NAME=dpanel CGO_ENABLED=1 VERSION=1.5.0
 ```
 
-##### 使用 go build 编译 
+##### Compile using go build
 
-###### windows
+###### Windows
 
 ```
 set CGO_ENABLED=1
 go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel.exe
 ```
 
-###### linux 
+###### Linux 
 
 ```
 CGO_ENABLED=1 go build -ldflags '-X main.DPanelVersion=1.5.0 -s -w' -o runtime/dpanel
 ```
 
-### 启动
+### Run
 
-> 运行相关配置可直接修改 config.yaml 中
-> 也可以在运行程序时，指定 config.yaml 中定义的环境变量值
+> Run configuration to modify config.yaml
+> When running the program, specify the environment variable value defined in config.yaml
+
+When running DPanel via binary, it will automatically connect to the current default Docker engine.
+In Linux, it is /var/run/docker.sock, and in Windows, it is //./pipe/docker_engine.
 
 ```
+chmod 755 ./runtime/dpanel
 ./runtime/dpanel server:start -f config.yaml
 ```
 
-### 当前环境未安装 docker
+```
+# Windows PowerShell
+ .\dpanel.exe server:start -f .\config.yaml
+```
 
-独立运行 DPanel 时，会自动连接当前默认的的 Docker Engine 接口。
-在 linux 系统下为 /var/run/docker.sock，在 windows 下为 //./pipe/docker_engine。
+### Docker is not installed on the system
 
-#### 安装 docker-cli 命令
+If Docker is not installed on system, after starting the DPanel, you can configure the default remote Docker server through [Multiple Environment Management](zh-cn/manual/setting/docker-env.md).
 
-DPanel 部分功能依赖于 docker、docker compose (docker-compose) 命令。
-如果你未安装 docker engine 需要手动安装这些客户端命令组件, 根据使用的系统 [添加 Docker 软件源](https://docs.docker.com/engine/install/debian/)。
+#### Install docker-cli command
 
-安装 docker-cli 客户端命令组件。
+DPanel depends on docker and docker compose (docker-compose) commands.
+If you don't have docker engine installed, you need to install these client command components manually, according to the system you use [add Docker software source](https://docs.docker.com/engine/install/debian/).
+
+Install the docker-cli client command component.
 
 ```
-# Debian 系统
+# Debian
 
 sudo apt install docker-ce-cli docker-compose-plugin
 ```
-
-启动面板后通过[多环境管理](zh-cn/manual/setting/docker-env.md)功能，配置默认 docker 环境。
