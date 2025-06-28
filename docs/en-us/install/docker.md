@@ -149,5 +149,5 @@ If you keep the original mount directory data and mount configuration, rebuildin
 When manually creating or editing a dpanel-plugin-explorer container, specify container label com.dpanel.container.auto_remove=true,the DPanel will automatically clean up the container after browser is closed. If it is configured to false, it will not be cleaned up.
 
 ```
-docker run -it -d --name dpanel-plugin-explorer --restart always --pid host --label com.dpanel.container.title="dpanel 文件管理助手" --label com.dpanel.container.auto_remove=false alpine
+docker run -it -d --name dpanel-plugin-explorer --restart always --pid host --label com.dpanel.container.title="dpanel file explorer" --label com.dpanel.container.auto_remove=false alpine
 ```
