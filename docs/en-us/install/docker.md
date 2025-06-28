@@ -10,11 +10,9 @@ If there is no dpanel-plugin-explorer container DPanel will be automatically cre
 
 > Windows Please run the command in WSL
 
-#### Install Script
+###### [:rocket::rocket::rocket: Use the install script to quickly install or upgrade the DPanel container](/en-us/install/shell)
 
-Use the [installation script](/en-us/install/shell)  to quickly install or upgrade the DPanel container.
-
-#### Install Standard Edition
+#### Standard Edition
 
 When creating a DPanel container, please modify the mapping port according to the actual situation. The DPanel cannot bind to the host network <span style="color: red"> (do not use the --network host parameter!!!) </span> \
 The Standard Edition provides nginx proxy-pass and TLS certificate, which require binding to ports 80 and 443. If you do not need these functions, please install the Lite Edition
@@ -26,7 +24,7 @@ docker run -d --name dpanel --restart=always \
  -v /home/dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
-#### Install Lite Edition
+#### Lite Edition
 
 > The Lite Edition and the Standard Edition differ only in the image address. Except that the mapping of ports 80 and 443 is not required, the other configurations are the same. The command all take the Standard Edition as an example. Please replace the image address.
 
@@ -59,6 +57,12 @@ docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Hos
 
 ```
 docker run -d --name dpanel ... -v /Users/test/.docker/run/docker.sock:/var/run/docker.sock dpanel/dpanel:latest
+```
+
+##### Podman
+
+```
+docker run -d --name dpanel ... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
 ```
 
  #### Custom Management Port
@@ -136,13 +140,14 @@ docker run -d --name dpanel ... --add-host=host.dpanel.local:host-gateway dpanel
 
 #### Upgrade & Recreate
 
-The difference between upgrade and recreate is whether to keep the data of the directory (/dpanel) where the DPanel is mounted. \
-If the host mount directory is deleted or a new directory is specified, the DPanel is recreate.
+The difference between updating and re-creating is whether to keep the directory data (/dpanel) previously mounted on the panel container. If you delete the host mount directory or re-specify the directory, the panel is re-created.
+
+If you keep the original mount directory data and mount configuration, rebuilding the panel container means upgrading. [See the panel upgrade command](/zh-cn/manual/setting/upgrade)
 
 #### Manually create the dpanel-plugin-explorer container
+
+When manually creating or editing a dpanel-plugin-explorer container, specify container label com.dpanel.container.auto_remove=true,the DPanel will automatically clean up the container after browser is closed. If it is configured to false, it will not be cleaned up.
 
 ```
 docker run -it -d --name dpanel-plugin-explorer --restart always --pid host --label com.dpanel.container.title="dpanel 文件管理助手" --label com.dpanel.container.auto_remove=false alpine
 ```
-
-When manually creating or editing a dpanel-plugin-explorer container, specify container label com.dpanel.container.auto_remove=true,the DPanel will automatically clean up the container after browser is closed. If it is configured to false, it will not be cleaned up.
