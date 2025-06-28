@@ -17,6 +17,12 @@
 | 绑定全部端口 |  | 生成随机端口映射容器内的全部端口到宿主机 |
 | IpV6 |  | 同时映射容器端口到 IpV6 |
 
+#### hostname
+
+> --hostname 名称
+
+指定容器的 hostname 
+
 #### 网络配置
 
 > docker network create --driver bridge --subnet 192.168.100.0/24 --gateway 192.168.100.1 test \

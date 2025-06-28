@@ -13,7 +13,7 @@
 
 ### 升级面板
 
-运行集成脚本安装时，如果指定的容器名称当前环境已经存在。脚本则会执行【升级】逻辑。旧容器会停止并备份。
+运行集成脚本时，如果指定的容器名称当前环境已经存在。脚本则会执行【升级】逻辑。旧容器会停止并备份。
 
 
 ### 使用
@@ -26,10 +26,18 @@ sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
 
 #### root 用户
 
-当前使用的 root 用户或是提示 sudo: command not found
+> 当前使用的 root 用户或是提示 sudo: command not found
 
 ```
 curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
+```
+
+#### 调试模式
+
+仅输出创建命令
+
+```
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
 ```
 
 ### 预览

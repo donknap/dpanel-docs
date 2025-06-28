@@ -1,15 +1,14 @@
 # 自定义面板镜像
 
-根据 dpanel 面板的镜像，添加一些自己的运行环境或是脚本。定义 Dockerfile 如下：
+基于 DPanel 提供的镜像，你可以添加一些个性化的运行环境或是脚本，定义 Dockerfile 如下：
 
-?> 阿里云镜像地址 \
+?> 无法访问 Docker Hub 将 FROM 镜像地址改为阿里云镜像 \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
 registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 ### 标准版扩展
 
 ```
-# 基于阿里云的镜像更改阿里云的镜像地址
 FROM dpanel/dpanel:latest
 
 # 添加或是复制脚本或是文件
@@ -27,7 +26,6 @@ ENTRYPOINT [ "/docker/entrypoint.sh" ]
 ### Lite 版扩展
 
 ```
-# 基于阿里云的镜像更改阿里云的镜像地址
 FROM dpanel/dpanel:lite
 
 # 添加或是复制脚本或是文件
@@ -40,4 +38,10 @@ RUN apk add python3
 RUN ls -al
 
 ENTRYPOINT [ "sh", "-c", "/app/server/dpanel server:start -f /app/server/config.yaml" ]
+```
+
+### 构建镜像
+
+```
+docker build -t my-dpanel .
 ```

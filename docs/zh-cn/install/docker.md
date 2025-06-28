@@ -1,7 +1,7 @@
-# 使用 Docker 安装
+# 通过命令创建
 
 !> DPanel 面板为了隔离权限，在管理容器文件时，会自动创建 dpanel-plugin-explorer 容器。\
-此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动清理掉此容器。\
+此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动销毁该容器。\
 此插件容器使用 alpine 镜像，你也可以 [手动创建](/zh-cn/install/docker?id=手动创建文件管理插件)，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ 
 
@@ -14,14 +14,14 @@ registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
 
 > Windows 请在 wsl 中运行命令
 
-#### 一键安装脚本
 
-DPanel 面板提供了 [一键脚本](/zh-cn/install/shell) 的安装方式，可快速安装、升级面板容器。
+###### [:rocket::rocket::rocket: 使用一键安装脚本可快速安装、升级 DPanle 面板容器](/zh-cn/install/shell)
 
-#### 安装标准版
+
+#### 标准版
 
 创建面板容器时，请根据实际情况修改映射端口。面板不能绑定 host 网络<span style="color: red">（请勿使用 --network host 参数!!!）</span> \
-标准版本中提供了域名绑定及Https证书功能，需要绑定 80 及 443 端口。如果你不需要这些功能，请安装 Lite 版
+标准版本中提供了域名绑定及证书功能，需要绑定 80 及 443 端口，如果你不需要这些功能，请使用 Lite 版。
 
 ```
 docker run -d --name dpanel --restart=always \
@@ -30,9 +30,9 @@ docker run -d --name dpanel --restart=always \
  -v /home/dpanel:/dpanel -e APP_NAME=dpanel dpanel/dpanel:latest
 ```
 
-#### 安装 Lite 版
+#### Lite 版
 
-> Lite版与标准版只有镜像地址区别，除不需要映射 80 及 443 端口外，其余配置均一致。后续命令演示均以【标准版】为例，请自行替换镜像地址。
+> Lite版与标准版只有镜像地址区别，除不再需要映射 80 及 443 端口外，其余配置均一致。后续命令演示均以【标准版】为例，请自行替换镜像地址。
 
 Lite 版的镜像中，不包含 nginx 及 acme.sh 等相关组件，需要域名转发请借助外部工具。
 
@@ -45,9 +45,8 @@ docker run -d --name dpanel --restart=always \
 
 #### 挂载 docker.sock 文件
 
-创建面板时需要挂载 docker.sock 文件用于与 docker 服务端通信，如果你的当前环境并非使用默认的 /var/run/docker.sock 文件，你可以在创建时指定 sock 文件挂载。
-
-如果查找出的 sock 文件不正确，请手动查找出正确的 sock 文件地址挂载或是采用 tcp 的方式连接 docker。
+创建面板时需要挂载 docker.sock 文件用于与 Docker 接口通信。
+如果你绑定的非默认 /var/run/docker.sock 文件或是运行在 podman 中，你可以在创建时指定 sock 文件挂载。
 
 ##### 查看当前环境的 sock 位置
 
@@ -62,6 +61,12 @@ docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Hos
 
 ```
 docker run -d --name dpanel ...(省略其它参数)... -v /Users/test/.docker/run/docker.sock:/var/run/docker.sock dpanel/dpanel:latest
+```
+
+##### Podman
+
+```
+docker run -d --name dpanel ...(省略其它参数)... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
 ```
 
 #### 通过 tcp 管理 docker
@@ -102,7 +107,7 @@ docker run -d --name dpanel ...(省略其它参数)... -e HTTP_PROXY="http://代
 
 #### 自定义登录 jwt 密钥
 
-> 执行面板【[控制命令](/zh-cn/install/ctrl)】时必须配置此值，配置时请务必使用强密码。
+> 执行面板[控制命令](/zh-cn/install/ctrl)时必须配置此值，配置时请务必使用强密码。
 
 ```
 docker run -d --name dpanel  ...(省略其它参数)... -e DP_JWT_SECRET=强密码随机字符串  dpanel/dpanel:latest
@@ -156,15 +161,13 @@ docker run -d --name dpanel ...(省略其它参数)... --add-host=host.dpanel.lo
 
 #### 更新或重建面板
 
-更新与重建的区别就在于是否保留之前面板挂载的目录（/dpanel）数据。\
-如果删除宿主机挂载目录或是重新指定目录，则为重建面板。
-
-更新面板则等价于保留挂载目录或是挂载存储卷，重建面板容器。[升级面板](/zh-cn/manual/setting/upgrade)
+更新与重建的区别就在于是否保留之前面板挂载的目录（/dpanel）数据。如果删除宿主机挂载目录或是重新指定目录，则为重建面板。
+如果保留原挂载目录数据及挂载配置，重建面板容器则表示升级，[查看面板升级命令](/zh-cn/manual/setting/upgrade)
 
 #### 手动创建文件管理插件
+
+在手动创建或是编辑文件管理插件容器时，指定容器标签 com.dpanel.container.auto_remove=true，则面板会在每次关闭浏览之后自动清理容器，配置为 false 时则不会清理。
 
 ```
 docker run -it -d --name dpanel-plugin-explorer --restart always --pid host --label com.dpanel.container.title="dpanel 文件管理助手" --label com.dpanel.container.auto_remove=false alpine
 ```
-
-在手动创建或是编辑文件管理插件容器时，指定容器标签 com.dpanel.container.auto_remove=true，则面板会在每次关闭浏览之后自动清理容器，配置为 false 时则不会清理。

@@ -30,7 +30,7 @@ services:
   dpanel:
     image: dpanel/dpanel:lite
     container_name: dpanel # 更改此名称后，请同步修改下方 APP_NAME 环境变量
-    restart: unless-stopped
+    restart: always
     ports:
       - 8807:8080 # 替换 8807 可更改面板访问端口
     environment:
