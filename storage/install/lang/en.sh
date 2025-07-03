@@ -26,7 +26,7 @@ TXT_INSTALL_NAME_INPUT="Enter name [Default:"
 TXT_INSTALL_NAME_RULE="Error: Container name must contain only letters, numbers, '-', '_', '.', and be 3-30 characters long."
 TXT_INSTALL_NAME_SET="Container name set to"
 
-TXT_UPGRADE_MESSAGE="Specified container already exists."
+TXT_UPGRADE_MESSAGE="Specified container name already exists. Script will use the old container's configuration. If you need to change the configuration, please change the container name."
 TXT_UPGRADE_CHOICE="Upgrade the panel container? [Y/n]: "
 TXT_UPGRADE_START="... Upgrading panel container"
 TXT_UPGRADE_EMPTY_PORT="Old container has no exposed ports"

@@ -26,7 +26,7 @@ TXT_INSTALL_NAME_INPUT="请输入名称 [默认:"
 TXT_INSTALL_NAME_RULE="错误: 容器名称仅支持字母、数字、-、_、., 长度为3-30个字符"
 TXT_INSTALL_NAME_SET="你指定的容器名称为"
 
-TXT_UPGRADE_MESSAGE="指定的容器已经存在"
+TXT_UPGRADE_MESSAGE="指定的容器已经存在，脚本会沿用旧容器的参数配置。如果需要更改配置，请更换容器名称。"
 TXT_UPGRADE_CHOICE="是否升级面板容器？ [Y/n]: "
 TXT_UPGRADE_START="... 正在升级面板容器"
 TXT_UPGRADE_EMPTY_PORT="旧容器未暴露任何端口"

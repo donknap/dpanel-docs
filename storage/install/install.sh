@@ -146,13 +146,21 @@ function upgrade_panel() {
   if [[ -n "$INSTALL_DNS" ]]; then
     RUN_COMMAND="$RUN_COMMAND --dns $INSTALL_DNS"
   else
-    DNS_LIST=$(docker inspect dpanel --format '{{range .HostConfig.DNS}}{{print "--dns " . " "}}{{end}}')
+    DNS_LIST=$(docker inspect "$INSTALL_CONTAINER_NAME" --format '{{range .HostConfig.DNS}}{{print "--dns " . " "}}{{end}}')
     if [[ -n "$DNS_LIST" ]]; then
       RUN_COMMAND="$RUN_COMMAND $DNS_LIST"
     fi
   fi
 
   CONTAINER_ID=$(docker inspect --format '{{.Id}}' "$INSTALL_CONTAINER_NAME")
+
+  RESTART_POLICY=$(docker inspect "$INSTALL_CONTAINER_NAME" --format '{{.HostConfig.RestartPolicy.Name}}')
+  if [ "$RESTART_POLICY" = "on-failure" ]; then
+      MAX_RETRIES=$(docker inspect "$INSTALL_CONTAINER_NAME" --format '{{.HostConfig.RestartPolicy.MaximumRetryCount}}')
+      RESTART_POLICY="$RESTART_POLICY:$MAX_RETRIES"
+  fi
+
+  RUN_COMMAND="$RUN_COMMAND --restart $RESTART_POLICY"
 
   log "$TXT_UPGRADE_BACKUP $INSTALL_CONTAINER_NAME"
   BACKUP_CONTAINER_NAME="$INSTALL_CONTAINER_NAME-${CONTAINER_ID:0:12}"
