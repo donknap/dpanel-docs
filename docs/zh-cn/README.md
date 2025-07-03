@@ -16,7 +16,6 @@ https://space.bilibili.com/346309066
 ## 交流群
 
 <img src="https://cdn.w7.cc/dpanel/qq.png" width="300" />
-<img src="https://cdn.w7.cc/dpanel/telegram.png?t=1" width="300" />
 
 ## 界面预览
 ![home.png](https://cdn.w7.cc/dpanel/home.png?t=1)
