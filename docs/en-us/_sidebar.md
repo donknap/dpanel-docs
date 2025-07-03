@@ -6,7 +6,7 @@
   * [Binary](en-us/install/source.md)  
   <!-- * [Custom Image](en-us/install/build.md)   -->
   <!-- * [Nginx Proxy Subpath](en-us/install/nginx-location.md)   -->
-  * [Control Commands](en-us/install/ctrl.md)  
+  * [Cli Tools](en-us/install/ctrl.md)
 <!-- * **Guide**   -->
   <!-- * **Container Management**   -->
     <!-- * [Quick Start](en-us/manual/container/create.md)   -->
