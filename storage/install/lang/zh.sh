@@ -15,11 +15,19 @@ TXT_SKIP_MESSAGE="跳过"
 TXT_COMMAND_NOT_FOUND="命令不存在, 请安装后继续 (apt install | yum install | apk add | brew install)"
 
 TXT_INSTALL_VERSION="选择你需要安装的版本"
-TXT_INSTALL_VERSION_NAME=("标准版 (需要绑定 80 及 443 端口)" "Lite版 (不包含域名转发相关功能)" "标准版 (Pro)" "Lite版 (Pro)" "标准版 (Beta)" "Lite版 (Beta)")
+TXT_INSTALL_VERSION_NAME=("标准版 (需要绑定 80 及 443 端口)" "Lite版 (不包含域名转发相关功能)" "标准版 (Pro)" "Lite版 (Pro)" "标准版 (Beta)" "Lite版 (Beta)" "生成 Docker TLS 证书")
 TXT_INSTALL_VERSION_CHOICE="输入你要安装的版本编号 [默认: 2]: "
 TXT_INSTALL_VERSION_IMAGE_SET="你安装使用的镜像为"
 TXT_INSTALL_VERSION_REGISTRY_CHOICE="选择镜像源 [默认: 1]: "
 TXT_INSTALL_VERSION_REGISTRY_NAME=("Docker Hub" "ALiYun")
+
+TXT_INSTALL_TLS_IP="请输入要 Docker 服务端主机 IP 地址: "
+TXT_INSTALL_TLS_ROOT_PATH="请输入证书生成的完整目录 [例如：/home/dockercert]: "
+TXT_INSTALL_TLS_TIP="请输入证书密码，回车后再次输入确认密码"
+TXT_INSTALL_TLS_TIP1="请输入证书密码"
+TXT_INSTALL_TLS_RESULT_PATH="证书目录为:"
+TXT_INSTALL_TLS_RESULT_PARAMS="请在 docker 的启动参数中增加以下参数"
+TXT_INSTALL_TLS_RESULT_HELP="查看帮助：https://dpanel.cc/#/zh-cn/manual/system/remote"
 
 TXT_INSTALL_NAME="设置 DPanel 容器名称, 更新面板时请配置为当前面板容器名称"
 TXT_INSTALL_NAME_INPUT="请输入名称 [默认:"
@@ -77,7 +85,7 @@ TXT_DOWNLOAD_ALL_ATTEMPTS_FAILED="所有下载尝试均已失败。您可以尝�
 TXT_DOWNLOAD_REGIONS_OTHER_THAN_CHINA="无需更改源"
 
 TXT_RESULT_FAILED="安装失败, 请确保 Docker 已经正常安装、镜像可以正常拉取、端口没有被占用"
-TXT_RESULT_THANK_YOU_WAITING="=================感谢您的耐心等待, 安装、升级已完成=================="
+TXT_RESULT_THANK_YOU_WAITING="=================感谢您的耐心等待, 安装、升级、证书生成已完成=================="
 TXT_RESULT_BROWSER_ACCESS_PANEL="请使用您的浏览器访问面板, 并初始化管理员帐号: "
 TXT_RESULT_EXTERNAL_ADDRESS="外部地址: "
 TXT_RESULT_INTERNAL_ADDRESS="内部地址: "

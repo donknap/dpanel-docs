@@ -24,7 +24,7 @@ IP_PUBLIC=
 IP_LOCAL="127.0.0.1"
 IP_REGION=""
 
-VERSION_CODES=("se" "le" "pse" "ple" "bse" "ble")
+VERSION_CODES=("se" "le" "pse" "ple" "bse" "ble", "tls")
 IMAGE_CODES=("hub" "aliyun")
 
 INSTALL_DIR="/home/dpanel"
@@ -212,6 +212,11 @@ function install_version() {
 
   if [ "$INSTALL_VERSION" = "ple" ]; then
     INSTALL_IMAGE="dpanel/dpanel-pe:lite"
+  fi
+
+   if [ "$INSTALL_VERSION" = "tls" ]; then
+    install_tls
+    return
   fi
 
   for i in "${!IMAGE_CODES[@]}"; do
@@ -521,6 +526,60 @@ function get_ip(){
     fi
 }
 
+function install_tls() {
+  while true; do
+    read -p "$TXT_INSTALL_TLS_IP" TLS_IP
+    if [[ "$TLS_IP" == "" ]]; then
+      continue
+    fi
+    break
+  done
+  
+  while true; do
+    read -p "$TXT_INSTALL_TLS_ROOT_PATH" TLS_ROOT_PATH
+    if [[ "$TLS_ROOT_PATH" == "" || "$TLS_ROOT_PATH" != /* ]]; then
+      continue
+    fi
+    break
+  done
+  
+  
+  mkdir -p $TLS_ROOT_PATH
+  log "$TXT_INSTALL_TLS_TIP" 
+  openssl genrsa -aes256 -out ${TLS_ROOT_PATH%/}/ca-key.pem 4096
+  log "$TXT_INSTALL_TLS_TIP1"
+  openssl req -new -x509 -days 36500 -subj "/C=CN/ST=Beijing/L=Beijing/O=DPANEL/OU=DPANEL/CN=DPANEL" -key ${TLS_ROOT_PATH%/}/ca-key.pem -sha256 -out ${TLS_ROOT_PATH%/}/ca.pem 
+  openssl genrsa -out ${TLS_ROOT_PATH%/}/server-key.pem 4096
+  openssl req -subj "/CN=$TLS_IP" -sha256 -new -key ${TLS_ROOT_PATH%/}/server-key.pem -out ${TLS_ROOT_PATH%/}/server.csr
+  echo subjectAltName = DNS:$TLS_IP,IP:$TLS_IP >> ${TLS_ROOT_PATH%/}/extfile.cnf
+  echo extendedKeyUsage = serverAuth >> ${TLS_ROOT_PATH%/}/extfile.cnf
+
+  log "$TXT_INSTALL_TLS_TIP1"
+  openssl x509 -req -days 365 -sha256 -in ${TLS_ROOT_PATH%/}/server.csr -CA ${TLS_ROOT_PATH%/}/ca.pem -CAkey ${TLS_ROOT_PATH%/}/ca-key.pem \
+  -CAcreateserial -out ${TLS_ROOT_PATH%/}/server-cert.pem -extfile ${TLS_ROOT_PATH%/}/extfile.cnf
+
+  log "$TXT_INSTALL_TLS_TIP1"
+  openssl genrsa -out ${TLS_ROOT_PATH%/}/key.pem 4096 && \
+  openssl req -subj '/CN=client' -new -key ${TLS_ROOT_PATH%/}/key.pem -out ${TLS_ROOT_PATH%/}/client.csr && \
+  echo extendedKeyUsage = clientAuth > ${TLS_ROOT_PATH%/}/extfile-client.cnf
+  openssl x509 -req -days 365 -sha256 -in ${TLS_ROOT_PATH%/}/client.csr -CA ${TLS_ROOT_PATH%/}/ca.pem -CAkey ${TLS_ROOT_PATH%/}/ca-key.pem \
+    -CAcreateserial -out ${TLS_ROOT_PATH%/}/cert.pem -extfile ${TLS_ROOT_PATH%/}/extfile-client.cnf
+  chmod -v 0400 ${TLS_ROOT_PATH%/}/ca-key.pem ${TLS_ROOT_PATH%/}/key.pem ${TLS_ROOT_PATH%/}/server-key.pem && \
+  chmod -v 0444 ${TLS_ROOT_PATH%/}/ca.pem ${TLS_ROOT_PATH%/}/server-cert.pem ${TLS_ROOT_PATH%/}/cert.pem
+  
+  log ""
+  log "$TXT_RESULT_THANK_YOU_WAITING"
+  log ""
+  log "$TXT_INSTALL_TLS_RESULT_PATH $TLS_ROOT_PATH"
+  log "$TXT_INSTALL_TLS_RESULT_PARAMS"
+  log "--tlsverify --tlscacert=${TLS_ROOT_PATH%/}/ca.pem --tlscert=${TLS_ROOT_PATH%/}/server-cert.pem --tlskey=${TLS_ROOT_PATH%/}/server-key.pem -H=0.0.0.0:2376"
+  log ""
+  log "$TXT_INSTALL_TLS_RESULT_HELP"
+  log ""
+  log "======================================================================="
+  exit 1
+}
+
 function result(){
   if [ $? -ne 0 ]; then
     log "$TXT_RESULT_FAILED"
@@ -549,7 +608,7 @@ function result(){
   log "$TXT_RESULT_PROJECT_WEBSITE"
   log "$TXT_RESULT_PROJECT_REPOSITORY"
   log ""
-  log "================================================================"
+  log "======================================================================="
 }
 
 log "$TXT_START_INSTALLATION"
@@ -573,7 +632,7 @@ function main(){
     get_ip
   fi
   
-  select_lang
+  # select_lang
   check_root
 
   if [ "$(check_uname alpine)" != "" ];then 
