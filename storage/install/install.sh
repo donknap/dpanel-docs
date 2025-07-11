@@ -632,7 +632,7 @@ function main(){
     get_ip
   fi
   
-  # select_lang
+  select_lang
   check_root
 
   if [ "$(check_uname alpine)" != "" ];then 
