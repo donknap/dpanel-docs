@@ -251,7 +251,7 @@ function install_name() {
     if docker ps -a --format '{{.Names}}' | grep -q "^${INSTALL_CONTAINER_NAME}$"; then
       log "$TXT_UPGRADE_MESSAGE"
       read -p "$TXT_UPGRADE_CHOICE" DO_UPGRADE
-      if [ "$DO_UPGRADE" == "y" ]; then
+      if [[ "$DO_UPGRADE" =~ ^[yY]$ ]]; then
         upgrade_panel $1
       else
         continue
