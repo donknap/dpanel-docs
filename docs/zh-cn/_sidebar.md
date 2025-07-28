@@ -29,22 +29,23 @@
     * [管理外部任务](zh-cn/manual/compose/external.md)
     * [批量拉取镜像](zh-cn/manual/compose/image-pull.md)
     * [迁移其它平台](zh-cn/manual/compose/third-party.md)
-  * **创建镜像**
+  * **Swarm**
+    * [介绍](zh-cn/manual/swarm/quick.md)
+  * **镜像管理**
     * [介绍](zh-cn/manual/image/create.md)
     * [Dockerfile](zh-cn/manual/image/create-dockerfile.md)
     * [Zip&Git](zh-cn/manual/image/create-zip.md)
     * [容器Tar包](zh-cn/manual/image/create-container.md)
     * [镜像Tar包](zh-cn/manual/image/create-image.md)
   * **系统设置**
-    * [主机管理](zh-cn/manual/setting/host.md)
-    * [远程主机](zh-cn/manual/setting/docker-env.md)
+    * [多Docker服务端](zh-cn/manual/setting/docker-env.md)
     * [容器访问ip](zh-cn/manual/setting/server.md)
+    * [宿主机管理](zh-cn/manual/setting/host.md)
     * [应用商店](zh-cn/manual/setting/store.md)
     * [脚本模板](zh-cn/manual/setting/cron-template.md)
     * [更新DPanel面板](zh-cn/manual/setting/upgrade.md)
   * **其它**
     * [Docker 远程连接](zh-cn/manual/system/remote.md)
-    <!-- * [更新容器](zh-cn/manual/container/update.md) -->
     * [常见问题](zh-cn/manual/system/qa.md)
     * [许可协议](zh-cn/manual/license)
     * [更新记录](zh-cn/manual/system/upgrade.md)

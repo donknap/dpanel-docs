@@ -21,29 +21,15 @@ apk add --no-cache --update vim
 
 ### 执行脚本
 
-#### 单行脚本
-
-如果执行脚本中只包含一条命令，直接输入调用命令及参数即可
-
 ```
 /app/server/dpanel
-```
-
-#### 多行脚本
-
-执行多行脚本时必须将命令包含在 sh 或是 bash 命令的 -c 参数下。
-
-```
-/bin/sh -c "/app/server/dpanel
 ls
-date"
+date
 ```
 
-```
-/bin/bash -c "/app/server/dpanel
-ls
-date"
-```
+### 执行环境
+
+执行环境用于配置脚本最终在哪个解释器下执行，根据当前容器实际情况配置 sh 或是 bash
 
 #### 使用面板控制命令
 
