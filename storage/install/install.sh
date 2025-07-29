@@ -163,17 +163,24 @@ function upgrade_panel() {
 
   RUN_COMMAND="$RUN_COMMAND --restart $RESTART_POLICY"
 
+  ADD_HOSTS=$(docker inspect "$INSTALL_CONTAINER_NAME" --format '{{range .HostConfig.ExtraHosts}}{{print "--add-host " . " "}}{{end}}')
+  if [[ -n "$ADD_HOSTS" ]]; then
+    RUN_COMMAND="$RUN_COMMAND $ADD_HOSTS"
+  fi
+
+  echo $1
+  
   log "$TXT_UPGRADE_BACKUP $INSTALL_CONTAINER_NAME"
   BACKUP_CONTAINER_NAME="$INSTALL_CONTAINER_NAME-${CONTAINER_ID:0:12}"
 
   if [[ $1 == "test" ]]; then
     echo -e "docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME" \n"
-    echo -e "docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local --add-host host.dpanel.local:host-gateway $RUN_COMMAND $INSTALL_IMAGE \n"
+    echo -e "docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local $RUN_COMMAND $INSTALL_IMAGE \n"
     exit 1
   fi
 
   docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME"
-  docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local --add-host host.dpanel.local:host-gateway $RUN_COMMAND $INSTALL_IMAGE
+  docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local $RUN_COMMAND $INSTALL_IMAGE
 
   result
   exit 1
