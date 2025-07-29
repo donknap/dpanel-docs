@@ -48,7 +48,7 @@ function log() {
         *"$TXT_SUCCESS_MESSAGE"* )
             echo -e "${GREEN}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
             ;;
-        *"$TXT_IGNORE_MESSAGE"*|*"$TXT_SKIP_MESSAGE"* )
+        *"$TXT_IGNORE_MESSAGE"*|*"$TXT_SKIP_MESSAGE"*|*"$TXT_INSTALL_DOKCER_PODMAN"* )
             echo -e "${YELLOW}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
             ;;
         * )
@@ -97,13 +97,13 @@ function upgrade_panel() {
 
   
   if [[ "$INSTALL_IMAGE" == *lite ]]; then
-    PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{if eq $p "8080/tcp"}}{{range $conf}}{{printf "-p %s:%s " (index . "HostPort") $p}}{{end}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
+    PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{if eq $p "8080/tcp"}}{{range $conf}}{{printf "-p %s:%s " .HostPort $p}}{{end}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
     if [ -z "$PORTS" ]; then
       log $TXT_UPGRADE_EMPTY_PORT
       PORTS=""
     fi
   else
-    PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{range $conf}}{{printf "-p %s:%s " (index . "HostPort") $p}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
+    PORTS=$(docker inspect --format='{{range $p, $conf := .HostConfig.PortBindings}}{{range $conf}}{{printf "-p %s:%s " .HostPort $p}}{{end}}{{end}}' $INSTALL_CONTAINER_NAME)
     if [ -z "$PORTS" ]; then
       log $TXT_UPGRADE_EMPTY_PORT
       PORTS=""
@@ -146,7 +146,7 @@ function upgrade_panel() {
   if [[ -n "$INSTALL_DNS" ]]; then
     RUN_COMMAND="$RUN_COMMAND --dns $INSTALL_DNS"
   else
-    DNS_LIST=$(docker inspect "$INSTALL_CONTAINER_NAME" --format '{{range .HostConfig.DNS}}{{print "--dns " . " "}}{{end}}')
+    DNS_LIST=$(docker inspect "$INSTALL_CONTAINER_NAME" --format '{{range .HostConfig.Dns}}{{print "--dns " . " "}}{{end}}')
     if [[ -n "$DNS_LIST" ]]; then
       RUN_COMMAND="$RUN_COMMAND $DNS_LIST"
     fi
@@ -636,7 +636,9 @@ function main(){
   check_root
 
   if ! command -v docker &> /dev/null && command -v podman &> /dev/null; then
-    alias docker=podman
+    docker() {
+        podman "$@"
+    }
     log "$TXT_INSTALL_DOKCER_PODMAN"
   elif [ "$(check_uname alpine)" != "" ];then 
     install_docker_alpine
