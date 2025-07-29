@@ -24,7 +24,7 @@ IP_PUBLIC=
 IP_LOCAL="127.0.0.1"
 IP_REGION=""
 
-VERSION_CODES=("se" "le" "pse" "ple" "bse" "ble", "tls")
+VERSION_CODES=("se" "le" "pse" "ple" "bse" "ble" "tls")
 IMAGE_CODES=("hub" "aliyun")
 
 INSTALL_DIR="/home/dpanel"
@@ -34,6 +34,7 @@ INSTALL_IMAGE="dpanel/dpanel:lite"
 INSTALL_PROXY=""
 INSTALL_DNS=""
 INSTALL_SOCK_FILE="/var/run/docker.sock"
+INSTALL_IN_PODMAN=false
 
 BACKUP_CONTAINER_NAME=""
 
@@ -214,7 +215,7 @@ function install_version() {
     INSTALL_IMAGE="dpanel/dpanel-pe:lite"
   fi
 
-   if [ "$INSTALL_VERSION" = "tls" ]; then
+  if [ "$INSTALL_VERSION" = "tls" ]; then
     install_tls
     return
   fi
@@ -328,12 +329,21 @@ function install_dns() {
 }
 
 function install_sock() {
-  DEFAULT_SOCK_FILE=$(docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Host}}')
+  if $INSTALL_IN_PODMAN; then
+    DEFAULT_SOCK_FILE="/run/podman/podman.sock"
+    INSTALL_SOCK_FILE=$DEFAULT_SOCK_FILE
+  else
+    DEFAULT_SOCK_FILE=$(docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Host}}')
+  fi
+  
 
   log "$TXT_INSTALL_SOCK_TIPS_1 ${DEFAULT_SOCK_FILE#unix://}"
   log "$TXT_INSTALL_SOCK_TIPS_2"
   log "sudo ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
   log "$TXT_INSTALL_SOCK_TIPS_3"
+  log "$TXT_INSTALL_SOCK_TIPS_4"
+  log "$TXT_INSTALL_SOCK_TIPS_5"
+  log "$TXT_INSTALL_SOCK_TIPS_6"
 
   if read -p "$TXT_INSTALL_SOCK $INSTALL_SOCK_FILE]: " DEFAULT_SOCK_FILE;then
     if [[ -n "$DEFAULT_SOCK_FILE" ]]; then
@@ -345,7 +355,7 @@ function install_sock() {
 }
 
 function install_docker(){
-  if which docker >/dev/null 2>&1; then
+  if command -v docker >/dev/null 2>&1; then
     docker_version=$(docker --version | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
     major_version=${docker_version%%.*}
     minor_version=${docker_version##*.}
@@ -474,7 +484,7 @@ function install_docker(){
 }
 
 function install_docker_alpine() {
-  if which docker >/dev/null 2>&1; then
+  if command -v docker >/dev/null 2>&1; then
     docker_version=$(docker --version | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
     major_version=${docker_version%%.*}
     minor_version=${docker_version##*.}
@@ -633,14 +643,17 @@ function main(){
   fi
   
   select_lang
-  check_root
-
   if ! command -v docker &> /dev/null && command -v podman &> /dev/null; then
     docker() {
         podman "$@"
     }
+    INSTALL_IN_PODMAN=true
     log "$TXT_INSTALL_DOKCER_PODMAN"
-  elif [ "$(check_uname alpine)" != "" ];then 
+  else
+    check_root
+  fi
+
+  if [ "$(check_uname alpine)" != "" ];then 
     install_docker_alpine
   else
     install_docker
@@ -654,7 +667,10 @@ function main(){
   install_port
   install_sock
 
-  DOCKER_CMD="run -d --name ${INSTALL_CONTAINER_NAME} --restart=always --hostname dpanel.pod.dpanel.local --add-host host.dpanel.local:host-gateway"
+  DOCKER_CMD="run -d --name ${INSTALL_CONTAINER_NAME} --restart=always --hostname dpanel.pod.dpanel.local"
+  if ! $INSTALL_IN_PODMAN; then 
+    DOCKER_CMD="$DOCKER_CMD --add-host host.dpanel.local:host-gateway"
+  fi
   DOCKER_CMD="$DOCKER_CMD -e APP_NAME=${INSTALL_CONTAINER_NAME}"
   if [[ -n "$INSTALL_PROXY" ]]; then
     DOCKER_CMD="$DOCKER_CMD -e HTTP_PROXY=$INSTALL_PROXY -e HTTPS_PROXY=$INSTALL_PROXY"
