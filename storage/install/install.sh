@@ -277,7 +277,12 @@ function install_dir(){
           INSTALL_DIR="/home/${INSTALL_CONTAINER_NAME}"
         fi
     fi
-    log "$TXT_INSTALL_DIR_SET $INSTALL_DIR"
+    if mkdir -p "$INSTALL_DIR"; then
+      log "$TXT_INSTALL_DIR_SET $INSTALL_DIR"
+    else
+      log $TXT_INSTALL_DIR_MAKE_FAILED
+      install_dir
+    fi
 }
 
 function install_port(){
@@ -340,10 +345,10 @@ function install_sock() {
   log "$TXT_INSTALL_SOCK_TIPS_1 ${DEFAULT_SOCK_FILE#unix://}"
   log "$TXT_INSTALL_SOCK_TIPS_2"
   log "sudo ln -s -f ${DEFAULT_SOCK_FILE#unix://} /var/run/docker.sock"
-  log "$TXT_INSTALL_SOCK_TIPS_3"
   log "$TXT_INSTALL_SOCK_TIPS_4"
   log "$TXT_INSTALL_SOCK_TIPS_5"
   log "$TXT_INSTALL_SOCK_TIPS_6"
+  log "$TXT_INSTALL_SOCK_TIPS_3"
 
   if read -p "$TXT_INSTALL_SOCK $INSTALL_SOCK_FILE]: " DEFAULT_SOCK_FILE;then
     if [[ -n "$DEFAULT_SOCK_FILE" ]]; then
