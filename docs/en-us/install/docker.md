@@ -38,6 +38,28 @@ docker run -d --name dpanel --restart=always \
  -v /home/dpanel:/dpanel dpanel/dpanel:lite
  ```
 
+#### Podman
+
+Podman is compatible with Docker commands. Simply replace docker in the creation command with podman and run it. For example:
+
+```
+podman run -d --name dpanel ... dpanel/dpanel:latest
+```
+
+##### Rootless
+
+Podman supports running in rootless mode. When creating DPanel container, you need to activate the podman.sock session of the non-root user.
+
+```
+systemctl --user enable --now podman.socket
+```
+
+Mount the user's podman.sock to the DPanel container /var/run/docker.sock file.
+
+```
+podman run -d --name dpanel ... -v /run/user/1000/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
+```
+
 #### Mount docker.sock File
 
 When creating a DPanel, you need to mount the docker.sock file for docker api. If your docker does not use the default /var/run/docker.sock file, you can specify the sock file to mount when creating it.
@@ -59,13 +81,7 @@ docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Hos
 docker run -d --name dpanel ... -v /Users/test/.docker/run/docker.sock:/var/run/docker.sock dpanel/dpanel:latest
 ```
 
-##### Podman
-
-```
-podman run -d --name dpanel ... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
-```
-
- #### Custom Management Port
+#### Custom Management Port
 
 By default, after the DPanel is installed, the management url is http://127.0.0.1:8807. \
 You can also use the -p parameter to specify the management port.

@@ -167,13 +167,11 @@ function upgrade_panel() {
   if [[ -n "$ADD_HOSTS" ]]; then
     RUN_COMMAND="$RUN_COMMAND $ADD_HOSTS"
   fi
-
-  echo $1
   
   log "$TXT_UPGRADE_BACKUP $INSTALL_CONTAINER_NAME"
   BACKUP_CONTAINER_NAME="$INSTALL_CONTAINER_NAME-${CONTAINER_ID:0:12}"
 
-  if [[ $1 == "test" ]]; then
+  if [[ $1 == "test" || $2 == "test" ]]; then
     echo -e "docker stop $INSTALL_CONTAINER_NAME && docker rename "$INSTALL_CONTAINER_NAME" "$BACKUP_CONTAINER_NAME" \n"
     echo -e "docker run -d --pull always --name $INSTALL_CONTAINER_NAME --hostname dpanel.pod.dpanel.local $RUN_COMMAND $INSTALL_IMAGE \n"
     exit 1

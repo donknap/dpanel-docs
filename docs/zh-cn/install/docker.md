@@ -43,6 +43,29 @@ docker run -d --name dpanel --restart=always \
  -v /home/dpanel:/dpanel dpanel/dpanel:lite
  ```
 
+
+#### Podman
+
+Podman 与 Docker 命令兼容，将文档中面板创建命令中的 docker 替换成 podman 运行即可，例如：
+
+```
+podman run -d --name dpanel ...(省略其它参数)... dpanel/dpanel:latest
+```
+
+##### Rootless
+
+Podman 支持在非 root 用户权限管理容器. 在创建面板时，你需要在非 root 用户在激活该用户的 podman.sock 会话
+
+```
+systemctl --user enable --now podman.socket
+```
+
+将用户的 podman.sock 挂载至面板容器的 /var/run/docker.sock 文件即可。
+
+```
+podman run -d --name dpanel ...(省略其它参数)... -v /run/user/1000/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
+```
+
 #### 挂载 docker.sock 文件
 
 创建面板时需要挂载 docker.sock 文件用于与 Docker 接口通信。
@@ -61,12 +84,6 @@ docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Hos
 
 ```
 docker run -d --name dpanel ...(省略其它参数)... -v /Users/test/.docker/run/docker.sock:/var/run/docker.sock dpanel/dpanel:latest
-```
-
-##### Podman
-
-```
-podman run -d --name dpanel ...(省略其它参数)... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
 ```
 
 #### 通过 tcp 管理 docker
