@@ -66,7 +66,7 @@ docker run -d --name dpanel ...(省略其它参数)... -v /Users/test/.docker/ru
 ##### Podman
 
 ```
-docker run -d --name dpanel ...(省略其它参数)... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
+podman run -d --name dpanel ...(省略其它参数)... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
 ```
 
 #### 通过 tcp 管理 docker

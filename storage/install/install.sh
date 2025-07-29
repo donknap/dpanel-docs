@@ -635,7 +635,10 @@ function main(){
   select_lang
   check_root
 
-  if [ "$(check_uname alpine)" != "" ];then 
+  if ! command -v docker &> /dev/null && command -v podman &> /dev/null; then
+    alias docker=podman
+    log "$TXT_INSTALL_DOKCER_PODMAN"
+  elif [ "$(check_uname alpine)" != "" ];then 
     install_docker_alpine
   else
     install_docker

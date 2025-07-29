@@ -62,7 +62,7 @@ docker run -d --name dpanel ... -v /Users/test/.docker/run/docker.sock:/var/run/
 ##### Podman
 
 ```
-docker run -d --name dpanel ... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
+podman run -d --name dpanel ... -v /run/podman/podman.sock:/var/run/docker.sock dpanel/dpanel:latest
 ```
 
  #### Custom Management Port
