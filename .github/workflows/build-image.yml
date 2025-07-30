@@ -23,6 +23,6 @@ jobs:
       - name: Docker BuildX
         run: |
           docker buildx build \
-          -t registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:doc \
+          -t registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:doc-vitepress \
           --platform linux/amd64 \
           . --push

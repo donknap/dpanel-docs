@@ -74,7 +74,7 @@ MYSQL_PASSWORD=789456
 
 ### 使用环境变量区分环境差异
 
-如果你有多个【[Docker 环境](zh-cn/manual/setting/docker-env)】在部署希望根据不同的环境使用不同的镜像版本，可以给 image 声明一个环境变量。
+如果你有多个【[Docker 环境](/manual/setting/docker-env)】在部署希望根据不同的环境使用不同的镜像版本，可以给 image 声明一个环境变量。
 
 ```
 services:

@@ -14,7 +14,7 @@ DPanel provides basic functionality for container management such as containers,
 You can add and manage multiple Docker Engine through Docker Api and SSH, and support the management of hosts through ssh and sftp.
 
 
-###### [:point_right::point_right::point_right: More Feature](/zh-cn/manual/pro?id=%e4%bb%b7%e6%a0%bc%e5%8f%8a%e5%8a%9f%e8%83%bd)
+###### [:point_right::point_right::point_right: More Feature](/docs/en-US/pro?id=%e4%bb%b7%e6%a0%bc%e5%8f%8a%e5%8a%9f%e8%83%bd)
 
 ## Youtube
 

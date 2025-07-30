@@ -105,7 +105,7 @@ chmod 755 ./runtime/dpanel
 
 ### Docker is not installed on the system
 
-If Docker is not installed on system, after starting the DPanel, you can configure the default remote Docker server through [Multiple Environment Management](zh-cn/manual/setting/docker-env.md).
+If Docker is not installed on system, after starting the DPanel, you can configure the default remote Docker server through [Multiple Environment Management](/manual/setting/docker-env.md).
 
 #### Install docker-cli command
 

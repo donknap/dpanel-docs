@@ -10,14 +10,14 @@
 
 #### 通过应用商店创建
 
-> 默认情况下【应用商店】菜单会不会显示出来，需要你先添加一个第三方的应用商店。[如何添加？](/zh-cn/manual/setting/store)
+> 默认情况下【应用商店】菜单会不会显示出来，需要你先添加一个第三方的应用商店。[如何添加？](/manual/setting/store)
 
 ![compose-store-1](https://cdn.w7.cc/dpanel/compose-store-1.png)
 
 点击安装后，会跳转至 Compose 【创建任务】页面，完善、修改环境变量及相关信息就可以进行部署容器。
 
 通过应用商店安装后，相关的文件会同步至 /dpanel/compose 目录中。\
-为了保证应用商店中的 yaml 文件可以随时更新，在修改 yaml 配置时建议采用[【覆盖配置】](/zh-cn/manual/compose/override)
+为了保证应用商店中的 yaml 文件可以随时更新，在修改 yaml 配置时建议采用[【覆盖配置】](/manual/compose/override)
 
 #### 通过 yaml 文本创建
 
@@ -79,7 +79,7 @@ https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/refs/heads/main/Ap
 
 ##### 开启配置
 
-查看【[管理远程客户端](/zh-cn/manual/setting/docker-env?id=开启独立-compose-目录)】开启独立目录
+查看【[管理远程客户端](/manual/setting/docker-env?id=开启独立-compose-目录)】开启独立目录
 
 独立 compose 目录以 compose- 为前缀，以当前环境名称结尾。\
 例如：远程 docker 环境名为 test123，则目录名称为 compose-test123。其内部结构与默认的 compose 目录一致。

@@ -11,7 +11,7 @@
 #### 通过 docker api 添加
 
 通过 docker api 管理远程主机时，需要先将远程主机开启 tcp 监听模式。如果该主机暴露在公网内，必须同时开启 TLS 模式。
-[开启 docker 远程连接](zh-cn/manual/system/remote.md)
+[开启 docker 远程连接](/manual/system/remote.md)
 
 #### 通过 SSH 添加
 

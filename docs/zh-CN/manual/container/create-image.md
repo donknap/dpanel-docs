@@ -47,9 +47,3 @@ DPanel 提供了一些常用的基础镜像帮助快速的创建未提供镜像�
 #### go
 
 - dpanel/base-image:go-1.21
-
-
-# 演示
-
-- [Wordpress - php 安装教程](/zh-cn/manual/container-create-image-php)
-- [SurveyKing - java 安装教程](/zh-cn/manual/container-create-image-java)

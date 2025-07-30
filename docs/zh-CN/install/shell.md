@@ -57,7 +57,7 @@ curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
 
 ## 生成 Docker Api TLS 证书
 
-采用安装脚本生成 Docker Api TLS 证书后查看 [开启 Docker TCP 远程连接](/docs/zh-CN/manual/system/remote.md) 配置证书。
+采用安装脚本生成 Docker Api TLS 证书后查看 [开启 Docker TCP 远程连接](/manual/system/remote.md) 配置证书。
 
 ## 预览
 

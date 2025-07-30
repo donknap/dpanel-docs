@@ -12,13 +12,13 @@ hero:
   actions:
     - theme: alt
       text: 什么是 DPanel?
-      link: /docs/zh-CN/README
+      link: /README
     - theme: alt
       text: 专业版
-      link: /docs/zh-CN/pro
+      link: /pro
     - theme: brand
       text: 快速开始
-      link: /docs/zh-CN/install/docker
+      link: /install/docker
 features:
   - title: 多语言支持
     icon: 🇨🇳

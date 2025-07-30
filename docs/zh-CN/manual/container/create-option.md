@@ -108,13 +108,13 @@ Docker 的默认 bridge 网络无法修改容器的 ip 地址。
 
 #### 健康检查
 
-> --health-cmd='curl -f http://localhost/' \
+> --health-cmd='curl -f http://127.0.0.1/' \
   --health-interval=10s --health-timeout=5s --health-retries=3 
 
 | 脚本执行环境 | 脚本示例 | 描述 | 
 | --- | --- | --- |
-| 在 Docker 环境中执行 | curl -f http://localhost:80 | docker 将请求容器内的80端口地址，测试是否可以访问 |
-| 在容器内执行 | curl -f http://localhost:80 \|\| exit 1 | 在容器内的 shell 环境中执行命令，依赖容器内是否有 curl 命令 |
+| 在 Docker 环境中执行 | curl -f http://127.0.0.1:80 | docker 将请求容器内的80端口地址，测试是否可以访问 |
+| 在容器内执行 | curl -f http://127.0.0.1:80 \|\| exit 1 | 在容器内的 shell 环境中执行命令，依赖容器内是否有 curl 命令 |
 
 #### 附加执行脚本
 

@@ -2,7 +2,7 @@
 
 :::danger DPanel 面板为了隔离权限，在管理容器文件时，会自动创建 dpanel-plugin-explorer 容器。
 此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动销毁该容器。\
-此插件容器使用 alpine 镜像，你也可以 [手动创建](/zh-cn/install/docker?id=手动创建文件管理插件)，名称保持为 dpanel-plugin-explorer 即可。\
+此插件容器使用 alpine 镜像，你也可以 [手动创建](/install/docker?id=手动创建文件管理插件)，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ 
 :::
 
@@ -15,7 +15,7 @@ Windows 请在 wsl 中运行命令
 
 <br />
 
-###### [:rocket::rocket::rocket: 使用一键安装脚本可快速安装、升级 DPanle 面板容器](/zh-cn/install/shell)
+###### [:rocket::rocket::rocket: 使用一键安装脚本可快速安装、升级 DPanle 面板容器](/install/shell)
 
 ## 标准版
 
@@ -95,7 +95,7 @@ docker context inspect $(docker context show)  --format '{{.Endpoints.docker.Hos
 
 如果你想通过 Docker Api 的形式管理 Docker，你可以创建面板容器时不挂载 /var/run/docker.sock 文件。
 
-参考 [开启 docker tcp 连接方式](zh-cn/manual/system/remote) 配置 Docker Tcp 连接。
+参考 [开启 docker tcp 连接方式](/manual/system/remote) 配置 Docker Tcp 连接。
 在面板容器创建完后，通过【配置默认 docker 客户端】配置接口地址即可。
 
 ## 自定义面板访问端口
@@ -119,7 +119,7 @@ docker run -d --name dpanel ...(省略其它参数)... -e HTTP_PROXY="http://代
 ## 自定义登录 jwt 密钥
 
 :::danger
-执行面板[控制命令](/zh-cn/install/ctrl)时必须配置此值，配置时请务必使用强密码。
+执行面板[控制命令](/install/ctrl)时必须配置此值，配置时请务必使用强密码。
 :::
 
 ```
@@ -129,7 +129,7 @@ docker run -d --name dpanel  ...(省略其它参数)... -e DP_JWT_SECRET=强密�
 ## 自定义宿主机目录存储
 
 :::tip
- 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请务必将挂载 /dpanel 目录到宿主机，在目录中新建 compose 任务查看 [创建 compose 任务](zh-cn/manual/compose/create?id=通过挂载存储路径的方式创建)
+ 如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请务必将挂载 /dpanel 目录到宿主机，在目录中新建 compose 任务查看 [创建 compose 任务](/manual/compose/create?id=通过挂载存储路径的方式创建)
 :::
 
 面板在运行时会产生一些数据，并存储在面板容器内的的 /dpanel 目录中。如果在创建时没有挂载该目录，docker 会自动生成该目录的存储卷 \
@@ -143,14 +143,14 @@ docker run -d --name dpanel  ...(省略其它参数)... -v 指定宿主机目录
 
 ## 配置面板管理员用户名密码
 
-创建完成面板容器后，首次进入需要先配置管理员用户和密码。如果你忘记密码可以使用 [重置用户名密码](/zh-cn/install/ctrl?id=重置管理员用户)
+创建完成面板容器后，首次进入需要先配置管理员用户和密码。如果你忘记密码可以使用 [重置用户名密码](/install/ctrl?id=重置管理员用户)
 
 
 ## 独立运行
 
 > 推荐你使用容器的方式创建面板，这样更具有兼容性。
 
-面板也支持直接使用二进制的方式运行，你可以在创建面板后，再配置默认的 docker 连接客户端，[配置默认 Docker 服务端](/zh-cn/manual/setting/docker-env?id=配置默认-docker-环境)
+面板也支持直接使用二进制的方式运行，你可以在创建面板后，再配置默认的 docker 连接客户端，[配置默认 Docker 服务端](/manual/setting/docker-env?id=配置默认-docker-环境)
 
 ## 自定义面板名称
 
@@ -177,7 +177,7 @@ docker run -d --name dpanel ...(省略其它参数)... --add-host=host.dpanel.lo
 ## 更新或重建面板
 
 更新与重建的区别就在于是否保留之前面板挂载的目录（/dpanel）数据。如果删除宿主机挂载目录或是重新指定目录，则为重建面板。
-如果保留原挂载目录数据及挂载配置，重建面板容器则表示升级，[查看面板升级命令](/zh-cn/manual/setting/upgrade)
+如果保留原挂载目录数据及挂载配置，重建面板容器则表示升级，[查看面板升级命令](/manual/setting/upgrade)
 
 ## 手动创建文件管理插件
 

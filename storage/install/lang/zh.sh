@@ -27,7 +27,7 @@ TXT_INSTALL_TLS_TIP="请输入证书密码，回车后再次输入确认密码"
 TXT_INSTALL_TLS_TIP1="请输入证书密码"
 TXT_INSTALL_TLS_RESULT_PATH="证书存放目录为:"
 TXT_INSTALL_TLS_RESULT_PARAMS="请在 docker 的启动参数中增加以下参数"
-TXT_INSTALL_TLS_RESULT_HELP="查看帮助：https://dpanel.cc/#/zh-cn/manual/system/remote"
+TXT_INSTALL_TLS_RESULT_HELP="查看帮助：https://dpanel.cc/docs/zh-CN/manual/system/remote"
 
 TXT_INSTALL_NAME="设置 DPanel 容器名称, 更新面板时请配置为当前面板容器名称"
 TXT_INSTALL_NAME_INPUT="请输入名称 [默认:"
