@@ -27,17 +27,22 @@
 
 ## 使用
 
-### 非 root
+:::code-group
 
+```shell [Root用户]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
 ```
+
+```shell [普通用户]
 sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
 ```
 
-### root 或是 Podman
-
-```
+```shell [Podman]
 curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
 ```
+:::
+
+
 
 ## 调试模式
 
