@@ -16,17 +16,23 @@ export const enUSConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 
     sidebar: [
       {
-        text: 'Quick',
+        text: 'Install',
         collapsed: false,
         items: [
           { text: 'Install Script', link: getLink("install/shell") },
-          { text: 'Docker', link: getLink("install/docker") },
-          { text: 'Compose', link: getLink("install/compose") },
-          { text: 'In Docker', link: getLink("install/dind") },
-          { text: 'Binary', link: getLink("install/source") },
-          // { text: '自定义镜像', link: getLink("install/build") },
-          // { text: '域名子目录', link: getLink("install/nginx-location") },
-          { text: 'Control Command', link: getLink("install/ctrl") }
+          { text: 'Install with Docker', link: getLink("install/docker") },
+          { text: 'Install with Compose', link: getLink("install/compose") },
+          { text: 'Install with binary', link: getLink("install/source") },
+          { text: 'Install with DinD', link: getLink("install/dind") },
+        ]
+      },
+      {
+        text: 'Extended',
+        collapsed: false,
+        items: [
+          { text: 'Custom image', link: getLink("install/custom-image") },
+          { text: 'Bind domain', link: getLink("install/bind-domain") },
+          { text: 'Control command', link: getLink("install/ctrl") }
         ]
       },
     ]

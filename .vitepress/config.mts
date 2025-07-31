@@ -58,6 +58,9 @@ export default defineConfig({
       level: [2, 4]
     },
   },
+  markdown: {
+    lineNumbers: true
+  },
   lastUpdated: true,
   locales: {
     root: { label: '简体中文', ...zhCNConfig },

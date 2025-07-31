@@ -11,13 +11,13 @@ hero:
     alt: DPanel
   actions:
     - theme: alt
-      text: What is DPanel?
+      text: Overview
       link: /docs/en-US/README
     - theme: alt
       text: Pro Edition
       link: /docs/en-US/pro
     - theme: brand
-      text: Quick Start
+      text: Start
       link: /docs/en-US/install/docker
 features:
   - title: Multi-language Support

@@ -2,48 +2,55 @@
 
 The install script generates and runs the docker run or podman run command to create DPanel container through wizard mode.
 
-- Please install bash first in Alpine system
+:::danger Dependencies
+Before using the install script, make sure the system contains bash and curl commands, and use package management tools such as apt, yum, and apk to install dependencies.
+:::
 
-```
- apk add bash
-```
+### No Docker ?
 
-### Install Docker Engine
+:::tip 
+If you want to use Podman as a container management client, please install by hand before running install script
+:::
 
-> If you want to use Podman as a container management client, please install it yourself before running the install script
+If the host doesn't have Docker or Podman installed, the install script will install Docker using the https://get.docker.com script.
 
-When the host does not have a Docker or Podman, the install script will try to install the Docker Engine through the official script at https://get.docker.com. \
-The script has been tested under Debian, Ubuntu, and Alpine, Debian is recommended.
+The script has been tested on Debian, Ubuntu, and Alpine distributions; Debian is recommended.
 
-When the script cannot install the Docker environment normally, please ensure that the host machine has installed the Docker environment normally before running the script.
+If the script fails to install Docker, please install Docker or Podman by hand.
 
 ### Upgrade DPanel
 
-When running the install script, if the specified container name already exists, the install script will upgrade DPanel container. The old container will be stopped and backed up.
+You can use install script to upgrade the DPanel container already installed on your system.
 
+After running the install script, specify the name of the DPanel container you want to upgrade.
 
-### Run Script
+The script will stop and back up the old container, then create the new DPanel container using the original container configuration and the latest image.
 
-#### Rootless
+## Use
+
+### Rootless
 
 ```
 sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
 ```
 
-#### Root Or Podman
+### Root Or Podman
 
 ```
 curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
 ```
 
-#### Debug
+## Debug
 
-Output commands
+Output create commands
 
 ```
 curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
 ```
+## Generate Docker API TLS certificate
 
-### Priview
+After using the install script to generate a Docker API TLS certificate, configure the certificate according to [Protect the Docker daemon socket](https://docs.docker.com/engine/security/protect-access/).
+
+## Priview
 
 ![install-1](https://cdn.w7.cc/dpanel/install-1.png?t=1)

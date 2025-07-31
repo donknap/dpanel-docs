@@ -11,7 +11,7 @@ hero:
     alt: DPanel
   actions:
     - theme: alt
-      text: 什么是 DPanel?
+      text: 面板介绍
       link: /README
     - theme: alt
       text: 专业版

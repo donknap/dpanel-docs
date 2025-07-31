@@ -1,13 +1,11 @@
-# 通过 Docker Compose 创建
+# 使用 Compose 安装
 
-:::warning 阿里云镜像地址
-registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:latest \
-registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel:lite
-:::
+<!--@include: ../include/image.md-->
 
-#### 标准版
+## Compose Yaml
+:::code-group
 
-```
+```yaml [标准版]
 services:
   dpanel:
     image: dpanel/dpanel:latest
@@ -24,9 +22,7 @@ services:
       - /home/dpanel:/dpanel # 将 /home/dpanel 更改为你想要挂载的宿主机目录
 ```
 
-#### Lite 版
-
-```
+```yaml [Lite 版]
 services:
   dpanel:
     image: dpanel/dpanel:lite
@@ -40,3 +36,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dpanel:/dpanel # 将 /home/dpanel 更改为你想要挂载的宿主机目录
 ```
+
+:::

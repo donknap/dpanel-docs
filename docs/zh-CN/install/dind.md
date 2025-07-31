@@ -1,10 +1,14 @@
-# Docker In Docker
+# 使用 Docker In Docker 安装
 
-DinD 的方式允许在容器中运行一个与外部隔离的全新的 Docker 服务端。
+使用 Docker In Docker 的方式可以创建一个与外部完全隔离的 Docker 环境。
 
-## 标准版
+<!--@include: ../include/image.md-->
 
-```
+## Compose Yaml
+
+:::code-group
+
+```yaml [标准版]
 services:
   dpanel:
     image: dpanel/dpanel:latest
@@ -28,9 +32,7 @@ services:
     privileged: true 
 ```
 
-## Lite 版
-
-```
+```yaml [Lite 版]
 services:
   dpanel:
     image: dpanel/dpanel:lite
@@ -51,3 +53,4 @@ services:
       DOCKER_TLS_CERTDIR: ""
     privileged: true 
 ```
+:::
