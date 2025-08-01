@@ -1,6 +1,4 @@
-# 主机管理
-
-> DPanel Version >= 1.7.0
+# 主机管理 <Badge type="tip" text="DPanel Version >= 1.7.0" />
 
 在通过 docker api 添加了 docker 服务端后，可以在 **多服务端管理** 中，配置当前环境的 SSH 权限。
 配置 **本地** 环境 **主机Ip地址** 时，不可以使用 127.0.0.1，因为该地址代表的容器自身。

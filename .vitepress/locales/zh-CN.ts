@@ -40,76 +40,78 @@ export const zhCNConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         text: '容器管理',
         collapsed: false,
         items: [
-          { text: '快速创建', link: getLink("manual/container/create") },
-          { text: '参数详解', link: getLink("manual/container/create-option") },
-          { text: '检测与升级', link: getLink("manual/container/upgrade") },
-          { text: '快照与恢复', link: getLink("manual/container/snapshot") },
-          { text: '计划任务', link: getLink("manual/container/cron") },
-          { text: '端口访问', link: getLink("manual/setting/server") },
+          { text: '快速创建', link: getLink("manual/container-create") },
+          { text: '参数详解', link: getLink("manual/container-create-option") },
+          { text: '检测与升级', link: getLink("manual/container-upgrade") },
+          { text: '快照与恢复', link: getLink("manual/container-snapshot") },
+          { text: '计划任务', link: getLink("manual/container-cron") },
+          { text: '端口访问', link: getLink("manual/container-port") },
+          { text: '回收站', link: getLink("manual/container-rollback") },
         ]
       },
       {
-        text: '域名转发',
+        text: '为容器绑定域名',
         collapsed: false,
         items: [
-          { text: '证书管理', link: getLink("manual/container/domain-cert") },
-          { text: '域名转发', link: getLink("manual/container/domain") },
-          { text: '使用第三方转发', link: getLink("manual/container/domain-bt") },
-        ]
-      },
-      {
-        text: 'Compose',
-        collapsed: false,
-        items: [
-          { text: '快速开始', link: getLink("manual/compose/create") },
-          { text: '环境变量', link: getLink("manual/compose/env") },
-          { text: '覆盖配置', link: getLink("manual/compose/override") },
-          { text: '管理外部任务', link: getLink("manual/compose/external") },
-          { text: '批量拉取镜像', link: getLink("manual/compose/image-pull") },
-          { text: '其它平台迁移', link: getLink("manual/compose/third-party") },
-        ]
-      },
-      {
-        text: 'Swarm',
-        collapsed: false,
-        items: [
-          { text: '介绍', link: getLink("manual/swarm/quick") },
+          { text: '域名转发', link: getLink("manual/container-domain") },
+          { text: '使用第三方转发', link: getLink("manual/container-domain-other") },
+          { text: '证书管理', link: getLink("manual/container-domain-cert") },
         ]
       },
       {
         text: '镜像管理',
         collapsed: false,
         items: [
-          { text: '介绍', link: getLink("manual/image/create") },
+          { text: '介绍', link: getLink("manual/image-overview") },
           {
             text: "构建镜像", items: [
-              { text: 'Dockerfile', link: getLink("manual/image/create-dockerfile") },
-              { text: 'Zip&Git', link: getLink("manual/image/create-zip") },
-              { text: '容器Tar包', link: getLink("manual/image/create-container") },
-              { text: '镜像Tar包', link: getLink("manual/image/create-image") },
+              { text: 'Dockerfile', link: getLink("manual/image-create-dockerfile") },
+              { text: 'Zip&Git', link: getLink("manual/image-create-zip") },
+              { text: '容器Tar包', link: getLink("manual/image-create-container") },
             ]
           },
-          { text: '仓库管理', link: getLink("manual/container/registry") },
+          { text: '导入镜像', link: getLink("manual/image-import") },
+          { text: '仓库管理', link: getLink("manual/image-registry") },
+        ]
+      },
+      {
+        text: 'Compose',
+        collapsed: false,
+        items: [
+          { text: '快速开始', link: getLink("manual/compose-create") },
+          { text: '环境变量', link: getLink("manual/compose-create-env") },
+          { text: '覆盖配置', link: getLink("manual/compose-create-override") },
+          { text: '管理外部任务', link: getLink("manual/compose-create-outpath") },
+          { text: '批量拉取镜像', link: getLink("manual/compose-image-pull") },
+          { text: '其它平台迁移', link: getLink("manual/compose-third-party") },
+        ]
+      },
+      {
+        text: 'Swarm',
+        collapsed: false,
+        items: [
+          { text: '介绍', link: getLink("manual/swarm-overview") },
         ]
       },
       {
         text: '系统设置',
         collapsed: false,
         items: [
-          { text: '界面配置', link: getLink("manual/setting/docker-env") },
-          { text: '服务端管理', link: getLink("manual/setting/docker-env") },
-          { text: '宿主机管理', link: getLink("manual/setting/host") },
-          { text: '应用商店', link: getLink("manual/setting/store") },
-          { text: '更新面板', link: getLink("manual/setting/upgrade") },
+          { text: '界面配置', link: getLink("manual/system-basic-theme") },
+          { text: '多服务端管理', link: getLink("manual/system-env") },
+          { text: '宿主机管理', link: getLink("manual/system-env-host") },
+          { text: '应用商店', link: getLink("manual/system-store") },
+          { text: '更新面板', link: getLink("manual/system-dpanel-upgrade") },
         ]
       },
       {
         text: '其它',
         collapsed: false,
         items: [
-          { text: '开启 Docker Api', link: getLink("manual/system/remote") },
-          { text: '桥接宿主机网络', link: getLink("manual/container/bind-host-network") },
-          { text: '计划任务脚本模板', link: getLink("manual/setting/cron-template") },
+          { text: '开启 Docker Tcp 连接', link: getLink("manual/system-env-tcp") },
+          { text: '桥接宿主机网络', link: getLink("manual/system-bind-macvlan") },
+          { text: '计划任务脚本模板', link: getLink("manual/system-cron-template") },
+          { text: '常见错误', link: getLink("manual/system-qa") },
         ]
       },
     ]

@@ -68,9 +68,8 @@ https://raw.githubusercontent.com/Cp0204/CasaOS-AppStore-Play/refs/heads/main/Ap
 └─ ....
 ```
 
-#### 多 Docker 客户端数据隔离
+#### 多 Docker 客户端数据隔离 <Badge type="tip" text="DPanel Version >= 1.5.1" />
 
-> DPanel Version > 1.5.1
 
 默认情况下，多个 docker 客户端是共享 compose 任务数据，即你创建一个 compose 任务后，这些数据可以在每个客户端进行部署。\
 在一些功能类似的多 docker 客户端中，共享数据可以带来极大的方便。

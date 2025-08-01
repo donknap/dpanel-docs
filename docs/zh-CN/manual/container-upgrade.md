@@ -1,6 +1,4 @@
-# 快速升级容器
-
-> DPanel Version >= 1.4.2
+# 快速升级容器 <Badge type="tip" text="DPanel Version >= 1.4.2" />
 
 在 DPanel 面板中你可以对已经创建的容器快速升级。
 

@@ -1,6 +1,4 @@
-# 应用商店
-
-> DPanel Version >= 1.3.0
+# 应用商店 <Badge type="tip" text="DPanel Version >= 1.3.0" />
 
 ### 添加第三方应用商店
 

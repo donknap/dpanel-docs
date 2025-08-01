@@ -1,6 +1,4 @@
-# 计划任务
-
-> DPanel Version >= 1.4.0
+# 计划任务 <Badge type="tip" text="DPanel Version >= 1.4.0" />
 
 ### 添加计划任务
 

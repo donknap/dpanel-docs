@@ -1,6 +1,4 @@
-# Control Command
-
-> DPanel Version >= 1.2.2
+# Control Command <Badge type="tip" text="DPanel Version >= 1.2.2" />
 
 The control command needs to be run in the DPanel container. If you change the DPanel container name, please replace dpanel in the command below with your name
 

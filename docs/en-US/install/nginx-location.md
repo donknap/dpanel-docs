@@ -1,6 +1,5 @@
-# 绑定子目录
+# 绑定子目录 <Badge type="tip" text="DPanel Version >= 1.1.4" />
 
-> DPanel Version >= 1.1.4
 
 > http://127.0.0.1:8807 根据实际的主机ip及暴露端口而决定，这里只是为了举例说明问题
 

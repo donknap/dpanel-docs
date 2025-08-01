@@ -178,7 +178,7 @@ docker run -d --restart=always \
  -v /home/dpanel:/dpanel dpanel/dpanel:latest
 ```
 
-## 绑定宿主机 host
+## 绑定宿主机 host {#bind-host}
 
 在容器内部访问 127.0.0.1 或是 localhost 指向的是容器本身
 

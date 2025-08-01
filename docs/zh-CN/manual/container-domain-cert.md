@@ -1,6 +1,5 @@
-# 证书管理
+# 证书管理 <Badge type="tip" text="DPanel Family == 标准版" />
 
-> 此功能仅在 DPanel 标准版中
 
 ![domain-cert-1.png](https://cdn.w7.cc/dpanel/domain-cert-1.png)
 
