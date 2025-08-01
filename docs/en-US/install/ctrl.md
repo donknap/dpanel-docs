@@ -6,7 +6,7 @@ The control command needs to be run in the DPanel container. If you change the D
 2. Execute the control command in the DPanel container through the docker exec command
 3. Execute the command
 
-### Reset Admin Account
+### Reset Admin Account {#user-reset}
 
 #### Quick Reset
 

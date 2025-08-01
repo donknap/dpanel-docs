@@ -8,7 +8,7 @@
 
 :::code-group
 
-```标准版
+```yaml [标准版]
 FROM dpanel/dpanel:latest
 
 # 添加或是复制脚本或是文件
@@ -23,7 +23,7 @@ RUN ls -al
 ENTRYPOINT [ "/docker/entrypoint.sh" ]
 ```
 
-```Lite 版
+```yaml [Lite 版]
 FROM dpanel/dpanel:lite
 
 # 添加或是复制脚本或是文件

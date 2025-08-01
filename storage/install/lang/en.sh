@@ -27,7 +27,7 @@ TXT_INSTALL_TLS_TIP="Please enter the certificate password and press Enter to co
 TXT_INSTALL_TLS_TIP1="Please enter the certificate password"
 TXT_INSTALL_TLS_RESULT_PATH="Certificate storage directory is:"
 TXT_INSTALL_TLS_RESULT_PARAMS="Please add the following parameters to the Docker ExecStart params"
-TXT_INSTALL_TLS_RESULT_HELP="help: https://dpanel.cc/docs/zh-CN/manual/system/remote"
+TXT_INSTALL_TLS_RESULT_HELP="help: https://dpanel.cc/manual/system-env"
 
 TXT_INSTALL_NAME="Set DPanel container name. For updates, configure this as the current panel container name."
 TXT_INSTALL_NAME_INPUT="Enter name [Default:"

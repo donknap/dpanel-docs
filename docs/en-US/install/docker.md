@@ -111,7 +111,7 @@ docker run -d --name dpanel  ... -e DP_JWT_SECRET=test123ABC  dpanel/dpanel:late
 
 #### Volume
 
-> If you need to mount a compose yaml file or use a relative path in compose yaml, be sure to mount the /dpanel directory to the host and create a new compose task in the directory. See [Create Compose task](/manual/compose/create?id=通过挂载存储路径的方式创建)
+> If you need to mount a compose yaml file or use a relative path in compose yaml, be sure to mount the /dpanel directory to the host and create a new compose task in the directory. See [Create Compose task](/manual/compose-create#mount)
 
 The DPanel will generate some data when running and store it in the /dpanel directory in the DPanel container. If the directory is not mounted when creating, Docker will automatically generate a storage volume for the directory \
 
@@ -125,14 +125,14 @@ docker run -d --name dpanel  ... -v /home/somepath:/dpanel dpanel/dpanel:latest
 
 #### Admin Account
 
-After creating the DPanel container, you need to configure the admin account for the first time. If you forget your password, you can use [Reset Username and Password](/install/ctrl?id=重置管理员用户)
+After creating the DPanel container, you need to configure the admin account for the first time. If you forget your password, you can use [Reset Username and Password](/install/ctrl#user-reset)
 
 
 #### Run With Binary
 
 > It is recommended that you create panels using containers, which is more compatible.
 
-The DPanel also supports run with binary. You can configure the default Docker Engine after creating the panel, [Configuring the default Docker Engine](/manual/setting/docker-env?id=配置默认-docker-环境)
+The DPanel also supports run with binary. You can configure the default Docker Engine after creating the panel, [Configuring the default Docker Engine](/manual/system-env#setting-default-env)
 
 #### DPanel Container Name
 
@@ -160,7 +160,7 @@ docker run -d --name dpanel ... --add-host=host.dpanel.local:host-gateway dpanel
 
 The difference between updating and re-creating is whether to keep the directory data (/dpanel) previously mounted on the panel container. If you delete the host mount directory or re-specify the directory, the panel is re-created.
 
-If you keep the original mount directory data and mount configuration, rebuilding the panel container means upgrading. [See the panel upgrade command](/manual/setting/upgrade)
+If you keep the original mount directory data and mount configuration, rebuilding the panel container means upgrading. [See the panel upgrade command](/manual/system-dpanel-upgrade)
 
 #### Manually create the dpanel-plugin-explorer container
 

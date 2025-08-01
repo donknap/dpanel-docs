@@ -32,7 +32,7 @@ denied: requested access to the resource is denied
 
 ![registry-create](https://cdn.w7.cc/dpanel/registry-create.png)
 
-### 仓库加速
+### 仓库加速 {#proxy}
 
 > 采用面板配置加速地址不需要修改 docker 的 daemon.json 文件，也无需启动服务，配置后即生效。
 

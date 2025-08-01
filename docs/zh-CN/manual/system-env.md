@@ -25,22 +25,24 @@ tcp://192.168.0.5:2375
 
 使用 SSH 方式时，需要保证目标主机的 docker 版本与面板的 docker sdk 版本一致。如果无法保证版本一致请使用 API 的添加方式。
 
-```版本不匹配错误信息
+:::code-group
+```shell [版本不匹配错误信息]
 Docker 服务端连接失败，请升级目标
 Docker 版本 Error response from daemon: client version 1.48 is too new. Maximum
 supported API version is 1.43
 ```
+:::
 
 #### SSH 用户
 
 请配置非 root 的 SSH 登录用户，并追加 docker 用户组。
 
 :::code-group
-```使用命令
+```shell [命令]
 sudo usermod -aG docker 用户名
 ```
 
-```编辑/etc/group文件
+```shell [编辑/etc/group文件]
 ... 其它组信息 ...
 docker:x:994:用户名1,追加用户名
 ... 其它组信息 ...
@@ -57,7 +59,7 @@ docker ps
 
 通过顶部菜单切换不同的 Docker 客户端
 
-## 启用独立 Compose 目录
+## 启用独立 Compose 目录 {#enable-compose-path}
 
 启用独立 Compose 目录后，挂载的 Compose 任务文件只会显示当前服务端的私有任务，存放的目录为：
 
@@ -65,7 +67,7 @@ docker ps
 /dpanel/compose-服务端标识
 ```
 
-## 配置默认服务端
+## 配置默认服务端 {#setting-default-env}
 
 当创建面板容器时未指定 /var/run/docker.sock 文件或是默认环境为远程服务端。
 可以通过修改默认服务端（标识为 local）更改连接参数。

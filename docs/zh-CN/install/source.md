@@ -107,7 +107,7 @@ chmod 755 ./runtime/dpanel
 
 ## 当前环境未安装 docker
 
-如果当前运行系统中并未安装 Docker 时，在启动面板后，可以通过 [多环境管理](/manual/setting/docker-env.md) 功能配置默认的远程 Docker 服务端。
+如果当前运行系统中并未安装 Docker 时，在启动面板后，可以通过 [多服务端管理](/manual/system-env) 功能配置默认的远程 Docker 服务端。
 
 ### 安装 docker-cli 命令
 

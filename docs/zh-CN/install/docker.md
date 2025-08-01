@@ -2,7 +2,7 @@
 
 :::danger DPanel 面板为了隔离权限，在管理容器文件时，会自动创建 dpanel-plugin-explorer 容器。
 此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动销毁该容器。\
-此插件容器使用 alpine 镜像，你也可以 [手动创建](/install/docker#手动创建文件管理插件)，名称保持为 dpanel-plugin-explorer 即可。\
+此插件容器使用 alpine 镜像，你也可以 [手动创建](/install/docker#create-explorer-plugin)，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ 
 :::
 
@@ -101,8 +101,8 @@ unix:///Users/test/.docker/run/docker.sock
 ### 使用 Docker Api 管理
 
 使用 Docker Api 的形式管理 Docker 时在创建面板容器无须挂载 /var/run/docker.sock 文件。
-通过[开启 docker tcp 连接](/manual/system/remote)在面板容器创建完后，
-通过[配置默认 docker 客户端](/manual/setting/docker-env#配置默认-docker-环境 )配置接口地址即可。
+通过[开启 Docker Tcp 连接](/manual/system-env-tcp)在面板容器创建完后，
+通过[配置默认 docker 客户端](/manual/system-env#setting-default-env )配置接口地址即可。
 
 ## 自定义面板管理端口
 
@@ -147,7 +147,7 @@ docker run -d --name dpanel --restart=always \
 ## 自定义宿主机目录存储
 
 :::tip
-如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请务必将挂载 /dpanel 目录到宿主机，在目录中新建 compose 任务查看 [创建 compose 任务](/manual/compose/create#通过挂载存储路径的方式创建)
+如果需要挂载 compose yaml 文件或是在 compose yaml 中使用相对路径，请务必将挂载 /dpanel 目录到宿主机。添加 compose 任务查看 [通过挂载存储路径的方式创建](/manual/compose-create#mount)
 :::
 
 面板在运行时会产生一些数据，并存储在面板容器内的的 /dpanel 目录中。如果在创建时没有挂载该目录 docker 会自动挂载到存储卷中 \
@@ -195,9 +195,9 @@ docker run -d --name dpanel --restart=always \
 ## 更新或重建面板
 
 更新与重新安装的区别就在于是否保留面板挂载的目录（/dpanel）的配置。删除宿主机挂载目录或是重新指定目录，则为重建面板。
-否则表示升级面板容器[查看面板升级命令](/manual/setting/upgrade)
+否则表示升级面板容器[查看面板升级命令](/manual/system-dpanel-upgrade)
 
-## 手动创建文件管理插件
+## 手动创建文件管理插件 {#create-explorer-plugin}
 
 :::tip
 将文件管理容器的标签 com.dpanel.container.auto_remove=true 配置为 true 时，面板会在每次关闭浏览之后自动清理容器，配置为 false 时则不会清理。

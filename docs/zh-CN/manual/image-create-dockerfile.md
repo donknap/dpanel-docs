@@ -1,6 +1,6 @@
 # 通过 Dockerfile 创建镜像
 
-> 如果该文件中还依赖于其它配置文件，则需要采用 [Zip  或是 Git](/manual/image/create-zip) 的形式进行构建
+> 如果该文件中还依赖于其它配置文件，则需要采用 [Zip  或是 Git](/manual/image-create-zip) 的形式进行构建
 
 通过单 Dockerfile 文件的形式可以快速构建自己的镜像。
 
