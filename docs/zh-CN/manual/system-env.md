@@ -10,7 +10,7 @@ DPanel 支持同时管理多个 Docker、Podman 服务端，支持 Sock 文件�
 
 ### 通过 Api 添加
 
-使用 Api 添加服务端时，需要先[开启 TCP 监听](/manual/system-env-tcp#tcp)。如果添加的是公网地址，必须同时[开启 TSL 连接](/manual/system-env-tcp#tls)。
+使用 Api 添加服务端时，需要先[开启 Docker Tcp 连接](/manual/system-env-tcp)。如果添加的是公网地址，必须同时[开启 TLS 连接](/manual/system-env-tcp#tls)。
 填入 Docker Api 地址，例如：
 
 ```

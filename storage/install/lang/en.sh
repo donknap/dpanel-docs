@@ -94,6 +94,7 @@ TXT_RESULT_THANK_YOU_WAITING="================= Thank you for waiting. Installat
 TXT_RESULT_BROWSER_ACCESS_PANEL="Please access the panel in your browser and initialize the admin account: "
 TXT_RESULT_EXTERNAL_ADDRESS="External Address: "
 TXT_RESULT_INTERNAL_ADDRESS="Internal Address: "
+TXT_RESULT_DESKTOP_ADDRESS="Window WSL Or Docker Desktop Address: "
 TXT_RESULT_PROJECT_WEBSITE="Official Website & Documentation: https://dpanel.cc"
 TXT_RESULT_PROJECT_REPOSITORY="Source Code Repository: https://github.com/donknap/dpanel"
 TXT_RESULT_OPEN_PORT_SECURITY_GROUP="If using a cloud server, open the port in the security group"

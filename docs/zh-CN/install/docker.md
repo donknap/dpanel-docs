@@ -102,7 +102,7 @@ unix:///Users/test/.docker/run/docker.sock
 
 使用 Docker Api 的形式管理 Docker 时在创建面板容器无须挂载 /var/run/docker.sock 文件。
 通过[开启 Docker Tcp 连接](/manual/system-env-tcp)在面板容器创建完后，
-通过[配置默认 docker 客户端](/manual/system-env#setting-default-env )配置接口地址即可。
+通过[配置默认 docker 客户端](/manual/system-env#setting-default-env)配置接口地址即可。
 
 ## 自定义面板管理端口
 

@@ -14,14 +14,11 @@
 
 当宿主机没有 Docker 和 Podman 环境时，安装脚本会通过 https://get.docker.com 脚本安装 Docker。\
 脚本在 Debian、Ubuntu、Alpine 发行版下通过测试，推荐使用 Debian。
-
-当脚本无法正常安装 Docker 环境时，请手动安装 Docker 或是 Podman。
+当脚本无法正常安装 Docker 时，请手动安装 Docker 或是 Podman。
 
 ## 升级面板
 
-你可以使用安装脚对当前系统已经安装的面板容器进行升级
-
-运行安装脚本后，指定想要升级的面板容器名称后。
+使用安装脚对已经安装的面板容器进行升级时，指定想要升级的面板容器名称。
 脚本会停止、备份旧容器，使用容器的原有配置和使用最新的镜像创建面板容器。
 
 
@@ -48,7 +45,7 @@ curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
 
 仅输出创建命令
 
-```
+```shell
 curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
 
 ```

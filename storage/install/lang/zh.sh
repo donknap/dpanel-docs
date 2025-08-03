@@ -94,6 +94,7 @@ TXT_RESULT_THANK_YOU_WAITING="=================感谢您的耐心等待, 安装�
 TXT_RESULT_BROWSER_ACCESS_PANEL="请使用您的浏览器访问面板, 并初始化管理员帐号: "
 TXT_RESULT_EXTERNAL_ADDRESS="外部地址: "
 TXT_RESULT_INTERNAL_ADDRESS="内部地址: "
+TXT_RESULT_DESKTOP_ADDRESS="Window WSL 或 Docker Desktop 安装访问："
 TXT_RESULT_PROJECT_WEBSITE="官方网站及文档: https://dpanel.cc"
 TXT_RESULT_PROJECT_REPOSITORY="代码仓库: https://github.com/donknap/dpanel"
 TXT_RESULT_OPEN_PORT_SECURITY_GROUP="如果您使用的是云服务器, 请在安全组中打开端口"
