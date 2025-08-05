@@ -592,7 +592,7 @@ function install_tls() {
   log ""
   log "$TXT_INSTALL_TLS_RESULT_PATH $TLS_ROOT_PATH"
   log "$TXT_INSTALL_TLS_RESULT_PARAMS"
-  log "--tlsverify --tlscacert=${TLS_ROOT_PATH%/}/ca.pem --tlscert=${TLS_ROOT_PATH%/}/server-cert.pem --tlskey=${TLS_ROOT_PATH%/}/server-key.pem -H=0.0.0.0:2376"
+  log "--tlsverify --tlscacert=${TLS_ROOT_PATH%/}/ca.pem --tlscert=${TLS_ROOT_PATH%/}/server-cert.pem --tlskey=${TLS_ROOT_PATH%/}/server-key.pem -H tcp://0.0.0.0:2376"
   log ""
   log "$TXT_INSTALL_TLS_RESULT_HELP"
   log ""

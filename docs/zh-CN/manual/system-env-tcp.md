@@ -67,5 +67,5 @@ ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=/root/docker-ca/ca.pem --tlsc
 ## 重载配置&重启服务
 
 ```shell
-systemctl daemon-reload && systemctl restart docker
+sudo sh -c "systemctl daemon-reload && systemctl restart docker"
 ```

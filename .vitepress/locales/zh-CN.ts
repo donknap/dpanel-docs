@@ -62,12 +62,12 @@ export const zhCNConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         text: '镜像管理',
         collapsed: false,
         items: [
-          { text: '介绍', link: getLink("manual/image-overview") },
+          { text: '镜像加速', link: getLink("manual/image-proxy") },
           {
             text: "构建镜像", items: [
               { text: 'Dockerfile', link: getLink("manual/image-create-dockerfile") },
               { text: 'Zip&Git', link: getLink("manual/image-create-zip") },
-              { text: '容器Tar包', link: getLink("manual/image-create-container") },
+              { text: '容器', link: getLink("manual/image-create-container") },
             ]
           },
           { text: '导入镜像', link: getLink("manual/image-import") },

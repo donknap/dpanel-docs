@@ -21,24 +21,12 @@ tcp://192.168.0.5:2375
 
 使用主机 SSH 权限管理远程 Docker 服务端可以避免繁琐的配置证书的过程。
 
-#### 版本一致
-
-使用 SSH 方式时，需要保证目标主机的 docker 版本与面板的 docker sdk 版本一致。如果无法保证版本一致请使用 API 的添加方式。
-
-:::code-group
-```shell [版本不匹配错误信息]
-Docker 服务端连接失败，请升级目标
-Docker 版本 Error response from daemon: client version 1.48 is too new. Maximum
-supported API version is 1.43
-```
-:::
-
 #### SSH 用户
 
-请配置非 root 的 SSH 登录用户，并追加 docker 用户组。
+请配置非 root 的 SSH 登录用户，并追加 docker 用户组。如果没有普通用户，先通过 adduser 命令新建一个用户。
 
 :::code-group
-```shell [命令]
+```shell [追加用户组]
 sudo usermod -aG docker 用户名
 ```
 
@@ -54,6 +42,60 @@ docker:x:994:用户名1,追加用户名
 ```
 docker ps
 ```
+
+#### 版本一致
+
+使用 SSH 方式时，需要保证目标主机的 Docker Server 版本与面板的 Sdk 版本匹配。如果无法保证版本一致请使用 API 的添加方式。
+
+:::code-group
+```shell [版本不匹配错误信息]
+Docker 服务端连接失败，请升级目标
+Docker 版本 Error response from daemon: client version 1.48 is too new. Maximum
+supported API version is 1.43
+```
+:::
+
+#### 查看 Docker 版本
+
+```shell
+docker version
+```
+
+API version 表示服务端支持的 API 的版本，此版必须与 DPanel 概览页中的 Docker SDK 一致
+
+:::code-group
+```js [输出]
+Client: Docker Engine - Community 
+ Version:           27.5.1
+ API version:       1.47 // [!code error]
+ Go version:        go1.22.11
+ Git commit:        9f9e405
+ Built:             Wed Jan 22 13:41:17 2025
+ OS/Arch:           linux/amd64
+ Context:           default
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          27.5.1
+  API version:      1.47 (minimum version 1.24) // [!code error]
+  Go version:       go1.22.11
+  Git commit:       4c9b3b0
+  Built:            Wed Jan 22 13:41:17 2025
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.7.25
+  GitCommit:        bcc810d6b9066471b0b6fa75f557a15a1cbf31bb
+ runc:
+  Version:          1.2.4
+  GitCommit:        v1.2.4-0-g6c52b3f
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0
+```
+:::
+
+
 
 ## 切换不同的环境
 
