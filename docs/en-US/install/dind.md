@@ -2,9 +2,10 @@
 
 The Docker In Docker approach allows running a new Docker server in a container that is isolated from the outside world.
 
-### Standard Edition
+## Compose Yaml
 
-```
+:::code-group
+```yaml [Standard Edition]
 services:
   dpanel:
     image: dpanel/dpanel:latest
@@ -25,12 +26,11 @@ services:
     image: docker:dind
     environment:
       DOCKER_TLS_CERTDIR: ""
-    privileged: true s
+    privileged: true
 ```
 
-### Lite Edition
 
-```
+```yaml [Lite Edition]
 services:
   dpanel:
     image: dpanel/dpanel:lite
@@ -51,3 +51,4 @@ services:
       DOCKER_TLS_CERTDIR: ""
     privileged: true 
 ```
+:::

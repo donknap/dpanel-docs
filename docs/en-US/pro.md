@@ -195,18 +195,30 @@ Thank you for your support and love.
 
 ### Install
 
-Pro edition image
+:::code-group
 
-- dpanel/dpanel-pe:lite
-- dpanel/dpanel-pe:latest
+```shell [标准版镜像]
+dpanel/dpanel-pe:lite
+```
 
+```shell [Lite版镜像]
+dpanel/dpanel-pe:lite
 ```
-sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
+
+```shell [阿里云标准版镜像]
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:latest
 ```
+
+```shell [阿里云Lite版镜像]
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:lite
+```
+:::
+
+The installation method is the same as the community edition, the difference is the image. [Install with Docker](/install/docker) or [Install Script](/install/shell) to install it.
 
 ### Get License Code File
 
-To generate a License file, you'll need to provide the panel's Code file. Download the Code file from the Home > Overview page.
+To generate a License file, you'll need to provide the panel's Code file. Download the Code file from the Home - Overview page.
 
 Add the License file (dpanel.lic) to the DPanel mount directory.
 

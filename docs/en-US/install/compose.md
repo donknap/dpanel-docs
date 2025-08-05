@@ -1,8 +1,9 @@
-# Via Compose
+# Install with Compose
 
-#### Standard Edition
+## Compose Yaml
+:::code-group
 
-```
+```yaml [Standard Edition]
 services:
   dpanel:
     image: dpanel/dpanel:latest
@@ -19,9 +20,7 @@ services:
       - /home/dpanel:/dpanel # Change /home/dpanel to the host directory you want to mount.
 ```
 
-#### Lite Edition
-
-```
+```yaml [Lite Edition]
 services:
   dpanel:
     image: dpanel/dpanel:lite
@@ -35,3 +34,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/dpanel:/dpanel # Change /home/dpanel to the host directory you want to mount.
 ```
+
+:::

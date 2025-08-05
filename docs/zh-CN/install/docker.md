@@ -1,6 +1,7 @@
 # 使用 Docker 安装
 
-:::danger DPanel 面板为了隔离权限，在管理容器文件时，会自动创建 dpanel-plugin-explorer 容器。
+:::danger 
+DPanel 面板为了隔离权限，在管理容器文件时，会自动创建 dpanel-plugin-explorer 容器。
 此插件容器并不暴露任何端口，面板会在你关闭所有访问页面后自动销毁该容器。\
 此插件容器使用 alpine 镜像，你也可以 [手动创建](/install/docker#create-explorer-plugin)，名称保持为 dpanel-plugin-explorer 即可。\
 如果你没有手动创建，面板会自动创建。如果你无法接受，请勿使用【文件管理】功能！！！！ 
@@ -180,9 +181,9 @@ docker run -d --restart=always \
 
 ## 绑定宿主机 host {#bind-host}
 
-在容器内部访问 127.0.0.1 或是 localhost 指向的是容器本身
+在容器内部访问 127.0.0.1 或是 localhost 指向的是容器本身。
 
-在容器内部访问宿主机时需要使用宿主机在局域网内的地址或是你也可以在创建面板容器时将宿主机的地址注入到容器内部
+在容器内部访问宿主机时需要使用宿主机在局域网内的地址或是注入到容器内部的宿主机地址 host.dpael.local
 
 ```js
 docker run -d --name dpanel --restart=always \

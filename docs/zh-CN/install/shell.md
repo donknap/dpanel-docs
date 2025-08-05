@@ -6,6 +6,31 @@
 在使用安装脚前，确保系统中包含 bash、curl 命令，使用 apt、yum、apk 等包管理工具安装依赖
 :::
 
+## 使用
+
+复制相应的命令在终端中执行
+
+:::code-group
+
+```shell [Root用户]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
+```
+
+```shell [普通用户]
+sudo sh -c "curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh"
+```
+
+```shell [Podman]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
+```
+
+```shell [调试模式]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
+
+```
+:::
+
+
 ## 没有 Docker ?
 
 :::tip 
@@ -22,33 +47,6 @@
 脚本会停止、备份旧容器，使用容器的原有配置和使用最新的镜像创建面板容器。
 
 
-## 使用
-
-:::code-group
-
-```shell [Root用户]
-curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
-```
-
-```shell [普通用户]
-sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
-```
-
-```shell [Podman]
-curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
-```
-:::
-
-
-
-## 调试模式
-
-仅输出创建命令
-
-```shell
-curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
-
-```
 
 ## 生成 Docker Api TLS 证书
 

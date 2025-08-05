@@ -6,6 +6,28 @@ The install script generates and runs the docker run or podman run command to cr
 Before using the install script, make sure the system contains bash and curl commands, and use package management tools such as apt, yum, and apk to install dependencies.
 :::
 
+## Use
+
+:::code-group
+
+```shell [Root]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
+```
+
+```shell [Rootless]
+sudo sh -c "curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh"
+```
+
+```shell [Podman]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
+```
+
+```shell [Debug]
+curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test
+
+```
+:::
+
 ### No Docker ?
 
 :::tip 
@@ -25,24 +47,6 @@ You can use install script to upgrade the DPanel container already installed on 
 After running the install script, specify the name of the DPanel container you want to upgrade.
 
 The script will stop and back up the old container, then create the new DPanel container using the original container configuration and the latest image.
-
-## Use
-
-### Rootless
-
-```
-sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
-```
-
-### Root Or Podman
-
-```
-curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh
-```
-
-## Debug
-
-Output create commands
 
 ```
 curl -sSL https://dpanel.cc/quick.sh -o quick.sh && bash quick.sh test

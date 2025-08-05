@@ -195,20 +195,29 @@ Pro 版仅是社区版的增强和补充。对于通用的、广泛的基础功�
 
 
 
-### 安装方式
+### 安装
 
-安装方式与[【社区版】](/install/docker)一致，区别在于镜像不同
+:::code-group
 
-- dpanel/dpanel-pe:lite
-- dpanel/dpanel-pe:latest
-- registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:lite
-- registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:latest
-
-> 当前如果已经是 root 用户则删除掉命令中的两个 sudo 
-
+```shell [标准版镜像]
+dpanel/dpanel-pe:lite
 ```
-sudo curl -sSL https://dpanel.cc/quick.sh -o quick.sh && sudo bash quick.sh
+
+```shell [Lite版镜像]
+dpanel/dpanel-pe:lite
 ```
+
+```shell [阿里云标准版镜像]
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:latest
+```
+
+```shell [阿里云Lite版镜像]
+registry.cn-hangzhou.aliyuncs.com/dpanel/dpanel-pe:lite
+```
+:::
+
+安装方式与社区版一致，区别在于镜像不同。你可以 [使用 Docker 安装](/install/docker) 自行更改镜像地址或是 [使用安装脚本](/install/shell) 本安装
+
 
 ### 获取授权
 
