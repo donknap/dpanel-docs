@@ -58,6 +58,11 @@ function log() {
     esac
 }
 
+function warn() {
+  message="[DPanel Install Log]: $1 "
+  echo -e "${RED}${message}${NC}" 2>&1 | tee -a "$LOG_FILE"
+}
+
 function check_command() {
     local cmd_name=$1
     if ! command -v "$cmd_name" &> /dev/null; then
@@ -617,14 +622,19 @@ function result(){
       docker restart $INSTALL_CONTAINER_NAME
     fi
   fi
+  
   log ""
   log "$TXT_RESULT_THANK_YOU_WAITING"
   log ""
-  log "$TXT_RESULT_BROWSER_ACCESS_PANEL"
+  warn "$TXT_RESULT_BROWSER_ACCESS_PANEL"
+  log "$TXT_RESULT_FORCE_REFRESH"
+  log "$TXT_RESULT_OPEN_PORT_SECURITY_GROUP $INSTALL_PORT"
+  log ""
   log "$TXT_RESULT_EXTERNAL_ADDRESS http://$IP_PUBLIC:$INSTALL_PORT"
   log "$TXT_RESULT_INTERNAL_ADDRESS http://$IP_LOCAL:$INSTALL_PORT"
-  log "$TXT_RESULT_DESKTOP_ADDRESS http://127.0.0.1:$INSTALL_PORT"
-  log "$TXT_RESULT_OPEN_PORT_SECURITY_GROUP $INSTALL_PORT"
+  log ""
+  log "$TXT_RESULT_DESKTOP_ADDRESS"
+  log "$TXT_RESULT_INTERNAL_ADDRESS http://127.0.0.1:$INSTALL_PORT"
   log ""
   log "$TXT_RESULT_PROJECT_WEBSITE"
   log "$TXT_RESULT_PROJECT_REPOSITORY"
@@ -652,7 +662,7 @@ function main(){
 
     get_ip
   fi
-  
+
   select_lang
   if ! command -v docker &> /dev/null && command -v podman &> /dev/null; then
     docker() {
