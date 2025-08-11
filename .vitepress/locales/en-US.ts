@@ -11,7 +11,7 @@ export const enUSConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
       { text: 'License', link: getLink("license") },
       { text: 'Pro Edition', link: getLink("pro") },
       { text: 'Sponsor', link: 'https://afdian.com/a/dpanel' },
-      { text: 'Demo', link: "https://dpanel.park1991.com" },
+      { text: 'Demo', link: "https://demo.dpanel.cc" },
     ],
 
     sidebar: [

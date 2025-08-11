@@ -11,7 +11,7 @@ export const zhCNConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
       { text: '许可协议', link: getLink("license") },
       { text: '专业版', link: getLink("pro") },
       { text: '赞助', link: 'https://afdian.com/a/dpanel' },
-      { text: '演示', link: "https://dpanel.park1991.com" },
+      { text: '演示', link: "https://demo.dpanel.cc" },
     ],
 
     sidebar: [
