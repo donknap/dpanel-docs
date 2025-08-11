@@ -90,11 +90,12 @@ TXT_DOWNLOAD_ALL_ATTEMPTS_FAILED="All download attempts failed. You can try inst
 TXT_DOWNLOAD_REGIONS_OTHER_THAN_CHINA="No need to change source"
 
 TXT_RESULT_FAILED="Installation failed. Ensure Docker is installed correctly, images can be pulled normally, and ports are available."
-TXT_RESULT_THANK_YOU_WAITING="================= Thank you for waiting. Installation/Upgrade completed successfully. =================="
-TXT_RESULT_BROWSER_ACCESS_PANEL="Please access the panel in your browser and initialize the admin account: "
+TXT_RESULT_THANK_YOU_WAITING="==== Thank you for waiting. Installation/Upgrade completed successfully. =====
+TXT_RESULT_BROWSER_ACCESS_PANEL="After installing the panel, please visit the management address to initialize the administrator account as soon as possible"
+TXT_RESULT_FORCE_REFRESH="After upgrading the panel, please force refresh the browser to clear the static file cache"
 TXT_RESULT_EXTERNAL_ADDRESS="External Address: "
 TXT_RESULT_INTERNAL_ADDRESS="Internal Address: "
-TXT_RESULT_DESKTOP_ADDRESS="Window WSL Or Docker Desktop Address: "
+TXT_RESULT_DESKTOP_ADDRESS="Window WSL Or Docker Desktop"
 TXT_RESULT_PROJECT_WEBSITE="Official Website & Documentation: https://dpanel.cc"
-TXT_RESULT_PROJECT_REPOSITORY="Source Code Repository: https://github.com/donknap/dpanel"
-TXT_RESULT_OPEN_PORT_SECURITY_GROUP="If using a cloud server, open the port in the security group"
+TXT_RESULT_PROJECT_REPOSITORY="Github: https://github.com/donknap/dpanel"
+TXT_RESULT_OPEN_PORT_SECURITY_GROUP="If using a cloud server, please allow the port in the security group: "
