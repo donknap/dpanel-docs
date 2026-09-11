@@ -52,6 +52,7 @@ export const zhCNConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           { text: '快照与恢复', link: getLink("manual/container-snapshot") },
           { text: '计划任务', link: getLink("manual/container-cron") },
           { text: '端口访问', link: getLink("manual/container-port") },
+          { text: '容器虚拟机', link: getLink("manual/container-commit") },
           { text: '回收站', link: getLink("manual/container-rollback") },
         ]
       },

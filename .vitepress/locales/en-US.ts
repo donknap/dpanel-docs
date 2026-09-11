@@ -33,7 +33,7 @@ export const enUSConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         text: 'Extended Usage',
         collapsed: false,
         items: [
-          { text: 'Configuration Parameters', link: getLink("install/params") },
+          { text: 'Config Parameters', link: getLink("install/params") },
           { text: 'Panel Control Commands', link: getLink("install/ctrl") },
           { text: 'Custom Panel Image', link: getLink("install/custom-image") },
           { text: 'Custom Database', link: getLink("install/custom-db") },
@@ -52,6 +52,7 @@ export const enUSConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           { text: 'Snapshot and Restore', link: getLink("manual/container-snapshot") },
           { text: 'Scheduled Tasks', link: getLink("manual/container-cron") },
           { text: 'Port Access', link: getLink("manual/container-port") },
+          { text: 'Container VM', link: getLink("manual/container-commit") },
           { text: 'Recycle Bin', link: getLink("manual/container-rollback") },
         ]
       },
